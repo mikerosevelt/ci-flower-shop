@@ -143,7 +143,7 @@
     									</div>
     								</div>
     							</div>
-    							<p><a href="<? base_url('cart/success'); ?>" class="btn btn-primary py-3 px-4">Place an order</a></p>
+    							<p><a href="<?= base_url('cart/success'); ?>" class="btn btn-primary py-3 px-4">Place an order</a></p>
     						</div>
     					</div>
     				</div>

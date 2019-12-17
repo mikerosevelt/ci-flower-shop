@@ -1,4 +1,4 @@
-<div class="jumbotron text-center">
+<div class="jumbotron text-center bg-light">
   <h1 class="display-3">Thank You!</h1>
   <p class="lead"><strong>Please check your email</strong> for further instructions on how to complete your order.</p>
   <hr>
