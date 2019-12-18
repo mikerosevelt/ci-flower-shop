@@ -21,11 +21,11 @@
             <div class="card-body pt-0 pt-md-0">
               <h3 class="card-title mt-3"><?= $detail['name']; ?></h3>
               <small>Added <?= date('d F Y', $detail['date_added']); ?></small><br>
-              <small>Rp.<?= number_format($detail['price'],0,",","."); ?></small>
+              <small>Rp.<?= number_format($detail['price'], 0, ",", "."); ?></small>
               <p class="card-text"><?= $detail['description']; ?></p>
             </div>
           </div>
-          </div>
+        </div>
         <div class="col-xl-8 order-xl-1">
           <div class="card bg-secondary shadow">
             <div class="card-header bg-white border-0">
@@ -34,7 +34,7 @@
                   <h3 class="mb-0">Product Detail</h3>
                 </div>
                 <div class="col-4 text-right">
-                  <a href="#!" class="btn btn-sm btn-danger">Delete</a>
+                  <a onclick="return confirm('Delete product?')" href="<?= base_url('admin/delete_product/') . $detail['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
                 </div>
               </div>
             </div>
@@ -58,10 +58,10 @@
                       </div>
                     </div>
                     <div class="col-lg-6">
-              <div class="form-group">
-              <label>Upload an image</label>
-              <input type="file" class="form-control-file" id="image" name="image" required value="<?= $detail['image']; ?>">
-              </div>
+                      <div class="form-group">
+                        <label>Upload an image</label>
+                        <input type="file" class="form-control-file" id="image" name="image" required value="<?= $detail['image']; ?>">
+                      </div>
                     </div>
                   </div>
                 </div>

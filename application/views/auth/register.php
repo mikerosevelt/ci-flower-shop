@@ -6,7 +6,7 @@
             <div class="col-lg-5 col-md-6">
               <h1 class="text-white">Welcome!</h1>
               <p class="text-lead text-light">If you don't have an account, fill the registration form.<br>
-Provide your details to make purchases easier.</p>
+                Provide your details to make purchases easier.</p>
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@ Provide your details to make purchases easier.</p>
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Name" type="text" id="name" name="name">
+                    <input class="form-control" placeholder="Name" type="text" id="name" name="name" value="<?= set_value('name'); ?>">
                   </div>
                   <?= form_error('name', '<small class="text-danger pl-1">', '</small>'); ?>
                 </div>
@@ -42,7 +42,7 @@ Provide your details to make purchases easier.</p>
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Email" type="text" id="email" name="email">
+                    <input class="form-control" placeholder="Email" type="text" id="email" name="email" value="<?= set_value('email'); ?>">
                   </div>
                   <?= form_error('email', '<small class="text-danger pl-1">', '</small>'); ?>
                 </div>
@@ -53,19 +53,20 @@ Provide your details to make purchases easier.</p>
                     </div>
                     <input class="form-control" placeholder="Password" type="password" id="password" name="password">
                   </div>
+                  <!-- <small class="pl-1">Passowrd min 3 Characters</small><br> -->
                   <?= form_error('password', '<small class="text-danger pl-1">', '</small>'); ?>
-                <div class="text-center">
-                  <button type="submit" class="btn btn-primary mt-4">Create account</button>
-                </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary mt-4">Create account</button>
+                  </div>
               </form>
               <div class="row mt-3 p-1">
-            <div class="col text-center">
-              <a href="<?= base_url('auth'); ?>" class="text-black"><small>Already have an account ? Login!</small></a>
-            </div>
-          </div>
+                <div class="col text-center">
+                  <a href="<?= base_url('auth'); ?>" class="text-black"><small>Already have an account ? Login!</small></a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+    </div>

@@ -35,7 +35,7 @@
           <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="<?= base_url('assets/'); ?>img/theme/team-1-800x800.jpg
+                <img alt="Image placeholder" src="<?= base_url('assets/'); ?>img/default.png
 ">
               </span>
             </div>
@@ -100,7 +100,7 @@
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item  class=">
-          <a class=" nav-link " href="<?= base_url('admin'); ?>"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
+            <a class=" nav-link " href="<?= base_url('admin'); ?>"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
             </a>
           </li>
           <li class="nav-item">
@@ -154,7 +154,7 @@
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="<?= base_url('assets/'); ?>img/theme/team-4-800x800.jpg">
+                  <img alt="Image placeholder" src="<?= base_url('assets/'); ?>img/default.png">
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
                   <span class="mb-0 text-sm  font-weight-bold"><?= $user['name']; ?></span>

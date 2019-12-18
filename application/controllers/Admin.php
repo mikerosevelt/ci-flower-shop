@@ -1,9 +1,11 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Admin extends CI_Controller
+{
 
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
 		if ($this->session->userdata['role_id'] != 1) {
 			redirect('home');
@@ -17,7 +19,8 @@ class Admin extends CI_Controller {
 		$this->load->model('Product_model');
 	}
 
-	public function index() {
+	public function index()
+	{
 		$data['title'] = 'Dashboard';
 		$data['list'] = $this->User_model->getAllUser()->result_array();
 		$data['total'] = $this->User_model->getAllUser()->num_rows();
@@ -28,7 +31,8 @@ class Admin extends CI_Controller {
 		$this->load->view('templates/admin_footer');
 	}
 
-	public function users() {
+	public function users()
+	{
 		$data['title'] = 'Users';
 		$data['list'] = $this->User_model->getAllUser()->result_array();
 		$data['total'] = $this->User_model->getAllUser()->num_rows();
@@ -38,7 +42,8 @@ class Admin extends CI_Controller {
 		$this->load->view('templates/admin_footer');
 	}
 
-	public function orders() {
+	public function orders()
+	{
 		$data['title'] = 'Orders';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$this->load->view('templates/admin_header', $data);
@@ -46,7 +51,8 @@ class Admin extends CI_Controller {
 		$this->load->view('templates/admin_footer');
 	}
 
-	public function products() {
+	public function products()
+	{
 		$data['title'] = 'Products';
 		$data['list'] = $this->Product_model->getAllProduct()->result_array();
 		$data['total'] = $this->Product_model->getAllProduct()->num_rows();
@@ -57,17 +63,19 @@ class Admin extends CI_Controller {
 	}
 
 	// USER PART
-	public function user_detail() {
+	public function user_detail()
+	{
 		$data['title'] = 'User Detail';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$id=$this->uri->segment(3);
+		$id = $this->uri->segment(3);
 		$data['detail'] = $this->User_model->getUserById($id)->row_array();
 		$this->load->view('templates/admin_header', $data);
 		$this->load->view('admin/user_detail', $data);
 		$this->load->view('templates/admin_footer');
 	}
 
-	public function delete_user($id) {
+	public function delete_user($id)
+	{
 		$this->User_model->deleteUser($id);
 		$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
   													User has been deleted.
@@ -75,17 +83,19 @@ class Admin extends CI_Controller {
     												<span aria-hidden="true">&times;</span>
   													</button>
 													</div>');
-		redirect('admin/users','refresh');
+		redirect('admin/users', 'refresh');
 	}
 
 	// ORDER PART
-	
+
 
 	// PRODUCT PART
 
-	public function addProduct() {
+	public function addProduct()
+	{
 		$this->form_validation->set_rules('name', 'Name', 'trim|required');
 		$this->form_validation->set_rules('price', 'Price', 'trim|required');
+		$this->form_validation->set_rules('image', 'Image', 'trim|required');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required');
 
 		if ($this->form_validation->run() == FALSE) {
@@ -104,20 +114,21 @@ class Admin extends CI_Controller {
 													</div>');
 			redirect('admin/products');
 		}
-		
 	}
 
-	public function detail_product() {
+	public function detail_product()
+	{
 		$data['title'] = 'Detail Product';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$id=$this->uri->segment(3);
+		$id = $this->uri->segment(3);
 		$data['detail'] = $this->Product_model->getProductById($id)->row_array();
 		$this->load->view('templates/admin_header', $data);
 		$this->load->view('admin/detail_product', $data);
 		$this->load->view('templates/admin_footer');
 	}
 
-	public function editproduct() {
+	public function editproduct()
+	{
 		$this->Product_model->editDataProduct();
 		$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
   													Product detail has been updated.
@@ -128,7 +139,8 @@ class Admin extends CI_Controller {
 		redirect('admin/products');
 	}
 
-	public function delete_product($id) {
+	public function delete_product($id)
+	{
 		$this->Product_model->deleteProduct($id);
 		$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
   													Product successful deleted.
@@ -138,5 +150,4 @@ class Admin extends CI_Controller {
 													</div>');
 		redirect('admin/products');
 	}
-
 }

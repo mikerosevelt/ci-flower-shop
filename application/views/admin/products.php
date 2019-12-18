@@ -33,78 +33,78 @@
           <div class="card shadow">
             <div class="table-responsive">
               <div>
-              <table class="table align-items-center">
+                <table class="table align-items-center">
                   <thead class="thead-light">
-                      <tr>
-                          <th scope="col">
-                              #
-                          </th>
-                          <th scope="col">
-                              Product Name
-                          </th>
-                          <th scope="col">
-                              Description
-                          </th>
-                          <th scope="col">
-                          Price
-                          </th>
-                          <th scope="col">
-                              Date Added
-                          </th>
-                          <th scope="col"></th>
-                      </tr>
+                    <tr>
+                      <th scope="col">
+                        #
+                      </th>
+                      <th scope="col">
+                        Product Name
+                      </th>
+                      <th scope="col">
+                        Description
+                      </th>
+                      <th scope="col">
+                        Price
+                      </th>
+                      <th scope="col">
+                        Date Added
+                      </th>
+                      <th scope="col"></th>
+                    </tr>
                   </thead>
                   <tbody class="list">
-                      <?php $no = 1;
-                        foreach ($list as $li) : ?>
+                    <?php $no = 1;
+                                                              foreach ($list as $li) : ?>
                       <tr>
-                          <th scope="row" class="name">
-                              <div class="media align-items-center">
-                                  <?= $no++; ?>
-                              </div>
-                          </th>
-                          <td class="budget">
-                            <div class="media align-items-center">
+                        <th scope="row" class="name">
+                          <div class="media align-items-center">
+                            <?= $no++; ?>
+                          </div>
+                        </th>
+                        <td class="budget">
+                          <div class="media align-items-center">
                             <a href="#" class="avatar rounded-circle mr-3">
-                            <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                              <img alt="Image placeholder" src="<?= base_url('assets/img/') . $li['image']; ?>">
                             </a>
                             <div class="media-body">
-                            <span class="mb-0 text-sm"><?= $li['name']; ?></span>
+                              <span class="mb-0 text-sm"><?= $li['name']; ?></span>
                             </div>
+                          </div>
+                        </td>
+                        <td class="status">
+                          <span class="badge badge-dot mr-4">
+                            <?= $li['description']; ?>
+                          </span>
+                        </td>
+                        <td>
+                          Rp.<?= number_format($li['price'], 0, ",", "."); ?>
+                        </td>
+                        <td class="completion">
+                          <div class="d-flex align-items-center">
+                            <span class="mr-2"><?= date('d F Y', $li['date_added']); ?></span>
+                          </div>
+                        </td>
+                        <td class="text-right">
+                          <div class="dropdown">
+                            <a class="btn btn-sm btn-icon-only text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-ellipsis-v"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                              <a class="dropdown-item" href="<?= base_url('admin/detail_product/') . $li['id']; ?>">Detail</a>
+                              <!-- <a class="dropdown-item" href="<?= base_url('admin/edit_product/') . $li['id']; ?>">Edit</a> -->
+                              <a class="dropdown-item" onclick="return confirm('Delete product?')" href="<?= base_url('admin/delete_product/') . $li['id']; ?>">Delete</a>
                             </div>
-                          </td>
-                          <td class="status">
-                              <span class="badge badge-dot mr-4">
-                               <?= $li['description']; ?>
-                              </span>
-                          </td>
-                          <td>
-                            Rp.<?= number_format($li['price'],0,",","."); ?>
-                          </td>
-                          <td class="completion">
-                              <div class="d-flex align-items-center">
-                                  <span class="mr-2"><?= date('d F Y', $li['date_added']); ?></span>
-                              </div>
-                          </td>
-                          <td class="text-right">
-                              <div class="dropdown">
-                                  <a class="btn btn-sm btn-icon-only text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                  </a>
-                                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                      <a class="dropdown-item" href="<?= base_url('admin/detail_product/').$li['id']; ?>">Detail</a>
-                                      <!-- <a class="dropdown-item" href="<?= base_url('admin/edit_product/').$li['id']; ?>">Edit</a> -->
-                                      <a class="dropdown-item" onclick="return confirm('Delete product?')" href="<?= base_url('admin/delete_product/').$li['id']; ?>">Delete</a>
-                                  </div>
-                              </div>
-                          </td>
+                          </div>
+                        </td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>
-              </table>
-          </div>
+                </table>
+              </div>
 
-      </div>
+            </div>
           </div>
         </div>
       </div>

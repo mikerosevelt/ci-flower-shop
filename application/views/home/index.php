@@ -89,37 +89,39 @@
     		</div>
     	</div>
     	<div class="container">
-    		<div class="row">
-    			<?php foreach ($list as $li) : ?>
-    				<div class="col-md-6 col-lg-3 ftco-animate">
-    					<div class="product">
-    						<input type="hidden" name="id" id="id" value="<?= $li['id']; ?>">
-    						<a href="<?= base_url('product/detail/') . $li['id']; ?>" class="img-prod"><img class="img-fluid" src="<?= base_url('assets/img/') . $li['image']; ?>" alt="...">
-    							<div class="overlay"></div>
-    						</a>
-    						<div class="text py-3 pb-4 px-3 text-center">
-    							<h3><a href="#"><?= $li['name']; ?></a></h3>
-    							<div class="d-flex">
-    								<div class="pricing">
-    									<p class="price"><span class="price-sale">Rp.<?= number_format($li['price'], 0, ",", "."); ?></span></p>
+    		<form action="<?= base_url('product/addToCart'); ?>" method="POST" accept-charset="utf-8">
+    			<div class="row">
+    				<?php foreach ($list as $li) : ?>
+    					<div class="col-md-6 col-lg-3 ftco-animate">
+    						<div class="product">
+    							<input type="hidden" name="id" id="id" value="<?= $li['id']; ?>">
+    							<a href="<?= base_url('product/detail/') . $li['id']; ?>" class="img-prod"><img class="img-fluid" src="<?= base_url('assets/img/') . $li['image']; ?>" alt="...">
+    								<div class="overlay"></div>
+    							</a>
+    							<div class="text py-3 pb-4 px-3 text-center">
+    								<h3><a href="#"><?= $li['name']; ?></a></h3>
+    								<div class="d-flex">
+    									<div class="pricing">
+    										<p class="price"><span class="price-sale">Rp.<?= number_format($li['price'], 0, ",", "."); ?></span></p>
+    									</div>
     								</div>
-    							</div>
-    							<div class="bottom-area d-flex px-3">
-    								<div class="m-auto d-flex">
-    									<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center" data-toggle="tooltip" data-placement="top" title="Add to cart">
-    										<span><i class="ion-ios-menu"></i></span>
-    									</a>
-    									<a id="buy-now" name="buy-now" href="#" class="buy-now d-flex justify-content-center align-items-center mx-1" data-toggle="tooltip" data-placement="top" title="Buy now">
-    										<span><i class="ion-ios-cart"></i></span>
-    									</a>
+    								<input type="hidden" name="id" value="<?= $li['id']; ?>" />
+    								<input type="hidden" name="name" value="<?= $li['name']; ?>" />
+    								<input type="hidden" name="price" value="<?= $li['price']; ?>" />
+    								<input type="hidden" name="image" value="<?= $li['image']; ?>" />
+    								<input type="hidden" name="quantity" value="1" />
+    								<div class="bottom-area d-flex px-3">
+    									<div class="m-auto d-flex">
+    										<input type="submit" name="add" class="btn btn-black" value="Add to cart">
 
-    									</button>
+    										</button>
+    									</div>
     								</div>
     							</div>
     						</div>
     					</div>
-    				</div>
-    			<?php endforeach; ?>
-    		</div>
+    				<?php endforeach; ?>
+    			</div>
+    		</form>
     	</div>
     </section>
