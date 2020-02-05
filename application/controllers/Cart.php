@@ -57,7 +57,7 @@ class Cart extends CI_Controller
 				'date_order' => time()
 			];
 			$this->db->insert('order', $data);
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Hooray! your account has been created.</div>');
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your order has been placed.</div>');
 			echo $this->success();
 		}
 	}
