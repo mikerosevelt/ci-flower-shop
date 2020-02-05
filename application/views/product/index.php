@@ -22,21 +22,22 @@
             </ul>
           </div>
         </div>
-        <form method="post" action="<?= base_url('product/addToCart'); ?>" accept-charset="utf-8">
-          <div class="row">
-            <?php foreach ($list as $li) : ?>
-              <div class="col-md-6 col-lg-3 ftco-animate">
-                <div class="product">
-                  <a href="<?= base_url('product/detail/') . $li['id']; ?>" class="img-prod"><img class="img-fluid" src="<?= base_url('assets/img/') . $li['image']; ?>" alt="Colorlib Template">
-                    <div class="overlay"></div>
-                  </a>
-                  <div class="text py-3 pb-4 px-3 text-center">
-                    <h3><a href="#"><?= $li['name']; ?></a></h3>
-                    <div class="d-flex">
-                      <div class="pricing">
-                        <p class="price"><span class="price-sale">Rp.<?= number_format($li['price'], 0, ",", "."); ?></span></p>
-                      </div>
+
+        <div class="row">
+          <?php foreach ($list as $li) : ?>
+            <div class="col-md-6 col-lg-3 ftco-animate">
+              <div class="product">
+                <a href="<?= base_url('product/detail/') . $li['id']; ?>" class="img-prod"><img class="img-fluid" src="<?= base_url('assets/img/') . $li['image']; ?>" alt="Colorlib Template">
+                  <div class="overlay"></div>
+                </a>
+                <div class="text py-3 pb-4 px-3 text-center">
+                  <h3><a href="<?= base_url('product/detail/') . $li['id']; ?>"><?= $li['name']; ?></a></h3>
+                  <div class="d-flex">
+                    <div class="pricing">
+                      <p class="price"><span class="price-sale">Rp.<?= number_format($li['price'], 0, ",", "."); ?></span></p>
                     </div>
+                  </div>
+                  <form method="post" action="<?= base_url('product/addToCart'); ?>" accept-charset="utf-8">
                     <input type="hidden" name="id" value="<?= $li['id']; ?>" />
                     <input type="hidden" name="name" value="<?= $li['name']; ?>" />
                     <input type="hidden" name="price" value="<?= $li['price']; ?>" />
@@ -46,12 +47,13 @@
                       <div class="m-auto d-flex">
                         <input type="submit" name="add" class="btn btn-black" value="Add to cart">
                       </div>
-                    </div>
-                  </div>
+                  </form>
                 </div>
               </div>
-            <?php endforeach; ?>
-          </div>
-        </form>
+            </div>
+        </div>
+      <?php endforeach; ?>
+      </div>
+
       </div>
     </section>
