@@ -4,6 +4,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Cart extends CI_Controller
 {
 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('Cart_model');
+	}
+
 	public function index()
 	{
 		$item['list'] = $this->cart->contents();
@@ -34,7 +40,7 @@ class Cart extends CI_Controller
 
 	public function complete_order()
 	{
-
+		$this->form_validation->set_rules('name', 'Name', 'trim|required');
 
 		if ($this->form_validation->run() == FALSE) {
 			$data['title'] = 'Checkout Page';
@@ -43,24 +49,42 @@ class Cart extends CI_Controller
 			$this->load->view('checkout/index');
 			$this->load->view('templates/main_footer');
 		} else {
-			$data = [
-				'user_id' => $this->input->post('id'),
-				'name' => htmlspecialchars($this->input->post('name', true)),
-				'email' => htmlspecialchars($this->input->post('email', true)),
-				'phone' => $this->input->post('phone'),
-				'country' => $this->input->post('country'),
-				'address1' => $this->input->post('address1'),
-				'address2' => $this->input->post('address2'),
-				'city' => $this->input->post('city'),
-				'postcode' => $this->input->post('postcode'),
-				'total' => $this->cart->total(),
-				'date_order' => time()
-			];
-			$this->db->insert('order', $data);
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your order has been placed.</div>');
-			echo $this->success();
+			$this->Cart_model->completeOrder();
+
+			$this->_sendEmail(); // type
+			redirect('cart/success');
 		}
 	}
+
+	private function _sendEmail()
+    {
+        require_once('__config.php');
+
+        $smtp_config = $config;
+
+        $this->load->library('email', $smtp_config);
+
+        $this->email->initialize($smtp_config);
+
+        $this->email->from('cs@flowershop.com', 'Flower Shop'); // from email and from name.
+        $this->email->to($this->input->post('email'));
+        $this->email->subject('Order Confirmation');
+        $this->email->message('THANK YOU FOR YOUR ORDER');
+        // if ($type == 'order') {
+        //     $this->email->subject('Order Confirmation');
+        //     $this->email->message('THANK YOU FOR YOUR ORDER');
+        // } else if ($type == 'forgot') {
+        //     $this->email->subject('Reset Password');
+        //     $this->email->message('HEHEHE');
+        // }
+
+        if ($this->email->send()) {
+            return true;
+        } else {
+            echo $this->email->print_debugger();
+            die;
+        }
+    }
 
 	public function success()
 	{

@@ -91,7 +91,7 @@
                                   </a>
                                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                       <a class="dropdown-item" href="#">Detail</a>
-                                      <a class="dropdown-item" href="#">Delete</a>
+                                      <a class="dropdown-item text-danger" href="#">Delete</a>
                                   </div>
                               </div>
                           </td>

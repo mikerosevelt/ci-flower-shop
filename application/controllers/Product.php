@@ -49,10 +49,10 @@ class Product extends CI_Controller
 		if ($rowid == "all") {
 			$this->cart->destroy();
 		} else {
-			$data = array(
+			$data = [
 				'rowid' => $rowid,
 				'qty' => 0
-			);
+			];
 			$this->cart->update($data);
 		}
 		redirect('cart');
@@ -67,13 +67,13 @@ class Product extends CI_Controller
 			$image = $cart['image'];
 			$amount = $price * $cart['qty'];
 			$qty = $cart['qty'];
-			$data = array(
+			$data = [
 				'rowid' => $rowid,
 				'price' => $price,
 				'image' => $image,
 				'amount' => $amount,
 				'qty' => $qty
-			);
+			];
 			$this->cart->update($data);
 		}
 		redirect('cart');
