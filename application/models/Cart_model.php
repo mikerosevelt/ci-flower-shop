@@ -5,7 +5,7 @@ class Cart_model extends CI_Model {
 
 public function completeOrder()
 	{
-		$n = $this->db->get('order')->num_rows();
+		$n = $this->db->get('order')->num_rows() + 1;
 		$dataOrder = [
 				'user_id' => $this->input->post('id'),
 				'order_number' => $n++,

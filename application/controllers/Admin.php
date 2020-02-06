@@ -17,6 +17,7 @@ class Admin extends CI_Controller
 
 		$this->load->model('User_model');
 		$this->load->model('Product_model');
+		$this->load->model('Order_model');
 	}
 
 	public function index()
@@ -46,8 +47,11 @@ class Admin extends CI_Controller
 	{
 		$data['title'] = 'Orders';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['total'] = $this->db->get('order')->num_rows();
+        $data['list'] = $this->Order_model->getAllOrder();
+
 		$this->load->view('templates/admin_header', $data);
-		$this->load->view('admin/orders');
+		$this->load->view('admin/orders',$data);
 		$this->load->view('templates/admin_footer');
 	}
 
@@ -87,6 +91,18 @@ class Admin extends CI_Controller
 	}
 
 	// ORDER PART
+
+	public function deleteOrder($id)
+	{
+		$this->Order_model->deleteOrder($id);
+		$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  													Order has been deleted.
+  													<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    												<span aria-hidden="true">&times;</span>
+  													</button>
+													</div>');
+		redirect('admin/orders', 'refresh');
+	}
 
 
 	// PRODUCT PART

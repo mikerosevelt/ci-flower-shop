@@ -10,7 +10,7 @@
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Orders</h5>
-                      <span class="h2 font-weight-bold mb-0">0</span>
+                      <span class="h2 font-weight-bold mb-0"><?= $total; ?></span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -28,10 +28,11 @@
     <div class="container-fluid mt--7">
       <div class="row mt-5">
         <div class="col-xl mb-5 mb-xl">
+          <?= $this->session->flashdata('message'); ?>
           <div class="card shadow">
             <div class="table-responsive">
               <div>
-              <table class="table align-items-center">
+              <table class="table align-items-center table-hover">
                   <thead class="thead-light">
                       <tr>
                           <th scope="col">
@@ -58,30 +59,35 @@
                       </tr>
                   </thead>
                   <tbody class="list">
-                      
+                    <?php if (!$list) : ?>
+                      <tr>
+                        <td class="text-center" colspan="7">No Records Found</td>
+                      </tr>
+                      <?php else : ?>
+                      <?php foreach($list as $ol): ?>
                       <tr>
                           <th scope="row" class="name">
                               <div class="media align-items-center">
-                                  1
+                                  <?= $ol['order_number']; ?>
                               </div>
                           </th>
                           <td class="budget">
-                              First Name and Last Name
+                              <?= $ol['name']; ?>
                           </td>
                           <td class="status">
                               <span class="badge badge-dot mr-4">
-                               example@example.com
+                               <?= $ol['email']; ?>
                               </span>
                           </td>
                           <td>
-                            Active
+                            <?= $ol['status']; ?>
                           </td>
                           <td>
-                            Rp.20000
+                            Rp.<?= number_format($ol['total'], 0, ",", "."); ?>
                           </td>
                           <td class="completion">
                               <div class="d-flex align-items-center">
-                                  <span class="mr-2">20 January 2020</span>
+                                  <span class="mr-2"><?= date('H:i:s d F Y', $ol['date_order']); ?></span>
                               </div>
                           </td>
                           <td class="text-right">
@@ -91,11 +97,13 @@
                                   </a>
                                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                       <a class="dropdown-item" href="#">Detail</a>
-                                      <a class="dropdown-item text-danger" href="#">Delete</a>
+                                      <a class="dropdown-item text-danger" href="<?= base_url('admin/deleteOrder/') . $ol['id']; ?>">Delete</a>
                                   </div>
                               </div>
                           </td>
                       </tr>
+                    <?php endforeach; ?>
+                  <?php endif; ?>
                   </tbody>
               </table>
           </div>
