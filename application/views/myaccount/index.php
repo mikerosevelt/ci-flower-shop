@@ -6,18 +6,30 @@
           </div>
         </div>
       </div>
+
+<?php
+$id = $user['id'];
+$query = "SELECT `user`.*, `user_detail`.*
+          FROM `user` JOIN `user_detail`
+          ON `user`.`id` = `user_detail`.`user_id`
+          WHERE `user`.`id` = $id";
+$detail = $this->db->query($query)->row_array();
+?>
     
     <section class="ftco-section">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-7 ftco-animate">
-						<form action="#" class="billing-form">
-							<h3 class="mb-4 billing-heading">Billing Details</h3>
+          	<?= $this->session->flashdata('message'); ?>
+				<form action="<?= base_url('myaccount'); ?>" class="billing-form" method="post">
+					<input type="hidden" name="id" id="id" value="<?= $user['id']; ?>">
+					<h3 class="mb-4 billing-heading">Billing Details</h3>
 	          	<div class="row align-items-end">
 	          		<div class="col-md-12">
 	                <div class="form-group">
 	                	<label for="firstname">Full Name</label>
-	                  <input type="text" class="form-control" placeholder="" value="<?= $user['name']; ?>">
+	                  <input type="text" class="form-control" id="name" name="name" placeholder="" value="<?= $user['name']; ?>">
+	                  <?= form_error('name', '<small class="text-danger pl-1">', '</small>'); ?>
 	                </div>
 	              </div>
 	              <div class="col-md">
@@ -26,66 +38,73 @@
 		            <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="phone">Phone</label>
-	                  <input type="text" class="form-control" placeholder="">
+	                  	<input type="text" class="form-control" placeholder="+62 xxx xxxx xxxx" id="phone" name="phone" value="<?= $detail['phone']; ?>">
+	                  	<?= form_error('phone', '<small class="text-danger pl-1">', '</small>'); ?>
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="emailaddress">Email Address</label>
-	                  <input type="text" class="form-control" placeholder="" value="<?= $user['email']; ?>">
+	                  	<input type="text" class="form-control" placeholder="" value="<?= $user['email']; ?>" readonly>
 	                </div>
                   </div>
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
-	                	<label for="streetaddress">Street Address</label>
-	                  <input type="text" class="form-control" placeholder="House number and street name">
-	                </div>
+	                		<label for="address">Street Address</label>
+	                  		<input type="text" class="form-control" placeholder="House number and street name" id="address" name="address" value="<?= $detail['address']; ?>">
+	                  		<?= form_error('address', '<small class="text-danger pl-1">', '</small>'); ?>
+	               		</div>
 		            </div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
-	                  <input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)">
+	                  	<input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)" id="address2" name="address2" value="<?= $detail['address_2']; ?>">
+	                  	<?= form_error('address2', '<small class="text-danger pl-1">', '</small>'); ?>
 	                </div>
 		            </div>
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
-	                	<label for="towncity">Town / City</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
+	                		<label for="towncity">Town / City</label>
+	                  		<input type="text" class="form-control" placeholder="" id="city" name="city" value="<?= $detail['city']; ?>">
+	                  		<?= form_error('city', '<small class="text-danger pl-1">', '</small>'); ?>
+	                	</div>
 		            </div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
-		            		<label for="postcodezip">Postcode / ZIP *</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
+		            		<label for="postcodezip">Post Code / Zip Code</label>
+	                  		<input type="text" class="form-control" placeholder="" id="zipcode" name="zipcode" value="<?= $detail['zipcode']; ?>">
+	                  		<?= form_error('zipcode', '<small class="text-danger pl-1">', '</small>'); ?>
+	                	</div>
 		            </div>
-                <div class="w-100"></div>
-		            <div class="col-md-12">
+		            <div class="col-md-6">
 		            	<div class="form-group">
-		            		<label for="country">State / Country</label>
-		            		<div class="select-wrap">
-		                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-		                  <select name="" id="" class="form-control">
-		                  	<option value="">Indonesia</option>
-		                    <option value="">Italy</option>
-		                    <option value="">Philippines</option>
-		                    <option value="">South Korea</option>
-		                    <option value="">Hongkong</option>
-		                    <option value="">Japan</option>
-		                  </select>
+		            		<label for="state">State / Province</label>
+	                  		<input type="text" class="form-control" placeholder="" id="state" name="state" value="<?= $detail['state']; ?>">
+	                  		<?= form_error('state', '<small class="text-danger pl-1">', '</small>'); ?>
+	                	</div>
+		            </div>
+                <!-- <div class="w-100"></div> -->
+		            <div class="col-md-6">
+		            	<div class="form-group">
+		            		<label for="country">Country</label>
+		            	<div class="select-wrap">
+		                  	<div class="form-group">
+	                  		<input type="text" class="form-control" placeholder="" id="country" name="country" value="<?= $detail['country']; ?>">
+	                  		<?= form_error('country', '<small class="text-danger pl-1">', '</small>'); ?>
+	                	</div>
 		                </div>
 		            	</div>
 		            </div>
                 <div class="col-md-12">
-                	<div class="form-group mt-4">
-										<div class="radio">
-										  <label><input type="radio" name="optradio"> Ship to different address</label>
-										</div>
-									</div>
+                	<div class="form-group mt-3">
+						<div class="radio">
+							<label><input type="checkbox" name="shipaddress"> Ship to different address</label>
+						</div>
+					</div>
                 </div>
 	            </div>
-	            <a class="btn btn-primary col-md-12" href="">Save Changes</a>
+	            <button type="submit" class="btn btn-primary col-md-12" href="">Save Changes</button>
 	          </form><!-- END -->
 					</div>
 					<div class="col-xl-5">
@@ -94,11 +113,15 @@
 	          		<div class="cart-detail p-2 p-md-4">
 	          			<h4 class="billing-heading mb-2">Menu</h4>
 	          			<ul style="list-style: none">
-	          				<li><h5><a href="<?= base_url('myaccount/myorder'); ?>" class="">My Order</a></h5></li>
-	          				<li><h5><a href="<?= base_url('myaccount/settting'); ?>" class="">Account Setting</a></h5></li>
+	          				<li>
+	          					<h5><a href="<?= base_url('myaccount/myorder'); ?>" class="">My Order</a></h5>
+	          				</li>
+	          				<li>
+	          					<h5><a href="<?= base_url('myaccount/settting'); ?>" class="">Account Setting</a></h5>
+	          				</li>
 	          			</ul>
 							
-								</div>
+					</div>
 	          	</div>
 	          </div>
           </div> <!-- .col-md-8 -->
