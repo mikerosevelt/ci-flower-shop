@@ -14,54 +14,42 @@ public function completeOrder()
 				'date_order' => time()
 			];
 			$this->db->insert('order', $dataOrder);
-	$cartInfo = $this->cart->contents();
-	if (is_array($cartInfo)) {
-		$name = array();
-		$price = array();
-		$qty = array();
-		foreach ($cartInfo as $c) {
-			$name = $c['name'];
-   			$price = $c['price'];
-    		$qty = $c['qty'];
 
-    		$names[] = $name;
-    		$prices[] = $price;
-    		$quantities[] = $qty;
-	}
+		$cartInfo = $this->cart->contents();
+		if (is_array($cartInfo)) {
+			$name = array();
+			$price = array();
+			$qty = array();
+			foreach ($cartInfo as $c) {
+				$name = $c['name'];
+	   			$price = $c['price'];
+	    		$qty = $c['qty'];
 
-	$items = implode(',', $names);
-	$price = implode(',', $prices);
-	$quantity = implode(',', $quantities);
-		
-    // var_dump($c['name']);
-   		 // 	$name = array($c['name'] . "," . " ");
-   			// $price = $c['price']. "," . " ";
-    		// $qty = $c['qty']. "," . " ";
-    		
-    // echo $items . "[$price]" . "[$qty]" . "," . " ";
-    
-    // echo $price;
-
-			// $items = implode("|", $name);
-			// var_dump($value);
+	    		$names[] = $name;
+	    		$prices[] = $price;
+	    		$quantities[] = $qty;
 		}
-		    $orderDetail = [
-				'order_id' => $this->db->insert_id(),
-				'items' => $items,
-				'price' => $price,
-				'quantity' => $quantity,
-				'shipping_address' => $this->input->post('address'),
-				'shipping_address2' => $this->input->post('address2'),
-				'shipping_city' => $this->input->post('city'),
-				'shipping_zipcode' => $this->input->post('zipcode'),
-				'shipping_state' => $this->input->post('state'),
-				'shipping_country' => $this->input->post('country'),
-				'shipping_phone' => $this->input->post('phone'),
-				
-			];
-			$this->db->insert('order_detail', $orderDetail);
-// die();
-			// $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your order has been placed.</div>');
+
+		$items = implode(',', $names);
+		$price = implode(',', $prices);
+		$quantity = implode(',', $quantities);
+			}
+			    $orderDetail = [
+					'order_id' => $this->db->insert_id(),
+					'items' => $items,
+					'price' => $price,
+					'quantity' => $quantity,
+					'shipping_address' => $this->input->post('address'),
+					'shipping_address2' => $this->input->post('address2'),
+					'shipping_city' => $this->input->post('city'),
+					'shipping_zipcode' => $this->input->post('zipcode'),
+					'shipping_state' => $this->input->post('state'),
+					'shipping_country' => $this->input->post('country'),
+					'shipping_phone' => $this->input->post('phone'),
+					
+				];
+		$this->db->insert('order_detail', $orderDetail);
+		// $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your order has been placed.</div>');
 	}	
 
 }

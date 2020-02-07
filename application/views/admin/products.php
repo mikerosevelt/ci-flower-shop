@@ -31,9 +31,12 @@
       <div class="row mt-5">
         <div class="col-xl mb-5 mb-xl">
           <div class="card shadow">
+            <div class="card-header">
+              <input class="form-control col-md-3 float-right" type="text" id="search" placeholder="Type to search">
+            </div>
             <div class="table-responsive">
               <div>
-                <table class="table align-items-center">
+                <table class="table align-items-center table-sortable" id="table">
                   <thead class="thead-light">
                     <tr>
                       <th scope="col">
@@ -56,13 +59,11 @@
                   </thead>
                   <tbody class="list">
                     <?php $no = 1;
-                                                              foreach ($list as $li) : ?>
+                         foreach ($list as $li) : ?>
                       <tr>
-                        <th scope="row" class="name">
-                          <div class="media align-items-center">
+                        <td>
                             <?= $no++; ?>
-                          </div>
-                        </th>
+                        </td>
                         <td class="budget">
                           <div class="media align-items-center">
                             <a href="#" class="avatar rounded-circle mr-3">

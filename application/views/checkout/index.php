@@ -17,15 +17,7 @@ $query = "SELECT `user`.*, `user_detail`.*
           WHERE `user`.`id` = $id";
 $detail = $this->db->query($query)->row_array();
 
-$cartInfo = $this->cart->contents();
-
-// foreach ($cartInfo as $c) {
-//     echo $c['name'] . " ";
-// }
-// die();
-
 ?>
-
     <section class="ftco-section">
     	<div class="container">
     		<div class="row justify-content-center">

@@ -30,9 +30,12 @@
         <div class="col-xl mb-5 mb-xl">
           <?= $this->session->flashdata('message'); ?>
           <div class="card shadow">
+            <div class="card-header">
+              <input class="form-control col-md-3 float-right" type="text" id="search" placeholder="Type to search">
+            </div>
             <div class="table-responsive">
               <div>
-              <table class="table align-items-center table-hover">
+              <table class="table align-items-center table-hover table-sortable" id="table">
                   <thead class="thead-light">
                       <tr>
                           <th scope="col">
@@ -66,11 +69,9 @@
                       <?php else : ?>
                       <?php foreach($list as $ol): ?>
                       <tr>
-                          <th scope="row" class="name">
-                              <div class="media align-items-center">
-                                  <?= $ol['order_number']; ?>
-                              </div>
-                          </th>
+                          <td>
+                            <?= $ol['order_number']; ?>
+                          </td>
                           <td class="budget">
                               <?= $ol['name']; ?>
                           </td>

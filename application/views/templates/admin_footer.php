@@ -18,6 +18,16 @@
   <script src="<?= base_url('assets/'); ?>js/plugins/chart.js/dist/Chart.extension.js"></script>
   <!--   Argon JS   -->
   <script src="<?= base_url('assets/'); ?>js/argon-dashboard.min.js?v=1.1.0"></script>
+  <!-- Custom js -->
+  <script src="<?= base_url('assets/'); ?>js/tables.js"></script>
+
+  <script type="text/javascript">
+    // ORDER TABLE
+
+
+  </script>
+
+
 </body>
 
 </html>

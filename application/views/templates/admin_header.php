@@ -16,6 +16,8 @@
   <link href="<?= base_url('assets/'); ?>js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link href="<?= base_url('assets/'); ?>css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
+  <!-- CUSTOM CSS -->
+  <link href="<?= base_url('assets/'); ?>css/tables.css" rel="stylesheet" /> 
 </head>
 
 <body class="">
