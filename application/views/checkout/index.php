@@ -18,8 +18,12 @@ $query = "SELECT `user`.*, `user_detail`.*
 $detail = $this->db->query($query)->row_array();
 
 $cartInfo = $this->cart->contents();
-// var_dump($cartInfo);
+
+// foreach ($cartInfo as $c) {
+//     echo $c['name'] . " ";
+// }
 // die();
+
 ?>
 
     <section class="ftco-section">

@@ -39,4 +39,9 @@ class Myaccount extends CI_Controller {
 	public function myorder() {
 		echo "ORDER";
 	}
+
+	public function changePassword()
+	{
+		# code...
+	}
 }

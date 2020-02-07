@@ -9,11 +9,6 @@ class Order_model extends CI_Model {
           FROM `user`
           JOIN `order` ON `order`.`user_id` = `user`.`id`
           JOIN `order_status` ON `order_status`.`id` = `order`.`status_id`";
-		  // $this->db->select('*');
-    //       $this->db->from('user');
-    //       $this->db->join('order', 'order.user_id = user.id');
-
-          // return $this->db->get();
 
         return $this->db->query($query)->result_array();
 	}
@@ -22,6 +17,8 @@ class Order_model extends CI_Model {
 	{
 		$this->db->where('id', $id);
 		$this->db->delete('order');
+		$this->db->where('order_id', $id);
+		$this->db->delete('order_detail');
 	}
 
 }

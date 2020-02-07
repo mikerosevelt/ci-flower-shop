@@ -96,8 +96,8 @@
                                     <i class="fas fa-ellipsis-v"></i>
                                   </a>
                                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                      <a class="dropdown-item" href="#">Detail</a>
-                                      <a class="dropdown-item text-danger" href="<?= base_url('admin/deleteOrder/') . $ol['id']; ?>">Delete</a>
+                                      <a class="dropdown-item" href="<?= base_url('admin/orderdetail/') . $ol['id']; ?>">Detail</a>
+                                      <a class="dropdown-item text-danger" href="<?= base_url('admin/deleteorder/') . $ol['id']; ?>">Delete</a>
                                   </div>
                               </div>
                           </td>

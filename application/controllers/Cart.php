@@ -51,7 +51,7 @@ class Cart extends CI_Controller
 		} else {
 			$this->Cart_model->completeOrder();
 
-			// $this->_sendEmail(); // type
+			$this->_sendEmail(); // Send Email func
 			redirect('cart/success');
 		}
 	}
