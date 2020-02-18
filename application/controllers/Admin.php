@@ -72,7 +72,7 @@ class Admin extends CI_Controller
 		$data['title'] = 'User Detail';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$id = $this->uri->segment(3);
-		$data['detail'] = $this->User_model->getUserById($id)->row_array();
+		$data['userid'] = $this->User_model->getUserById($id)->row_array();
 		$this->load->view('templates/admin_header', $data);
 		$this->load->view('admin/user_detail', $data);
 		$this->load->view('templates/admin_footer');

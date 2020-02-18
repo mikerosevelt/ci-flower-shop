@@ -1,3 +1,13 @@
+    <?php
+    $id = $userid['id'];
+        $query = "SELECT `user`.*, `user_detail`.*, `user_log`.*
+                  FROM `user` 
+                  JOIN `user_detail` ON `user`.`id` = `user_detail`.`user_id`
+                  JOIN `user_log` ON `user`.`id` = `user_log`.`user_id`
+                  WHERE `user`.`id` = $id";
+
+        $detail = $this->db->query($query)->row_array();
+     ?>
     <!-- Header -->
     <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="background-color:#82ae46">
       <!-- Mask -->
@@ -12,6 +22,8 @@
         </div>
       </div>
     </div>
+
+    
     <!-- Page content -->
     <div class="container-fluid mt--7">
       <div class="row">
@@ -40,14 +52,32 @@
                   <?= $detail['name']; ?>
                 </h3>
                 <div class="h5 font-weight-300">
-                  <i class="ni location_pin mr-2"></i><?= $l['status'] = 'Active'; ?>
+                  <i class="ni location_pin mr-2"></i><?= $detail['status'] = 'Active'; ?>
                 </div>
                 <div>
                   <i class="ni education_hat mr-2"></i>Member since <?= date('d F Y', $detail['date_created']); ?>
                 </div>
                 <hr class="my-4" />
-                <p>Lorem ipsum dolor sit amet.</p>
-                <a href="#">Show more</a>
+                <h3>User Avtivity <?= $detail['id'] ?></h3>
+                <table class="table-striped mx-auto" width="100%">
+                  <tr>
+                   <td><small>Last Login</small></td> 
+                   <td class="float-right"><small><?= date('H:i:s d F Y', $detail['last_login']); ?></small></td> 
+                  </tr>
+                  <tr>
+                    <td><small>IP Address</small></td>
+                    <td><small><?= $detail['ip_address'] ?></small></td>
+                  </tr>
+                  <tr>
+                    <td><small>host</small></td>
+                    <td><small><?= $detail['host'] ?></small></td>
+                  </tr>
+                  <tr>
+                    <td><small>User Agent</small></td>
+                    <td><small><?= $detail['user_agent'] ?></small></td>
+                  </tr>
+                </table>
+                <!-- <a href="#">Show more</a> -->
               </div>
             </div>
           </div>
@@ -72,7 +102,7 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-username">Phone</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="" value="">
+                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="" value="<?= $detail['phone']; ?>">
                       </div>
                     </div>
                     <div class="col-lg-6">
@@ -99,7 +129,13 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class="form-control-label" for="input-address">Address</label>
-                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="<?= $detail['address']; ?>" type="text">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-address">Address 2</label>
+                        <input id="input-address" class="form-control form-control-alternative" placeholder="Appartment, suite, unit etc: (optional)" value="<?= $detail['address_2']; ?>" type="text">
                       </div>
                     </div>
                   </div>
@@ -107,19 +143,25 @@
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-city">City</label>
-                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="New York">
+                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="<?= $detail['city']; ?>">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-city">State</label>
+                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="<?= $detail['state']; ?>">
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-country">Country</label>
-                        <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="United States">
+                        <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="<?= $detail['country']; ?>">
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-country">Postal code</label>
-                        <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="Postal code">
+                        <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="<?= $detail['zipcode']; ?>">
                       </div>
                     </div>
                   </div>

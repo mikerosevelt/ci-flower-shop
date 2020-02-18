@@ -130,19 +130,19 @@ $detail = $this->db->query($query)->row_array();
     								<div class="col-md-12">
     									<div class="radio">
     										<label>
-    											<input type="radio" name="payment" class="mr-2" value="Bank Transfer"> Direct Bank Tranfer
+    											<input type="radio" name="payment" class="mr-2" value="Bank Transfer" required> Direct Bank Tranfer (BCA)
     										</label>
     									</div>
-    									<div class="radio">
+<!--     									<div class="radio">
     										<label>
     											<input type="radio" name="payment" class="mr-2" value="Credit Card"> Credit Card
     										</label>
-    									</div>
-    									<div class="radio">
+    									</div> -->
+<!--     									<div class="radio">
     										<label>
     											<input type="radio" name="payment" class="mr-2" value="Paypal"> Paypal
     										</label>
-    									</div>
+    									</div> -->
     								</div>
     							</div>
     							<div class="form-group">

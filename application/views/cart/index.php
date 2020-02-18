@@ -134,6 +134,6 @@
     	</section>
     <?php
 	} else {
-		echo "<h2 class='mt-5' align='center'>Cart is empty</h2>";
+		echo "<h2 class='mt-5 mb-5' align='center'>Cart is empty</h2>";
 	}
 	?>

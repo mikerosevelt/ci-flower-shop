@@ -5,10 +5,10 @@ class Cart_model extends CI_Model {
 
 public function completeOrder()
 	{
-		$n = $this->db->get('order')->num_rows() + 1;
+		$n = $this->db->get('order')->num_rows();
 		$dataOrder = [
 				'user_id' => $this->input->post('id'),
-				'order_number' => $n++,
+				'order_number' => ++$n,
 				'total' => $this->cart->total(),
 				'status_id' => 1,
 				'date_order' => time()
@@ -33,12 +33,14 @@ public function completeOrder()
 		$items = implode(',', $names);
 		$price = implode(',', $prices);
 		$quantity = implode(',', $quantities);
+
 			}
 			    $orderDetail = [
 					'order_id' => $this->db->insert_id(),
 					'items' => $items,
 					'price' => $price,
 					'quantity' => $quantity,
+					'payment_method' => $this->input->post('payment'),
 					'shipping_address' => $this->input->post('address'),
 					'shipping_address2' => $this->input->post('address2'),
 					'shipping_city' => $this->input->post('city'),
