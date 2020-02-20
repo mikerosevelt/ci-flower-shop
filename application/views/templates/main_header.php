@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/flaticon.css">
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/icomoon.css">
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/style.css">
+    <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/tables.css">
   </head>
   <body class="goto-here">
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">

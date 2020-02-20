@@ -81,7 +81,7 @@
                               </span>
                           </td>
                           <td>
-                            <?= $ol['status']; ?>
+                            <span class="text-<?= $ol['color']; ?>"><?= $ol['status']; ?></span>
                           </td>
                           <td>
                             Rp.<?= number_format($ol['total'], 0, ",", "."); ?>

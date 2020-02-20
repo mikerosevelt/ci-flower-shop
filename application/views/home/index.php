@@ -89,7 +89,6 @@
     		</div>
     	</div>
     	<div class="container">
-    		<form action="<?= base_url('product/addToCart'); ?>" method="POST" accept-charset="utf-8">
     			<div class="row">
     				<?php foreach ($list as $li) : ?>
     					<div class="col-md-6 col-lg-3 ftco-animate">
@@ -105,6 +104,7 @@
     										<p class="price"><span class="price-sale">Rp.<?= number_format($li['price'], 0, ",", "."); ?></span></p>
     									</div>
     								</div>
+                                    <form action="<?= base_url('product/addToCart'); ?>" method="POST" accept-charset="utf-8">
     								<input type="hidden" name="id" value="<?= $li['id']; ?>" />
     								<input type="hidden" name="name" value="<?= $li['name']; ?>" />
     								<input type="hidden" name="price" value="<?= $li['price']; ?>" />
@@ -116,12 +116,13 @@
 
     										</button>
     									</div>
+                                        </form>
     								</div>
     							</div>
     						</div>
     					</div>
     				<?php endforeach; ?>
     			</div>
-    		</form>
+    		
     	</div>
     </section>

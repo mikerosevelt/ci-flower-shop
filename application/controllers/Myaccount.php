@@ -37,7 +37,12 @@ class Myaccount extends CI_Controller {
 	}
 
 	public function myorder() {
-		echo "ORDER";
+		$data['title'] = 'MyAccount Page';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->load->view('templates/main_header', $data);
+		$this->load->view('myaccount/myorder', $data);
+		$this->load->view('templates/main_footer');
 	}
 
 	public function changePassword()
