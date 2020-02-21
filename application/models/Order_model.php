@@ -10,7 +10,7 @@ class Order_model extends CI_Model {
           JOIN `order` ON `order`.`user_id` = `user`.`id`
           JOIN `order_status` ON `order_status`.`id` = `order`.`status_id`";
 
-        return $this->db->query($query)->result_array();
+        return $this->db->query($query);
 	}
 
 	public function deleteOrder($id)

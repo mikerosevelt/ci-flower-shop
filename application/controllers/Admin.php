@@ -26,6 +26,7 @@ class Admin extends CI_Controller
 		$data['list'] = $this->User_model->getAllUser()->result_array();
 		$data['total'] = $this->User_model->getAllUser()->num_rows();
 		$data['totalproduct'] = $this->Product_model->getAllProduct()->num_rows();
+		$data['totalorder'] = $this->Order_model->getAllOrder()->num_rows();
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$this->load->view('templates/admin_header', $data);
 		$this->load->view('admin/index', $data);
@@ -48,7 +49,7 @@ class Admin extends CI_Controller
 		$data['title'] = 'Orders';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['total'] = $this->db->get('order')->num_rows();
-        $data['list'] = $this->Order_model->getAllOrder();
+        $data['list'] = $this->Order_model->getAllOrder()->result_array();;
 
 		$this->load->view('templates/admin_header', $data);
 		$this->load->view('admin/orders',$data);

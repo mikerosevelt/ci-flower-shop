@@ -45,8 +45,32 @@ class Home extends CI_Controller {
 				'date_join' => time()
 			];
 			$this->db->insert('newsletter', $data);
+			// $this->_sendEmail();
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Thank you for join our newsletter.</div>');
 			redirect();
         }
 	}
+
+	private function _sendEmail()
+    {
+        require_once('__config.php');
+
+        $smtp_config = $config;
+
+        $this->load->library('email', $smtp_config);
+
+        $this->email->initialize($smtp_config);
+
+        $this->email->from('cs@flowershop.com', 'Flower Shop'); // from email and from name.
+        $this->email->to($this->input->post('email'));
+        $this->email->subject('Thank you for join our newsletter');
+        $this->email->message('Thank you for join our newsletter');
+
+        if ($this->email->send()) {
+            return true;
+        } else {
+            echo $this->email->print_debugger();
+            die;
+        }
+    }
 }
