@@ -117,7 +117,7 @@ $detail = $this->db->query($query)->row_array();
 	          					<h5><a href="<?= base_url('myaccount/myorder'); ?>" class="">My Order</a></h5>
 	          				</li>
 	          				<li>
-	          					<h5><a href="<?= base_url('myaccount/settting'); ?>" class="">Account Setting</a></h5>
+	          					<h5><a href="<?= base_url('myaccount/setting'); ?>" class="">Account Setting</a></h5>
 	          				</li>
 	          			</ul>
 							
