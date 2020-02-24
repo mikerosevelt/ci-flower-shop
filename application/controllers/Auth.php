@@ -16,7 +16,6 @@ class Auth extends CI_Controller {
         	// login
         	$this->_login();
         }
-		
 	}
 
 	private function _login() {
@@ -43,8 +42,6 @@ class Auth extends CI_Controller {
                         'last_login' => time()
                     ];
 
-                    // var_dump($datalog);
-                    // die();
                     if ($userlog['user_id'] == $user['id']) {
                         $this->db->set('ip_address', $this->input->ip_address());
                         $this->db->set('host', gethostbyaddr($this->input->ip_address()));
@@ -127,24 +124,9 @@ class Auth extends CI_Controller {
     private function _sendEmail($token, $type)
     {
         require_once('__config.php');
-        // $config = [
-        //  'protocol' => 'smtp',
-        //  'smtp_host' => 'ssl://smtp.gmail.com',
-        //  'smtp_user' => '',
-        //  'smtp_pass' => '',
-        //  'smtp_port' => 465,
-        //  'mailtype' => 'html',
-        //  'charset' => 'utf-8',
-        //  'wordwrap' => TRUE,
-        //  'newline' => "\r\n"
-        // ];
-
         $smtp_config = $config;
-
         $this->load->library('email', $smtp_config);
-
         $this->email->initialize($smtp_config);
-
         $this->email->from('support@flowershop.com', 'Flower Shop'); // from email and from name.
         $this->email->to($this->input->post('email'));
         if ($type == 'verify') {
@@ -169,7 +151,6 @@ class Auth extends CI_Controller {
     {
         $email = $this->input->get('email');
         $token = $this->input->get('token');
-
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
 
         if ($user) {
@@ -243,7 +224,6 @@ class Auth extends CI_Controller {
     {
         $email = $this->input->get('email');
         $token = $this->input->get('token');
-
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
 
         if ($user) {

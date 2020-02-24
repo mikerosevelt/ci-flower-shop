@@ -83,7 +83,7 @@ class Myaccount extends CI_Controller {
         		}
         		
         	}
-        }
+        } 
 		
 	}
 

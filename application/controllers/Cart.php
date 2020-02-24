@@ -49,15 +49,19 @@ class Cart extends CI_Controller
 			$this->load->view('checkout/index');
 			$this->load->view('templates/main_footer');
 		} else {
-			$this->Cart_model->completeOrder();
-
-			// $this->_sendEmail(); // Send Email func
+			// $this->Cart_model->completeOrder();
+			// Send Email function
+			$this->_sendEmail();
 			redirect('cart/success');
 		}
 	}
 
 	private function _sendEmail()
     {
+    	$cart = $this->cart->contents();
+		foreach ($cart as $c) {
+    	}
+
         require_once('__config.php');
 
         $smtp_config = $config;
@@ -69,15 +73,42 @@ class Cart extends CI_Controller
         $this->email->from('cs@flowershop.com', 'Flower Shop'); // from email and from name.
         $this->email->to($this->input->post('email'));
         $this->email->subject('Order Confirmation');
-        $this->email->message('THANK YOU FOR YOUR ORDER');
-        // if ($type == 'order') {
-        //     $this->email->subject('Order Confirmation');
-        //     $this->email->message('THANK YOU FOR YOUR ORDER');
-        // } else if ($type == 'forgot') {
-        //     $this->email->subject('Reset Password');
-        //     $this->email->message('HEHEHE');
-        // }
-
+        $mess = '<!DOCTYPE html>
+        	<html>
+			  	<head>
+			    <meta charset="UTF-8">
+			    <title>HTML Document Template</title>
+			    <style>
+			    body {
+			    	max-width: 600px;
+			    }
+			    </style>
+			  </head>
+			  <body>
+			    <h2 style="text-align: center;">Thank you for your order</h2>
+				<h5 style="text-align: center;">Your order detail</h5> 
+				<table style="text-align: center;" width="100%">
+				<thead>
+				<th>Item</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Subtotal</th>
+				</thead>
+				<tbody>
+				<tr>
+				<td>' .$c['name'] . '</td>
+				<td>' .$c['price'] . '</td>
+				<td>' .$c['qty'] . '</td>
+				<td>' .$c['subtotal'] . '</td>
+				</tr>
+				</tbody>
+				<tfoot>
+				<th colspan=4 style="text-align:right">Total : '. $this->cart->total() . '</th>
+				</tfoot>
+				</table>
+			  </body>
+			</html>';
+        $this->email->message($mess);
         if ($this->email->send()) {
             return true;
         } else {
