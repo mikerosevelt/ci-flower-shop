@@ -68,12 +68,12 @@ class Admin extends CI_Controller
 	}
 
 	// USER PART
-	public function user_detail()
+	public function user_detail($id)
 	{
 		$data['title'] = 'User Detail';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$id = $this->uri->segment(3);
-		$data['userid'] = $this->User_model->getUserById($id)->row_array();
+		$data['detail'] = $this->User_model->getUserDetail($id)->row_array();
 		$this->load->view('templates/admin_header', $data);
 		$this->load->view('admin/user_detail', $data);
 		$this->load->view('templates/admin_footer');
@@ -92,6 +92,17 @@ class Admin extends CI_Controller
 	}
 
 	// ORDER PART
+
+	public function orderDetail()
+	{
+		$data['title'] = 'Order Detail';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		// $id = $this->uri->segment(3);
+		// $data['detail'] = $this->User_model->getUserDetail($id)->row_array();
+		$this->load->view('templates/admin_header', $data);
+		$this->load->view('admin/order_detail', $data);
+		$this->load->view('templates/admin_footer');
+	}
 
 	public function deleteOrder($id)
 	{

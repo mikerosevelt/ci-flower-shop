@@ -16,7 +16,6 @@ $query = "SELECT `user`.*, `user_detail`.*
           ON `user`.`id` = `user_detail`.`user_id`
           WHERE `user`.`id` = $id";
 $detail = $this->db->query($query)->row_array();
-
 ?>
     <section class="ftco-section">
     	<div class="container">

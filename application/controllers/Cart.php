@@ -49,9 +49,9 @@ class Cart extends CI_Controller
 			$this->load->view('checkout/index');
 			$this->load->view('templates/main_footer');
 		} else {
-			// $this->Cart_model->completeOrder();
+			$this->Cart_model->completeOrder();
 			// Send Email function
-			$this->_sendEmail();
+			// $this->_sendEmail();
 			redirect('cart/success');
 		}
 	}

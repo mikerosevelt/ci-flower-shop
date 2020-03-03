@@ -12,6 +12,16 @@ class User_model extends CI_Model {
 		return $query;
 	}
 
+	public function getUserDetail($id)
+	{
+		$query = "SELECT `user`.*, `user_detail`.`address`,`user_detail`.`address_2`,`user_detail`.`city`,`user_detail`.`zipcode`,`user_detail`.`state`,`user_detail`.`country`,`user_detail`.`phone`, `user_log`.`ip_address`,`user_log`.`host`,`user_log`.`user_agent`,`user_log`.`last_login`
+                  FROM `user` 
+                  JOIN `user_detail` ON `user`.`id` = `user_detail`.`user_id`
+                  JOIN `user_log` ON `user`.`id` = `user_log`.`user_id`
+                  WHERE `user`.`id` = $id";
+        return $this->db->query($query);
+	}
+
 	public function deleteUser($id) {
 		$this->db->where('id', $id);
 		$this->db->delete('user');

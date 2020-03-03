@@ -1,13 +1,3 @@
-    <?php
-    $id = $userid['id'];
-        $query = "SELECT `user`.*, `user_detail`.*, `user_log`.*
-                  FROM `user` 
-                  JOIN `user_detail` ON `user`.`id` = `user_detail`.`user_id`
-                  JOIN `user_log` ON `user`.`id` = `user_log`.`user_id`
-                  WHERE `user`.`id` = $id";
-
-        $detail = $this->db->query($query)->row_array();
-     ?>
     <!-- Header -->
     <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="background-color:#82ae46">
       <!-- Mask -->
@@ -22,7 +12,6 @@
         </div>
       </div>
     </div>
-
     
     <!-- Page content -->
     <div class="container-fluid mt--7">
@@ -40,14 +29,7 @@
               </div>
             </div> -->
             <div class="card-body pt-0 pt-md-0">
-              <div class="row">
-                <div class="col">
-                  <div class="card-profile-stats d-flex justify-content-center mt-md-0">
-
-                  </div>
-                </div>
-              </div>
-              <div class="text-center">
+              <div class="text-center pt-3">
                 <h3>
                   <?= $detail['name']; ?>
                 </h3>
@@ -57,24 +39,28 @@
                 <div>
                   <i class="ni education_hat mr-2"></i>Member since <?= date('d F Y', $detail['date_created']); ?>
                 </div>
+              </div>
+              <div>
                 <hr class="my-4" />
-                <h3>User Avtivity <?= $detail['id'] ?></h3>
+                <h3 class="text-center">User Id[<?= $detail['id'] ?>]</h3>
                 <table class="table-striped mx-auto" width="100%">
                   <tr>
                    <td><small>Last Login</small></td> 
                    <td class="float-right"><small><?= date('H:i:s d F Y', $detail['last_login']); ?></small></td> 
                   </tr>
                   <tr>
-                    <td><small>IP Address</small></td>
-                    <td><small><?= $detail['ip_address'] ?></small></td>
+                    <td width="25%"><small>IP Address</small></td>
+                    <td class="float-right"><small><?= $detail['ip_address'] ?></small></td>
                   </tr>
                   <tr>
-                    <td><small>host</small></td>
-                    <td><small><?= $detail['host'] ?></small></td>
+                    <td width="25%"><small>host</small></td>
+                    <td class="float-right"><small><?= $detail['host'] ?></small></td>
                   </tr>
                   <tr>
-                    <td><small>User Agent</small></td>
-                    <td><small><?= $detail['user_agent'] ?></small></td>
+                    <td colspan="2"><small>User Agent : <i class="fas fa-arrow-down"></i> </small></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><small><?= $detail['user_agent'] ?></small></td>
                   </tr>
                 </table>
                 <!-- <a href="#">Show more</a> -->

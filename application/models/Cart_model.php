@@ -10,47 +10,34 @@ public function completeOrder()
 				'user_id' => $this->input->post('id'),
 				'order_number' => ++$n,
 				'total' => $this->cart->total(),
+				'payment_method' => $this->input->post('payment'),
+				'shipping_name' => $this->input->post('name'),
+				'shipping_address' => $this->input->post('address'),
+				'shipping_address2' => $this->input->post('address2'),
+				'shipping_city' => $this->input->post('city'),
+				'shipping_zipcode' => $this->input->post('zipcode'),
+				'shipping_state' => $this->input->post('state'),
+				'shipping_country' => $this->input->post('country'),
+				'shipping_phone' => $this->input->post('phone'),
 				'status_id' => 1,
+				'payment_status' => 1,
 				'date_order' => time()
 			];
 			$this->db->insert('order', $dataOrder);
 
+			$order_id = $this->db->insert_id();
+
 		$cartInfo = $this->cart->contents();
-		if (is_array($cartInfo)) {
-			$name = array();
-			$price = array();
-			$qty = array();
-			foreach ($cartInfo as $c) {
-				$name = $c['name'];
-	   			$price = $c['price'];
-	    		$qty = $c['qty'];
-
-	    		$names[] = $name;
-	    		$prices[] = $price;
-	    		$quantities[] = $qty;
+		foreach ($cartInfo as $c) {
+			$orderDetail = [
+				'order_id' => $order_id,
+				'items' => $c['name'],
+				'price' => $c['price'],
+				'quantity' => $c['qty'],
+				'subtotal' => $c['subtotal']
+			];
+			$this->db->insert('order_detail', $orderDetail);
 		}
-
-		$items = implode(',', $names);
-		$price = implode(',', $prices);
-		$quantity = implode(',', $quantities);
-
-			}
-			    $orderDetail = [
-					'order_id' => $this->db->insert_id(),
-					'items' => $items,
-					'price' => $price,
-					'quantity' => $quantity,
-					'payment_method' => $this->input->post('payment'),
-					'shipping_address' => $this->input->post('address'),
-					'shipping_address2' => $this->input->post('address2'),
-					'shipping_city' => $this->input->post('city'),
-					'shipping_zipcode' => $this->input->post('zipcode'),
-					'shipping_state' => $this->input->post('state'),
-					'shipping_country' => $this->input->post('country'),
-					'shipping_phone' => $this->input->post('phone'),
-					
-				];
-		$this->db->insert('order_detail', $orderDetail);
 		// $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your order has been placed.</div>');
 	}	
 

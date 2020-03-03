@@ -5,10 +5,10 @@ class Order_model extends CI_Model {
 
 	public function getAllOrder()
 	{
-		$query = "SELECT `order`.*, `user`.`name`,`user`.`email`,`order_status`.status,`order_status`.color
+		$query = "SELECT `order`.*, `user`.`name`,`user`.`email`,`order_statuses`.`order_status`,`order_statuses`.`order_color`
           FROM `user`
           JOIN `order` ON `order`.`user_id` = `user`.`id`
-          JOIN `order_status` ON `order_status`.`id` = `order`.`status_id`";
+          JOIN `order_statuses` ON `order_statuses`.`id` = `order`.`status_id`";
 
         return $this->db->query($query);
 	}
@@ -23,12 +23,17 @@ class Order_model extends CI_Model {
 
 	public function getUserOrder()
 	{
-		$query = "SELECT `order`.*, `order_detail`.*, `order_status`.status,`order_status`.color
+		$query = "SELECT `order`.*, `order_detail`.*, `order_statuses`.`order_status`,`order_statuses`.`order_color`
           FROM `order`
           JOIN `order_detail` ON `order_detail`.`order_id` = `order`.`id`
-          JOIN `order_status` ON `order_status`.`id` = `order`.`status_id`";
+          JOIN `order_statuses` ON `order_statuses`.`id` = `order`.`status_id`";
 
           return $this->db->query($query)->result_array();
+	}
+
+	public function getOrderDetail($id)
+	{
+		# code...
 	}
 
 }
