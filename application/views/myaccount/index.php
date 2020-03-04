@@ -6,29 +6,19 @@
           </div>
         </div>
       </div>
-
-<?php
-$id = $user['id'];
-$query = "SELECT `user`.*, `user_detail`.*
-          FROM `user` JOIN `user_detail`
-          ON `user`.`id` = `user_detail`.`user_id`
-          WHERE `user`.`id` = $id";
-$detail = $this->db->query($query)->row_array();
-?>
-    
     <section class="ftco-section">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-7 ftco-animate">
           	<?= $this->session->flashdata('message'); ?>
 				<form action="<?= base_url('myaccount'); ?>" class="billing-form" method="post">
-					<input type="hidden" name="id" id="id" value="<?= $user['id']; ?>">
+					<!-- <input type="hidden" name="id" id="id" value="<?= $user['id']; ?>"> -->
 					<h3 class="mb-4 billing-heading">Billing Details</h3>
 	          	<div class="row align-items-end">
 	          		<div class="col-md-12">
 	                <div class="form-group">
 	                	<label for="firstname">Full Name</label>
-	                  <input type="text" class="form-control" id="name" name="name" placeholder="" value="<?= $user['name']; ?>">
+	                  <input type="text" class="form-control" id="name" name="name" placeholder="" value="<?= $data['name']; ?>">
 	                  <?= form_error('name', '<small class="text-danger pl-1">', '</small>'); ?>
 	                </div>
 	              </div>
@@ -38,27 +28,27 @@ $detail = $this->db->query($query)->row_array();
 		            <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="phone">Phone</label>
-	                  	<input type="text" class="form-control" placeholder="+62 xxx xxxx xxxx" id="phone" name="phone" value="<?= $detail['phone']; ?>">
+	                  	<input type="text" class="form-control" placeholder="+62 xxx xxxx xxxx" id="phone" name="phone" value="<?= $data['phone']; ?>">
 	                  	<?= form_error('phone', '<small class="text-danger pl-1">', '</small>'); ?>
 	                </div>
 	              </div>
 	              <div class="col-md-6">
 	                <div class="form-group">
 	                	<label for="emailaddress">Email Address</label>
-	                  	<input type="text" class="form-control" placeholder="" value="<?= $user['email']; ?>" readonly>
+	                  	<input type="text" class="form-control" placeholder="" value="<?= $data['email']; ?>" readonly>
 	                </div>
                   </div>
 		            <div class="w-100"></div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
 	                		<label for="address">Street Address</label>
-	                  		<input type="text" class="form-control" placeholder="House number and street name" id="address" name="address" value="<?= $detail['address']; ?>">
+	                  		<input type="text" class="form-control" placeholder="House number and street name" id="address" name="address" value="<?= $data['address']; ?>">
 	                  		<?= form_error('address', '<small class="text-danger pl-1">', '</small>'); ?>
 	               		</div>
 		            </div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
-	                  	<input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)" id="address2" name="address2" value="<?= $detail['address_2']; ?>">
+	                  	<input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)" id="address2" name="address2" value="<?= $data['address_2']; ?>">
 	                  	<?= form_error('address2', '<small class="text-danger pl-1">', '</small>'); ?>
 	                </div>
 		            </div>
@@ -66,21 +56,21 @@ $detail = $this->db->query($query)->row_array();
 		            <div class="col-md-6">
 		            	<div class="form-group">
 	                		<label for="towncity">Town / City</label>
-	                  		<input type="text" class="form-control" placeholder="" id="city" name="city" value="<?= $detail['city']; ?>">
+	                  		<input type="text" class="form-control" placeholder="" id="city" name="city" value="<?= $data['city']; ?>">
 	                  		<?= form_error('city', '<small class="text-danger pl-1">', '</small>'); ?>
 	                	</div>
 		            </div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
 		            		<label for="postcodezip">Post Code / Zip Code</label>
-	                  		<input type="text" class="form-control" placeholder="" id="zipcode" name="zipcode" value="<?= $detail['zipcode']; ?>">
+	                  		<input type="text" class="form-control" placeholder="" id="zipcode" name="zipcode" value="<?= $data['zipcode']; ?>">
 	                  		<?= form_error('zipcode', '<small class="text-danger pl-1">', '</small>'); ?>
 	                	</div>
 		            </div>
 		            <div class="col-md-6">
 		            	<div class="form-group">
 		            		<label for="state">State / Province</label>
-	                  		<input type="text" class="form-control" placeholder="" id="state" name="state" value="<?= $detail['state']; ?>">
+	                  		<input type="text" class="form-control" placeholder="" id="state" name="state" value="<?= $data['state']; ?>">
 	                  		<?= form_error('state', '<small class="text-danger pl-1">', '</small>'); ?>
 	                	</div>
 		            </div>
@@ -90,7 +80,7 @@ $detail = $this->db->query($query)->row_array();
 		            		<label for="country">Country</label>
 		            	<div class="select-wrap">
 		                  	<div class="form-group">
-	                  		<input type="text" class="form-control" placeholder="" id="country" name="country" value="<?= $detail['country']; ?>">
+	                  		<input type="text" class="form-control" placeholder="" id="country" name="country" value="<?= $data['country']; ?>">
 	                  		<?= form_error('country', '<small class="text-danger pl-1">', '</small>'); ?>
 	                	</div>
 		                </div>

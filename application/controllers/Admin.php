@@ -93,12 +93,15 @@ class Admin extends CI_Controller
 
 	// ORDER PART
 
-	public function orderDetail()
+	public function orderDetail($id)
 	{
 		$data['title'] = 'Order Detail';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		// $id = $this->uri->segment(3);
-		// $data['detail'] = $this->User_model->getUserDetail($id)->row_array();
+		$data['detail'] = $this->Order_model->getOrderDetail($id)->row_array();
+		$data['items'] = $this->Order_model->getOrderItems($id)->result_array();
+		$data['orderstat'] = ['Pending', 'On Process', 'Shipped', 'Delivered'];
+		$data['paystatus'] = ['Unpaid', 'Paid'];
 		$this->load->view('templates/admin_header', $data);
 		$this->load->view('admin/order_detail', $data);
 		$this->load->view('templates/admin_footer');

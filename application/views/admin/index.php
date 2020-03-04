@@ -60,8 +60,8 @@
           <div class="card-body">
             <div class="row">
               <div class="col">
-                <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-                <span class="h2 font-weight-bold mb-0">00,00%</span>
+                <h5 class="card-title text-uppercase text-muted mb-0">Visitors</h5>
+                <span class="h2 font-weight-bold mb-0">0</span>
               </div>
               <div class="col-auto">
                 <div class="icon icon-shape bg-info text-white rounded-circle shadow">

@@ -19,16 +19,14 @@ public function completeOrder()
 				'shipping_state' => $this->input->post('state'),
 				'shipping_country' => $this->input->post('country'),
 				'shipping_phone' => $this->input->post('phone'),
-				'status_id' => 1,
-				'payment_status' => 1,
-				'date_order' => time()
+				'status' => 'Pending',
+				'payment_status' => 'Unpaid',
+				'date_order' => time(),
+				'ipaddress' => $this->input->ip_address()
 			];
 			$this->db->insert('order', $dataOrder);
-
-			$order_id = $this->db->insert_id();
-
-		$cartInfo = $this->cart->contents();
-		foreach ($cartInfo as $c) {
+		$order_id = $this->db->insert_id();
+		foreach ($this->cart->contents() as $c) {
 			$orderDetail = [
 				'order_id' => $order_id,
 				'items' => $c['name'],
@@ -38,9 +36,7 @@ public function completeOrder()
 			];
 			$this->db->insert('order_detail', $orderDetail);
 		}
-		// $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your order has been placed.</div>');
 	}	
-
 }
 
 /* End of file Cart_model.php */

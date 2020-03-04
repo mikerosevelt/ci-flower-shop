@@ -5,10 +5,9 @@ class Order_model extends CI_Model {
 
 	public function getAllOrder()
 	{
-		$query = "SELECT `order`.*, `user`.`name`,`user`.`email`,`order_statuses`.`order_status`,`order_statuses`.`order_color`
+		$query = "SELECT `order`.*, `user`.`name`,`user`.`email`
           FROM `user`
-          JOIN `order` ON `order`.`user_id` = `user`.`id`
-          JOIN `order_statuses` ON `order_statuses`.`id` = `order`.`status_id`";
+          JOIN `order` ON `order`.`user_id` = `user`.`id`";
 
         return $this->db->query($query);
 	}
@@ -21,19 +20,34 @@ class Order_model extends CI_Model {
 		$this->db->delete('order_detail');
 	}
 
-	public function getUserOrder()
+	public function getUserOrderList($id)
 	{
-		$query = "SELECT `order`.*, `order_detail`.*, `order_statuses`.`order_status`,`order_statuses`.`order_color`
-          FROM `order`
-          JOIN `order_detail` ON `order_detail`.`order_id` = `order`.`id`
-          JOIN `order_statuses` ON `order_statuses`.`id` = `order`.`status_id`";
+		return $this->db->get_where('order', ['user_id' => $id]);
+	}
 
-          return $this->db->query($query)->result_array();
+	public function getUserOrderDetail()
+	{
+		$query = "SELECT `order`.*, `order_detail`.* `order_statuses`.`order_status`,`order_statuses`.`order_color`, `payment_statuses`.`payment_status`, `payment_statuses`.`payment_color`
+          FROM `order`
+          JOIN `order_statuses` ON `order_statuses`.`id` = `order`.`status_id`
+          JOIN `payment_statuses` ON `payment_statuses`.`id` = `order`.`payment_status`
+          WHERE `order`.`user_id` = $id";
+
+          return $this->db->query($query);
 	}
 
 	public function getOrderDetail($id)
 	{
-		# code...
+		return $this->db->get_where('order', ['id' => $id]);
+	}
+
+	public function getOrderItems($id)
+	{
+		$query = "SELECT `order`.*, `order_detail`.*
+				  FROM `order`
+				  JOIN `order_detail` ON `order_detail`.`order_id` = `order`.`id`
+				  WHERE `order_detail`.`order_id` = $id";
+		return $this->db->query($query);
 	}
 
 }

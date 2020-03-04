@@ -7,6 +7,7 @@ class Myaccount extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('User_model');
+        $this->load->model('Order_model');
 
 		if ($this->session->userdata['status'] != 'login') {
 			redirect('auth');
@@ -27,6 +28,8 @@ class Myaccount extends CI_Controller {
 		if ($this->form_validation->run() == FALSE) {
 			$data['title'] = 'MyAccount';
 			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+            $id = $data['user']['id'];
+            $data['data'] = $this->User_model->getUserData($id)->row_array();
 
 			$this->load->view('templates/main_header', $data);
 			$this->load->view('myaccount/index', $data);
@@ -39,7 +42,8 @@ class Myaccount extends CI_Controller {
 	public function myorder() {
 		$data['title'] = 'My Order';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-
+        $id = $data['user']['id'];
+        $data['myorder'] = $this->Order_model->getUserOrderList($id)->result_array();
 		$this->load->view('templates/main_header', $data);
 		$this->load->view('myaccount/myorder', $data);
 		$this->load->view('templates/main_footer');

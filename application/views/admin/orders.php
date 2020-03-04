@@ -82,14 +82,14 @@
                         </span>
                     </td>
                     <td>
-                      <span class="text-<?= $ol['order_color']; ?>"><?= $ol['order_status']; ?></span>
+                      <span class=""><?= $ol['status']; ?></span>
                     </td>
                     <td>
                       Rp.<?= number_format($ol['total'], 0, ",", "."); ?>
                     </td>
                     <td class="completion">
                         <div class="d-flex align-items-center">
-                            <span class="mr-2"><?= date('H:i:s d F Y', $ol['date_order']); ?></span>
+                            <span class="mr-2"><?= date('d F Y H:i:s', $ol['date_order']); ?></span>
                         </div>
                     </td>
                     <td class="text-right">

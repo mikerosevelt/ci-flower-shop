@@ -74,6 +74,15 @@ class User_model extends CI_Model {
             redirect('myaccount');
 		}
 	}
+
+	public function getUserData($id)
+	{
+		$query = "SELECT `user`.*, `user_detail`.*
+          FROM `user` 
+          JOIN `user_detail` ON `user`.`id` = `user_detail`.`user_id`
+          WHERE `user`.`id` = $id";
+		return  $this->db->query($query);
+	}
 }
 
 /* End of file User_model.php */

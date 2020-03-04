@@ -2,36 +2,39 @@
 <div class="header pb-8 pt-5 pt-md-8" style="background-color:#82ae46">
 <div class="container-fluid">
   <div class="header-body">
+    <div class="mb-3">
+      <a class="btn btn-secondary" href="<?= base_url('admin/orders'); ?>" class="btn btn-sm btn-danger">back</a>
+    </div>
     <!-- Card stats -->
     <div class="row">
       <div class="col-xl col-lg-6">
-        <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card card-stats mb-3 mb-xl-0">
           <div class="card-body">
-            <table class="" width="100%">
+            <table class="table-striped" width="100%">
                 <tbody>
                   <tr>
-                    <td width="50%">Date</td>
-                    <td width="50%">3 March 2020 19:45</td>
+                    <td width="50%" class="">Date / Time</td>
+                    <td width="50%"><?= date('d F Y H:i:s', $detail['date_order']); ?></td>
                   </tr>
                   <tr>
                     <td width="50%">Order #</td>
-                    <td width="50%">1</td>
+                    <td width="50%"><?= $detail['order_number'] ?></td>
                   </tr>
                   <tr>
                     <td width="50%">Customer</td>
-                    <td width="50%">Michael Scofield</td>
+                    <td width="50%"><?= $detail['shipping_name'] ?></td>
+                  </tr>
+                  <tr>
+                    <td width="50%">Shipping</td>
+                    <td width="50%"><?= $detail['shipping_address'] ?></td>
                   </tr>
                   <tr>
                     <td width="50%"></td>
-                    <td width="50%">Address 1 & 2</td>
+                    <td width="50%"><?= $detail['shipping_city'] ?>, <?= $detail['shipping_state'] ?>, <?= $detail['shipping_zipcode'] ?></td>
                   </tr>
                   <tr>
                     <td width="50%"></td>
-                    <td width="50%">City, State, Zipcode</td>
-                  </tr>
-                  <tr>
-                    <td width="50%"></td>
-                    <td width="50%">Country</td>
+                    <td width="50%"><?= $detail['shipping_country'] ?></td>
                   </tr>
                 </tbody>
             </table>
@@ -39,17 +42,17 @@
         </div>
       </div>
       <div class="col-xl col-lg-6">
-        <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card card-stats mb-3 mb-xl-0">
           <div class="card-body">
-            <table class="" width="100%">
+            <table class="table-striped" width="100%">
                 <tbody>
                   <tr>
                     <td width="50%">Payment Method</td>
-                    <td width="50%">Transfer Bank</td>
+                    <td width="50%"><?= $detail['payment_method'] ?></td>
                   </tr>
                   <tr>
                     <td width="50%">Total</td>
-                    <td width="50%">Rp.000000</td>
+                    <td width="50%">Rp.<?= number_format($detail['total'], 0, ",", "."); ?></td>
                   </tr>
                   <tr>
                     <td width="50%">Invoice #</td>
@@ -58,8 +61,14 @@
                   <tr>
                     <td width="50%">Status</td>
                     <td width="50%">
-                      <select name="" class="">
-                        <option value="">Pending</option>
+                      <select name="orderStatus" class="">
+                        <?php foreach ($orderstat as $os) : ?>
+                          <?php if ($detail['status'] == $os) : ?>
+                            <option value="<?= $os ?>" selected><?= $os ?></option>
+                            <?php else : ?>
+                              <option value="<?= $os ?>"><?= $os ?></option>
+                            <?php endif; ?>
+                      <?php endforeach; ?>
                       </select>
                     </td>
                   </tr>
@@ -67,14 +76,19 @@
                     <td width="50%">Payment Status</td>
                     <td width="50%">
                       <select name="" class="">
-                        <option value="">Unpaid</option>
-                        <option value="">Paid</option>
+                        <?php foreach ($paystatus as $ps) : ?>
+                          <?php if ($detail['payment_status'] == $ps) : ?>
+                            <option value="<?= $ps ?>" selected><?= $ps ?></option>
+                            <?php else : ?>
+                              <option value="<?= $ps ?>"><?= $ps ?></option>
+                            <?php endif; ?>
+                      <?php endforeach; ?>
                       </select>
                     </td>
                   </tr>
                   <tr>
                     <td width="50%">IP Address</td>
-                    <td width="50%">127.0.0.1</td>
+                    <td width="50%"><?= $detail['ipaddress'] ?></td>
                   </tr>
                 </tbody>
             </table>
@@ -94,38 +108,30 @@
           <div class="col">
             <h3 class="mb-0">Item List</h3>
           </div>
-          <div class="col text-right">
-            <a href="<?= base_url('admin/users'); ?>" class="btn btn-sm btn-primary">See all user</a>
-          </div>
         </div>
       </div>
       <div class="table-responsive">
-        <!-- Projects table -->
-        <table class="table align-items-center table-flush">
+        <table class="table">
           <thead class="thead-light">
-            <tr>
               <th scope="col">Product</th>
               <th scope="col">Price</th>
               <th scope="col">Quantity</th>
               <th scope="col">Subtotal</th>
-            </tr>
           </thead>
           <tbody>
+            <?php foreach ($items as $i) : ?>
             <tr>
-              <th scope="row">
-                -
-              </th>
-              <td>
-                -
-              </td>
-              <td>
-                -
-              </td>
-              <td>
-                -
-              </td>
+              <td><?= $i['items']; ?></td>
+              <td><?= $i['price']; ?></td>
+              <td><?= $i['quantity']; ?></td>
+              <td><?= $i['subtotal']; ?></td>
             </tr>
+          <?php endforeach; ?>
           </tbody>
+          <tfoot class="thead-light">
+            <th colspan="2" class="text-right">Total :</th>
+            <th colspan="2" class="">Rp.<?= number_format($detail['total'], 0, ",", "."); ?></th>
+          </tfoot>
         </table>
       </div>
     </div>
