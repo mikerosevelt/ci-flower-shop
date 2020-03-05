@@ -100,7 +100,7 @@ class Admin extends CI_Controller
 		// $id = $this->uri->segment(3);
 		$data['detail'] = $this->Order_model->getOrderDetail($id)->row_array();
 		$data['items'] = $this->Order_model->getOrderItems($id)->result_array();
-		$data['orderstat'] = ['Pending', 'On Process', 'Shipped', 'Delivered'];
+		$data['orderstat'] = ['Pending', 'On Process', 'Shipped', 'Delivered', 'Cancelled'];
 		$data['paystatus'] = ['Unpaid', 'Paid'];
 		$this->load->view('templates/admin_header', $data);
 		$this->load->view('admin/order_detail', $data);
@@ -119,6 +119,24 @@ class Admin extends CI_Controller
 		redirect('admin/orders', 'refresh');
 	}
 
+	public function updateOrderStatus()
+	{
+		$id = $this->input->post('id');
+		$status = $this->input->post('status');
+		$this->db->set('status', $status);
+		$this->db->where('id', $id);
+		$this->db->update('order');
+		// redirect('admin/orderDetail/'.$id);
+	}
+
+	public function updateOrderPayStatus()
+	{
+		$id = $this->input->post('id');
+		$status = $this->input->post('status');
+		$this->db->set('payment_status', $status);
+		$this->db->where('id', $id);
+		$this->db->update('order');
+	}
 
 	// PRODUCT PART
 

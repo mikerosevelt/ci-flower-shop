@@ -61,7 +61,8 @@
                   <tr>
                     <td width="50%">Status</td>
                     <td width="50%">
-                      <select name="orderStatus" class="">
+                      <input type="hidden" name="id" value="<?= $detail['id']; ?>" id="id">
+                      <select name="orderStatus" class="" id="orderStatus">
                         <?php foreach ($orderstat as $os) : ?>
                           <?php if ($detail['status'] == $os) : ?>
                             <option value="<?= $os ?>" selected><?= $os ?></option>
@@ -75,7 +76,7 @@
                   <tr>
                     <td width="50%">Payment Status</td>
                     <td width="50%">
-                      <select name="" class="">
+                      <select name="payStatus" class="" id="payStatus">
                         <?php foreach ($paystatus as $ps) : ?>
                           <?php if ($detail['payment_status'] == $ps) : ?>
                             <option value="<?= $ps ?>" selected><?= $ps ?></option>
