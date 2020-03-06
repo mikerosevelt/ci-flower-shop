@@ -87,23 +87,3 @@ document.querySelectorAll(".table-sortable th").forEach(headerCell => {
 // $(document).ready(function() {
 //     $('#table').DataTable();
 // } );
-
-$('#orderStatus').on('change', function() {
-  var id = $("#id").val();
-  var status = this.value;
-  formData = {id: id, status: status};
-  console.log(formData);
-  // $.ajax(
-  // {
-  //   method: "POST",
-  //   url: "<?= base_url(); ?>admin/updateOrderStatus",
-  //   data:formData,
-  //   success: function(response) {
-  //     console.log(response);
-  //     alert('Status has changed');
-  //   },
-  //       error: function() {
-  //           alert('Error');
-  //       }
-  // });
-});

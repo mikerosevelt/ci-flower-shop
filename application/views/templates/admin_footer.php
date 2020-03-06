@@ -20,26 +20,10 @@
 <script src="<?= base_url('assets/'); ?>js/argon-dashboard.min.js?v=1.1.0"></script>
 <!-- Custom js -->
 <script src="<?= base_url('assets/'); ?>js/tables.js"></script>
+<script src="<?= base_url('assets/'); ?>js/custom.js"></script>
 
 <script type="text/javascript">
-// UPDATE ORDER STATUS
-$('#orderStatus').on('change', function() {
-var id = $("#id").val();
-var status = this.value;
 
-objData = {id: id, status: status};
-
-$.post("<?= base_url(); ?>admin/updateOrderStatus", {id: id, status: status});
-});
-// UPDATE PAYMENT STATUS
-$('#payStatus').on('change', function() {
-var id = $("#id").val();
-var status = this.value;
-
-objData = {id: id, status: status};
-
-$.post("<?= base_url(); ?>admin/updateOrderPayStatus", {id: id, status: status});
-});
 </script>
 
 

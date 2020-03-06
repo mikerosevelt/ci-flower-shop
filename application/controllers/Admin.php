@@ -52,7 +52,7 @@ class Admin extends CI_Controller
         $data['list'] = $this->Order_model->getAllOrder()->result_array();;
 
 		$this->load->view('templates/admin_header', $data);
-		$this->load->view('admin/orders',$data);
+		$this->load->view('admin/orders/orders',$data);
 		$this->load->view('templates/admin_footer');
 	}
 
@@ -63,7 +63,7 @@ class Admin extends CI_Controller
 		$data['total'] = $this->Product_model->getAllProduct()->num_rows();
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$this->load->view('templates/admin_header', $data);
-		$this->load->view('admin/products', $data);
+		$this->load->view('admin/products/products', $data);
 		$this->load->view('templates/admin_footer');
 	}
 
@@ -75,7 +75,7 @@ class Admin extends CI_Controller
 		$id = $this->uri->segment(3);
 		$data['detail'] = $this->User_model->getUserDetail($id)->row_array();
 		$this->load->view('templates/admin_header', $data);
-		$this->load->view('admin/user_detail', $data);
+		$this->load->view('admin/users/user_detail', $data);
 		$this->load->view('templates/admin_footer');
 	}
 
@@ -103,7 +103,7 @@ class Admin extends CI_Controller
 		$data['orderstat'] = ['Pending', 'On Process', 'Shipped', 'Delivered', 'Cancelled'];
 		$data['paystatus'] = ['Unpaid', 'Paid'];
 		$this->load->view('templates/admin_header', $data);
-		$this->load->view('admin/order_detail', $data);
+		$this->load->view('admin/orders/order_detail', $data);
 		$this->load->view('templates/admin_footer');
 	}
 
@@ -126,7 +126,6 @@ class Admin extends CI_Controller
 		$this->db->set('status', $status);
 		$this->db->where('id', $id);
 		$this->db->update('order');
-		// redirect('admin/orderDetail/'.$id);
 	}
 
 	public function updateOrderPayStatus()
@@ -151,7 +150,7 @@ class Admin extends CI_Controller
 			$data['title'] = 'Add New Product';
 			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 			$this->load->view('templates/admin_header', $data);
-			$this->load->view('admin/add_product');
+			$this->load->view('admin/products/add_product');
 			$this->load->view('templates/admin_footer');
 		} else {
 			$this->Product_model->addNewProduct();
@@ -172,7 +171,7 @@ class Admin extends CI_Controller
 		$id = $this->uri->segment(3);
 		$data['detail'] = $this->Product_model->getProductById($id)->row_array();
 		$this->load->view('templates/admin_header', $data);
-		$this->load->view('admin/detail_product', $data);
+		$this->load->view('admin/products/detail_product', $data);
 		$this->load->view('templates/admin_footer');
 	}
 

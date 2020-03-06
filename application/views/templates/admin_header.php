@@ -54,14 +54,6 @@
               <i class="ni ni-settings-gear-65"></i>
               <span>Settings</span>
             </a>
-            <a href="./examples/profile.html" class="dropdown-item">
-              <i class="ni ni-calendar-grid-58"></i>
-              <span>Activity</span>
-            </a>
-            <a href="./examples/profile.html" class="dropdown-item">
-              <i class="ni ni-support-16"></i>
-              <span>Support</span>
-            </a>
             <div class="dropdown-divider"></div>
             <a href="<?= base_url('auth/logout'); ?>" class="dropdown-item">
               <i class="ni ni-user-run"></i>
@@ -120,12 +112,32 @@
               <i class="ni ni-books text-yellow"></i> Products
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link " href="<?= base_url('admin/invoices'); ?>">
+              <i class="ni ni-money-coins text-green"></i> Invoices / Transactions
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="<?= base_url('admin/reports'); ?>">
+              <i class="ni ni-chart-pie-35 text-red"></i> Reports
+            </a>
+          </li>
         </ul>
         <!-- Divider -->
         <hr class="my-3">
         <!-- Heading -->
         <!-- Navigation -->
         <ul class="navbar-nav mb-md-3">
+          <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('admin/help'); ?>">
+              <i class="ni ni-support-16"></i> Help
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('admin/settings'); ?>">
+              <i class="ni ni-settings-gear-65"></i> Settings
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
               <i class="ni ni-user-run"></i> Logout
@@ -167,17 +179,13 @@
               <div class=" dropdown-header noti-title">
                 <h6 class="text-overflow m-0">Welcome!</h6>
               </div>
-              <a href="./examples/profile.html" class="dropdown-item">
+              <a href="" class="dropdown-item">
                 <i class="ni ni-single-02"></i>
                 <span>My profile</span>
               </a>
-              <a href="./examples/profile.html" class="dropdown-item">
+              <a href="<?= base_url('admin/settings'); ?>" class="dropdown-item">
                 <i class="ni ni-settings-gear-65"></i>
                 <span>Settings</span>
-              </a>
-              <a href="./examples/profile.html" class="dropdown-item">
-                <i class="ni ni-calendar-grid-58"></i>
-                <span>Activity</span>
               </a>
               <div class="dropdown-divider"></div>
               <a href="<?= base_url('auth/logout'); ?>" class="dropdown-item">

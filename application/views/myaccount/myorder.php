@@ -19,6 +19,11 @@
           				<th>Status</th>
           			</thead>
           			<tbody>
+                  <?php if(!$myorder) : ?>
+                    <tr>
+                      <td colspan="5" class="text-center">You haven't make an order yet</td>
+                    </tr>
+                  <?php endif; ?>
           				<?php $n = 1; foreach ($myorder as $res) : ?>
           			<tr>
           				<td><?= $n++; ?></td>

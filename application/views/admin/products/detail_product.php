@@ -7,7 +7,7 @@
         <div class="row">
           <div class="col-lg col-md-10">
             <h1 class="display-2 text-white">Product Detail</h1>
-            <a class="btn btn-secondary" href="<?= base_url('admin/users'); ?>" class="btn btn-sm btn-danger">back</a>
+            <a class="btn btn-secondary" href="<?= base_url('admin/products'); ?>" class="btn btn-sm btn-danger">back</a>
           </div>
         </div>
       </div>
