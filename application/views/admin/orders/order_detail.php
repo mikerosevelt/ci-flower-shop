@@ -8,7 +8,7 @@
     <!-- Card stats -->
     <div class="row">
       <div class="col-xl col-lg-6">
-        <div class="card card-stats mb-3 mb-xl-0">
+        <div class="card shadow card-stats mb-3 mb-xl-0">
           <div class="card-body">
             <table class="table-striped" width="100%">
                 <tbody>

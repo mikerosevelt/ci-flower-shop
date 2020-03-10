@@ -67,6 +67,26 @@ class Admin extends CI_Controller
 		$this->load->view('templates/admin_footer');
 	}
 
+	public function invoices()
+	{
+		# code...
+	}
+
+	public function reports()
+	{
+		# code...
+	}
+
+	public function help()
+	{
+		# code...
+	}
+
+	public function settings()
+	{
+		# code...
+	}
+
 	// USER PART
 	public function user_detail($id)
 	{
@@ -92,7 +112,6 @@ class Admin extends CI_Controller
 	}
 
 	// ORDER PART
-
 	public function orderDetail($id)
 	{
 		$data['title'] = 'Order Detail';
@@ -138,7 +157,6 @@ class Admin extends CI_Controller
 	}
 
 	// PRODUCT PART
-
 	public function addProduct()
 	{
 		$this->form_validation->set_rules('name', 'Name', 'trim|required');

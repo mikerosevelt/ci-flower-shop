@@ -51,7 +51,7 @@ class Cart extends CI_Controller
 		} else {
 			$this->Cart_model->completeOrder();
 			// Send Email function
-			// $this->_sendEmail();
+			$this->_sendEmail();
 			redirect('cart/success');
 		}
 	}
@@ -70,10 +70,21 @@ class Cart extends CI_Controller
 
         $this->email->initialize($smtp_config);
 
+        $table = '';
+
+        foreach ($this->cart->contents() as $c) {
+        	$table .= '<tr>
+				<td>' .$c['name'] . '</td>
+				<td>Rp.' .number_format($c['price'], 0, ',', '.') . '</td>
+				<td>' .$c['qty'] . '</td>
+				<td>Rp.' .number_format($c['subtotal'], 0, ',', '.') . '</td>
+				</tr>';
+        }
+
         $this->email->from('cs@flowershop.com', 'Flower Shop'); // from email and from name.
         $this->email->to($this->input->post('email'));
         $this->email->subject('Order Confirmation');
-        $mess = '<!DOCTYPE html>
+        $this->email->message('<!DOCTYPE html>
         	<html>
 			  	<head>
 			    <meta charset="UTF-8">
@@ -85,7 +96,8 @@ class Cart extends CI_Controller
 			    </style>
 			  </head>
 			  <body>
-			    <h2 style="text-align: center;">Thank you for your order</h2>
+			    <h2 style="text-align: center;">Your order has been placed!</h2>
+			    <p>Thank you for placing an order with flower shop. please make a payment of Rp.'. number_format($this->cart->total(), 0, ',', '.') .' by making a transfer to our bank account 1234567890 (BCA A/N Flower Shop). We appreciate your patience, and we will inform you when your order is confirmed and ready to ship. We apologize for any inconvenience.</p>
 				<h5 style="text-align: center;">Your order detail</h5> 
 				<table style="text-align: center;" width="100%">
 				<thead>
@@ -94,21 +106,13 @@ class Cart extends CI_Controller
 				<th>Quantity</th>
 				<th>Subtotal</th>
 				</thead>
-				<tbody>
-				<tr>
-				<td>' .$c['name'] . '</td>
-				<td>' .$c['price'] . '</td>
-				<td>' .$c['qty'] . '</td>
-				<td>' .$c['subtotal'] . '</td>
-				</tr>
-				</tbody>
+				<tbody>' . $table . '</tbody>
 				<tfoot>
-				<th colspan=4 style="text-align:right">Total : '. $this->cart->total() . '</th>
+				<th colspan=4 style="text-align:right">Total : '. number_format($this->cart->total(), 0, ',', '.') . '</th>
 				</tfoot>
 				</table>
 			  </body>
-			</html>';
-        $this->email->message($mess);
+			</html>');
         if ($this->email->send()) {
             return true;
         } else {
