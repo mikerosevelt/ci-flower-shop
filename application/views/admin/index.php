@@ -95,10 +95,10 @@
         <table class="table align-items-center table-flush">
           <thead class="thead-light">
             <tr>
-              <th scope="col">User name</th>
+              <th scope="col">Customer name</th>
               <th scope="col">Email</th>
               <th scope="col">status</th>
-              <th scope="col">Registraion Date</th>
+              <th scope="col">Last Login</th>
             </tr>
           </thead>
           <tbody>
@@ -114,7 +114,7 @@
                 <?= $l['status'] = 'Active'; ?>
               </td>
               <td>
-                <?= date('d F Y', $l['date_created']); ?>
+                <?= $this->User_model->time_ago($l['last_login']); ?>
               </td>
             </tr>
           <?php endforeach; ?>

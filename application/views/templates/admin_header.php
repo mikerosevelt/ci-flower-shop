@@ -20,6 +20,10 @@
   <link href="<?= base_url('assets/'); ?>css/tables.css" rel="stylesheet" /> 
 </head>
 
+<?php
+  $admin = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+?>
+
 <body class="">
   <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
     <div class="container-fluid">
@@ -171,7 +175,7 @@
                   <img alt="Image placeholder" src="<?= base_url('assets/'); ?>img/default.png">
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold"><?= $user['name']; ?></span>
+                  <span class="mb-0 text-sm  font-weight-bold"><?= $admin['name']; ?></span>
                 </div>
               </div>
             </a>

@@ -84,7 +84,7 @@
                                   </a>
                                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                       <a class="dropdown-item" href="<?= base_url('admin/user_detail/').$l['id']; ?>">Detail</a>
-                                      <a class="dropdown-item text-danger" onclick="return confirm('Delete user?')" href="<?= base_url('admin/delete_user/').$l['id']; ?>">Delete</a>
+                                      <a class="dropdown-item text-danger" onclick="return confirm('Delete this user?')" href="<?= base_url('admin/delete_user/').$l['id']; ?>">Delete</a>
                                   </div>
                               </div>
                           </td>

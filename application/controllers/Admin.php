@@ -23,11 +23,14 @@ class Admin extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Dashboard';
-		$data['list'] = $this->User_model->getAllUser()->result_array();
+		$query = "SELECT `user`.`name`,`user`.`email`,`user`.`is_active`,`user_log`.`last_login`
+				  FROM `user`
+				  JOIN `user_log` ON `user_log`.`user_id` = `user`.`id`";
+		$data['list'] = $this->db->query($query)->result_array();
 		$data['total'] = $this->User_model->getAllUser()->num_rows();
 		$data['totalproduct'] = $this->Product_model->getAllProduct()->num_rows();
 		$data['totalorder'] = $this->Order_model->getAllOrder()->num_rows();
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		// $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$this->load->view('templates/admin_header', $data);
 		$this->load->view('admin/index', $data);
 		$this->load->view('templates/admin_footer');
@@ -38,16 +41,16 @@ class Admin extends CI_Controller
 		$data['title'] = 'Users';
 		$data['list'] = $this->User_model->getAllUser()->result_array();
 		$data['total'] = $this->User_model->getAllUser()->num_rows();
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		// $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$this->load->view('templates/admin_header', $data);
-		$this->load->view('admin/users', $data);
+		$this->load->view('admin/users/users', $data);
 		$this->load->view('templates/admin_footer');
 	}
 
 	public function orders()
 	{
 		$data['title'] = 'Orders';
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		// $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['total'] = $this->db->get('order')->num_rows();
         $data['list'] = $this->Order_model->getAllOrder()->result_array();;
 
@@ -69,7 +72,13 @@ class Admin extends CI_Controller
 
 	public function invoices()
 	{
-		# code...
+		$data['title'] = 'Invoices';
+		// $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['total'] = $this->db->get('invoice')->num_rows();
+
+		$this->load->view('templates/admin_header', $data);
+		$this->load->view('admin/invoices/index',$data);
+		$this->load->view('templates/admin_footer');
 	}
 
 	public function reports()
