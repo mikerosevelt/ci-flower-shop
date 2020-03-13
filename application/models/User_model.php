@@ -39,13 +39,13 @@ class User_model extends CI_Model {
 
 
 		if (!$userId['user_id'] || $userId['user_id'] != $id) {
-			$address = $this->input->post('address');
-			$address2 = $this->input->post('address2');
-			$city = $this->input->post('city');
-			$zipcode = $this->input->post('zipcode');
-			$state = $this->input->post('state');
-			$country = $this->input->post('country');
-			$phone = $this->input->post('phone');
+			$address = $this->input->post('address', true);
+			$address2 = $this->input->post('address2', true);
+			$city = $this->input->post('city', true);
+			$zipcode = $this->input->post('zipcode', true);
+			$state = $this->input->post('state', true);
+			$country = $this->input->post('country', true);
+			$phone = $this->input->post('phone', true);
 			$data = [
 				'user_id' => $id,
 				'address' => $address,

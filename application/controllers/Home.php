@@ -41,7 +41,7 @@ class Home extends CI_Controller {
         	redirect();
         } else {
 	        $data = [
-				'email' => $this->input->post('email'),
+				'email' => $this->input->post('email', true),
 				'date_join' => time()
 			];
 			$this->db->insert('newsletter', $data);

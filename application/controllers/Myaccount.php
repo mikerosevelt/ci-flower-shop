@@ -67,8 +67,8 @@ class Myaccount extends CI_Controller {
 			$this->load->view('myaccount/setting');
 			$this->load->view('templates/main_footer');
         } else {
-        	$current_password = $this->input->post('current_password');
-        	$new_password = $this->input->post('new_password1');
+        	$current_password = $this->input->post('current_password', true);
+        	$new_password = $this->input->post('new_password1', true);
         	if (!password_verify($current_password, $data['user']['password'])) {
         		 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong current password!</div>');
                 redirect('myaccount/setting');
