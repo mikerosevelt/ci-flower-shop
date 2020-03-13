@@ -30,7 +30,7 @@ class Admin extends CI_Controller
 		$data['total'] = $this->User_model->getAllUser()->num_rows();
 		$data['totalproduct'] = $this->Product_model->getAllProduct()->num_rows();
 		$data['totalorder'] = $this->Order_model->getAllOrder()->num_rows();
-		// $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
 		$this->load->view('templates/admin_header', $data);
 		$this->load->view('admin/index', $data);
 		$this->load->view('templates/admin_footer');
@@ -41,7 +41,7 @@ class Admin extends CI_Controller
 		$data['title'] = 'Users';
 		$data['list'] = $this->User_model->getAllUser()->result_array();
 		$data['total'] = $this->User_model->getAllUser()->num_rows();
-		// $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
 		$this->load->view('templates/admin_header', $data);
 		$this->load->view('admin/users/users', $data);
 		$this->load->view('templates/admin_footer');
@@ -50,7 +50,6 @@ class Admin extends CI_Controller
 	public function orders()
 	{
 		$data['title'] = 'Orders';
-		// $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$data['total'] = $this->db->get('order')->num_rows();
         $data['list'] = $this->Order_model->getAllOrder()->result_array();;
 
@@ -112,7 +111,7 @@ class Admin extends CI_Controller
 	public function user_detail()
 	{
 		$data['title'] = 'User Detail';
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
 		$id = $this->uri->segment(3);
 		if ($id) {
 			$data['detail'] = $this->User_model->getUserDetail($id)->row_array();
@@ -143,11 +142,52 @@ class Admin extends CI_Controller
 		redirect('admin/users', 'refresh');
 	}
 
+	public function resendActivationEmail()
+	{
+		$id = $this->input->post('id', true);
+		$email = $this->input->post('email', true);
+		$token = base64_encode(random_bytes(32));
+            $user_token = [
+                'email' => $email,
+                'token' => $token,
+                'date_created' => time()
+            ];
+        $this->db->insert('user_token', $user_token);
+        $this->_sendEmail($token);
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  													Activation email has been sent.
+  													<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    												<span aria-hidden="true">&times;</span>
+  													</button>
+													</div>');
+        redirect('admin/user_detail/'.$id);
+	}
+
+	private function _sendEmail($token)
+    {
+        require_once('__config.php');
+        $smtp_config = $config;
+        $this->load->library('email', $smtp_config);
+        $this->email->initialize($smtp_config);
+        $this->email->from('noreply@flowershop.com', 'Flower Shop'); // from email and from name.
+        $this->email->to($this->input->post('email'));
+        $this->email->subject('User Activation');
+        $this->email->message('Click to activate your account : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">
+        Activate</a>');
+
+        if ($this->email->send()) {
+            return true;
+        } else {
+            echo $this->email->print_debugger();
+            die;
+        }
+    }
+
 	// ORDER PART
 	public function orderDetail()
 	{
 		$data['title'] = 'Order Detail';
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
 		$id = $this->uri->segment(3);
 		$data['detail'] = $this->Order_model->getOrderDetail($id)->row_array();
 		
@@ -230,7 +270,7 @@ class Admin extends CI_Controller
 	{
 		
 		$data['title'] = 'Detail Product';
-		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
 		$id = $this->uri->segment(3);
 		$data['detail'] = $this->Product_model->getProductById($id)->row_array();
 		if ($id) {

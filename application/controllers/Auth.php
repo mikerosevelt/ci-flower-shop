@@ -127,7 +127,7 @@ class Auth extends CI_Controller {
         $smtp_config = $config;
         $this->load->library('email', $smtp_config);
         $this->email->initialize($smtp_config);
-        $this->email->from('support@flowershop.com', 'Flower Shop'); // from email and from name.
+        $this->email->from('noreply@flowershop.com', 'Flower Shop'); // from email and from name.
         $this->email->to($this->input->post('email'));
         if ($type == 'verify') {
             $this->email->subject('User Activation');

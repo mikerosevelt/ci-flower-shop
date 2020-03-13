@@ -7,7 +7,15 @@
         <div class="row">
           <div class="col-lg col-md-10">
             <h1 class="display-2 text-white"><?= $detail['name']; ?></h1>
-            <a class="btn btn-secondary" href="<?= base_url('admin/users'); ?>" class="btn btn-sm btn-danger">back</a>
+            <a class="btn btn-secondary" href="<?= base_url('admin/users'); ?>">back</a>
+            <?php if($detail['is_active'] == 1): ?>
+              <form action="<?= base_url('admin/resendActivationEmail'); ?>" method="POST">
+                <input type="hidden" name="email" value="<?= $detail['email']; ?>">
+                <input type="hidden" name="id" value="<?= $detail['id']; ?>">
+                <button class="btn btn-secondary mt-3" type="submit">Resend Activation Email</button>
+              </form>
+              <!-- <a class="btn btn-secondary float-right" href="<?= base_url('admin/resendActivationEmail'); ?>"></a> -->
+            <?php endif; ?>
           </div>
         </div>
       </div>
@@ -34,7 +42,11 @@
                   <?= $detail['name']; ?>
                 </h3>
                 <div class="h5 font-weight-300">
-                  <i class="ni location_pin mr-2"></i><?= $detail['status'] = 'Active'; ?>
+                  <?php if($detail['is_active'] == 1): ?>
+                  <i class="ni location_pin mr-2"></i><span class="text-success">Active</span>
+                  <?php else:?>
+                    <i class="ni location_pin mr-2"></i><span class="text-danger">Inactive</span>
+                <?php endif; ?>
                 </div>
                 <div>
                   <i class="ni education_hat mr-2"></i>Member since <?= date('d F Y', $detail['date_created']); ?>
@@ -53,7 +65,7 @@
                     <td class="float-right"><small><?= $detail['ip_address'] ?></small></td>
                   </tr>
                   <tr>
-                    <td width="25%"><small>host</small></td>
+                    <td width="25%"><small>Host</small></td>
                     <td class="float-right"><small><?= $detail['host'] ?></small></td>
                   </tr>
                   <tr>
@@ -69,6 +81,7 @@
           </div>
         </div>
         <div class="col-xl-8 order-xl-1">
+          <?= $this->session->flashdata('message'); ?>
           <div class="card bg-secondary shadow">
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">

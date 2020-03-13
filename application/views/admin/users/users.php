@@ -70,7 +70,11 @@
                               </span>
                           </td>
                           <td>
-                            <?= $l['status'] = 'Active'; ?>
+                            <?php if($l['is_active'] == 1): ?>
+                              <span class="text-success">Active</span>
+                            <?php else: ?>
+                              <span class="text-danger">Inactive</span>
+                            <?php endif; ?>
                           </td>
                           <td class="completion">
                               <div class="d-flex align-items-center">
