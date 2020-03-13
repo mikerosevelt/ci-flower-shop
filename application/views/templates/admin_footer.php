@@ -10,6 +10,9 @@
     </footer>
   </div>
 </div>
+<script type="text/javascript">
+let url = '<?= base_url(); ?>';
+</script>
 <!--   Core   -->
 <script src="<?= base_url('assets/'); ?>js/plugins/jquery/dist/jquery-3.4.1.js"></script>
 <script src="<?= base_url('assets/'); ?>js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

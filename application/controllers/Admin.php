@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
+date_default_timezone_set('Asia/Bangkok');
 class Admin extends CI_Controller
 {
 
@@ -83,29 +83,52 @@ class Admin extends CI_Controller
 
 	public function reports()
 	{
-		# code...
+		$data['title'] = 'Reports';
+
+		$this->load->view('templates/admin_header', $data);
+		$this->load->view('admin/reports/reports');
+		$this->load->view('templates/admin_footer');
 	}
 
 	public function help()
 	{
-		# code...
+		$data['title'] = 'Help';
+
+		$this->load->view('templates/admin_header', $data);
+		$this->load->view('admin/help/help');
+		$this->load->view('templates/admin_footer');
 	}
 
 	public function settings()
 	{
-		# code...
+		$data['title'] = 'Settings';
+
+		$this->load->view('templates/admin_header', $data);
+		$this->load->view('admin/setting/setting');
+		$this->load->view('templates/admin_footer');
 	}
 
 	// USER PART
-	public function user_detail($id)
+	public function user_detail()
 	{
 		$data['title'] = 'User Detail';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$id = $this->uri->segment(3);
-		$data['detail'] = $this->User_model->getUserDetail($id)->row_array();
-		$this->load->view('templates/admin_header', $data);
-		$this->load->view('admin/users/user_detail', $data);
-		$this->load->view('templates/admin_footer');
+		if ($id) {
+			$data['detail'] = $this->User_model->getUserDetail($id)->row_array();
+			$this->load->view('templates/admin_header', $data);
+			$this->load->view('admin/users/user_detail', $data);
+			$this->load->view('templates/admin_footer');
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  													Something went wrong.
+  													<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    												<span aria-hidden="true">&times;</span>
+  													</button>
+													</div>');
+			redirect('admin/users');
+		}
+		
 	}
 
 	public function delete_user($id)
@@ -121,18 +144,30 @@ class Admin extends CI_Controller
 	}
 
 	// ORDER PART
-	public function orderDetail($id)
+	public function orderDetail()
 	{
 		$data['title'] = 'Order Detail';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		// $id = $this->uri->segment(3);
+		$id = $this->uri->segment(3);
 		$data['detail'] = $this->Order_model->getOrderDetail($id)->row_array();
-		$data['items'] = $this->Order_model->getOrderItems($id)->result_array();
-		$data['orderstat'] = ['Pending', 'On Process', 'Shipped', 'Delivered', 'Cancelled'];
-		$data['paystatus'] = ['Unpaid', 'Paid'];
-		$this->load->view('templates/admin_header', $data);
-		$this->load->view('admin/orders/order_detail', $data);
-		$this->load->view('templates/admin_footer');
+		
+		if ($id) {
+			$data['items'] = $this->Order_model->getOrderItems($id)->result_array();
+			$data['orderstat'] = ['Pending', 'On Process', 'Shipped', 'Delivered', 'Cancelled'];
+			$data['paystatus'] = ['Unpaid', 'Paid'];
+			$this->load->view('templates/admin_header', $data);
+			$this->load->view('admin/orders/order_detail', $data);
+			$this->load->view('templates/admin_footer');
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  													Something went wrong.
+  													<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    												<span aria-hidden="true">&times;</span>
+  													</button>
+													</div>');
+			redirect('admin/orders');
+		}
+		
 	}
 
 	public function deleteOrder($id)
@@ -193,13 +228,25 @@ class Admin extends CI_Controller
 
 	public function detail_product()
 	{
+		
 		$data['title'] = 'Detail Product';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$id = $this->uri->segment(3);
 		$data['detail'] = $this->Product_model->getProductById($id)->row_array();
-		$this->load->view('templates/admin_header', $data);
-		$this->load->view('admin/products/detail_product', $data);
-		$this->load->view('templates/admin_footer');
+		if ($id) {
+			$this->load->view('templates/admin_header', $data);
+			$this->load->view('admin/products/detail_product', $data);
+			$this->load->view('templates/admin_footer');
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  													Something went wrong.
+  													<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    												<span aria-hidden="true">&times;</span>
+  													</button>
+													</div>');
+			redirect('admin/products');
+		}
+		
 	}
 
 	public function editproduct()
