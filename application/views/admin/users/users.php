@@ -58,42 +58,44 @@
                   <tbody class="list">
                     <?php $no = 1;
                          foreach ($list as $l) : ?>
-                      <tr>
-                          <td>
-                            <?= $no++; ?>
-                          </td>
-                          <td class="budget">
-                              <?= $l['name']; ?>
-                          </td>
-                          <td class="status">
-                              <span class="badge badge-dot mr-4">
-                               <?= $l['email']; ?>
-                              </span>
-                          </td>
-                          <td>
-                            <?php if($l['is_active'] == 1): ?>
-                              <span class="text-success">Active</span>
-                            <?php else: ?>
-                              <span class="text-danger">Inactive</span>
-                            <?php endif; ?>
-                          </td>
-                          <td class="completion">
-                              <div class="d-flex align-items-center">
-                                  <span class="mr-2"><?= date('d F Y', $l['date_created']); ?></span>
-                              </div>
-                          </td>
-                          <td class="text-right">
-                              <div class="dropdown">
-                                  <a class="btn btn-sm btn-icon-only text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                  </a>
-                                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                      <a class="dropdown-item" href="<?= base_url('admin/user_detail/').$l['id']; ?>">Detail</a>
-                                      <a class="dropdown-item text-danger del-btn" href="<?= base_url('admin/delete_user/').$l['id']; ?>">Delete</a>
-                                  </div>
-                              </div>
-                          </td>
-                      </tr>
+                        <?php if($l['role_id'] != 1): ?>
+                        <tr>
+                            <td>
+                              <?= $no++; ?>
+                            </td>
+                            <td class="budget">
+                                <?= $l['name']; ?>
+                            </td>
+                            <td class="status">
+                                <span class="badge badge-dot mr-4">
+                                 <?= $l['email']; ?>
+                                </span>
+                            </td>
+                            <td>
+                              <?php if($l['is_active'] == 1): ?>
+                                <span class="text-success">Active</span>
+                              <?php else: ?>
+                                <span class="text-danger">Inactive</span>
+                              <?php endif; ?>
+                            </td>
+                            <td class="completion">
+                                <div class="d-flex align-items-center">
+                                    <span class="mr-2"><?= date('d F Y', $l['date_created']); ?></span>
+                                </div>
+                            </td>
+                            <td class="text-right">
+                                <div class="dropdown">
+                                    <a class="btn btn-sm btn-icon-only text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <i class="fas fa-ellipsis-v"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                        <a class="dropdown-item" href="<?= base_url('admin/user_detail/').$l['id']; ?>">Detail</a>
+                                        <a class="dropdown-item text-danger del-btn" href="<?= base_url('admin/delete_user/').$l['id']; ?>">Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php endif; ?>
                       <?php endforeach; ?>
                   </tbody>
               </table>

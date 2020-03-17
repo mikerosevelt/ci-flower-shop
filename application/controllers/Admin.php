@@ -107,7 +107,9 @@ class Admin extends CI_Controller
 		$this->load->view('templates/admin_footer');
 	}
 
-	// USER PART
+	/*
+	* USER PART
+	*/
 	public function user_detail()
 	{
 		$data['title'] = 'User Detail';
@@ -133,13 +135,8 @@ class Admin extends CI_Controller
 	public function delete_user($id)
 	{
 		$this->User_model->deleteUser($id);
-		$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  													User has been deleted.
-  													<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    												<span aria-hidden="true">&times;</span>
-  													</button>
-													</div>');
-		redirect('admin/users', 'refresh');
+		$this->session->set_flashdata('swal', 'User has been deleted');
+		redirect('admin/users');
 	}
 
 	public function resendActivationEmail()
@@ -154,12 +151,7 @@ class Admin extends CI_Controller
             ];
         $this->db->insert('user_token', $user_token);
         $this->_sendEmail($token);
-        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  													Activation email has been sent.
-  													<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    												<span aria-hidden="true">&times;</span>
-  													</button>
-													</div>');
+        $this->session->set_flashdata('swal', 'Activation email has been sent.');
         redirect('admin/user_detail/'.$id);
 	}
 
@@ -183,7 +175,9 @@ class Admin extends CI_Controller
         }
     }
 
-	// ORDER PART
+	/*
+	* ORDER PART
+	*/
 	public function orderDetail()
 	{
 		$data['title'] = 'Order Detail';
@@ -207,7 +201,6 @@ class Admin extends CI_Controller
 													</div>');
 			redirect('admin/orders');
 		}
-		
 	}
 
 	public function deleteOrder($id)
@@ -235,7 +228,9 @@ class Admin extends CI_Controller
 		$this->db->update('order');
 	}
 
-	// PRODUCT PART
+	/*
+	* PRODUCT PART
+	*/
 	public function addProduct()
 	{
 		$this->form_validation->set_rules('name', 'Name', 'trim|required');
@@ -258,7 +253,6 @@ class Admin extends CI_Controller
 
 	public function detail_product()
 	{
-		
 		$data['title'] = 'Detail Product';
 
 		$id = $this->uri->segment(3);
@@ -276,7 +270,6 @@ class Admin extends CI_Controller
 													</div>');
 			redirect('admin/products');
 		}
-		
 	}
 
 	public function editproduct()
@@ -292,4 +285,20 @@ class Admin extends CI_Controller
 		$this->session->set_flashdata('swal', 'Product has been deleted');
 		redirect('admin/products');
 	}
+
+	/*
+	* INVOICES PART
+	*/
+
+	/*
+	* REPORTS PART
+	*/
+
+	/*
+	* HELP PART
+	*/
+
+	/*
+	* SETTINGS PART
+	*/
 }

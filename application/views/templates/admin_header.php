@@ -148,6 +148,7 @@
             </a>
           </li>
         </ul>
+        <a class="text-center mt-3">Version 0.1.0</a>
       </div>
     </div>
   </nav>

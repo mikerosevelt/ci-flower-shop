@@ -1,4 +1,5 @@
     <!-- Header -->
+    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('swal'); ?>"></div>
     <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="background-color:#82ae46">
       <!-- Mask -->
       <span class="mask opacity-8"></span>
@@ -81,7 +82,6 @@
           </div>
         </div>
         <div class="col-xl-8 order-xl-1">
-          <?= $this->session->flashdata('message'); ?>
           <div class="card bg-secondary shadow">
             <div class="card-header bg-white border-0">
               <div class="row align-items-center">
