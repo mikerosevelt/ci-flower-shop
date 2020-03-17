@@ -16,7 +16,7 @@ var $rows = $('#table tr');
 
 $(document).ready(function(){
     $('#table').after(`<div id="nav" class="card-footer float-right"></div>`);
-    var rowsShown = 4;
+    var rowsShown = 5;
     var rowsTotal = $('#table tbody tr').length;
     var numPages = rowsTotal/rowsShown;
     for(i = 0;i < numPages;i++) {

@@ -12,7 +12,7 @@
           <div class="col-xl-7 ftco-animate">
           	<?= $this->session->flashdata('message'); ?>
 				<form action="<?= base_url('myaccount'); ?>" class="billing-form" method="post">
-					<!-- <input type="hidden" name="id" id="id" value="<?= $user['id']; ?>"> -->
+					<input type="hidden" name="id" id="id" value="<?= $user['id']; ?>">
 					<h3 class="mb-4 billing-heading">Billing Details</h3>
 	          	<div class="row align-items-end">
 	          		<div class="col-md-12">

@@ -21,9 +21,11 @@ let url = '<?= base_url(); ?>';
 <script src="<?= base_url('assets/'); ?>js/plugins/chart.js/dist/Chart.extension.js"></script>
 <!--   Argon JS   -->
 <script src="<?= base_url('assets/'); ?>js/argon-dashboard.min.js?v=1.1.0"></script>
+<script src="<?= base_url('assets/'); ?>js/sweetalert2.all.min.js"></script>
 <!-- Custom js -->
 <script src="<?= base_url('assets/'); ?>js/tables.js"></script>
 <script src="<?= base_url('assets/'); ?>js/custom.js"></script>
+<script src="<?= base_url('assets/'); ?>js/sweet.js"></script>
 
 <script type="text/javascript">
 

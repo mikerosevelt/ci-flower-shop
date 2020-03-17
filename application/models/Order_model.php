@@ -6,8 +6,8 @@ class Order_model extends CI_Model {
 	public function getAllOrder()
 	{
 		$query = "SELECT `order`.*, `user`.`name`,`user`.`email`
-          FROM `user`
-          JOIN `order` ON `order`.`user_id` = `user`.`id`";
+          FROM `order`
+          JOIN `user` ON `order`.`user_id` = `user`.`id`";
 
         return $this->db->query($query);
 	}

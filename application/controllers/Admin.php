@@ -27,9 +27,9 @@ class Admin extends CI_Controller
 				  FROM `user`
 				  JOIN `user_log` ON `user_log`.`user_id` = `user`.`id`";
 		$data['list'] = $this->db->query($query)->result_array();
-		$data['total'] = $this->User_model->getAllUser()->num_rows();
-		$data['totalproduct'] = $this->Product_model->getAllProduct()->num_rows();
-		$data['totalorder'] = $this->Order_model->getAllOrder()->num_rows();
+		$data['total'] = $this->db->get('user')->num_rows();
+		$data['totalproduct'] = $this->db->get('product')->num_rows();
+		$data['totalorder'] = $this->db->get('order')->num_rows();
 
 		$this->load->view('templates/admin_header', $data);
 		$this->load->view('admin/index', $data);
@@ -213,12 +213,7 @@ class Admin extends CI_Controller
 	public function deleteOrder($id)
 	{
 		$this->Order_model->deleteOrder($id);
-		$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  													Order has been deleted.
-  													<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    												<span aria-hidden="true">&times;</span>
-  													</button>
-													</div>');
+		$this->session->set_flashdata('swal', 'deleted');
 		redirect('admin/orders', 'refresh');
 	}
 
@@ -256,12 +251,7 @@ class Admin extends CI_Controller
 			$this->load->view('templates/admin_footer');
 		} else {
 			$this->Product_model->addNewProduct();
-			$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  													New product successful added.
-  													<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    												<span aria-hidden="true">&times;</span>
-  													</button>
-													</div>');
+			$this->session->set_flashdata('swal', 'New product has been added.');
 			redirect('admin/products');
 		}
 	}
@@ -292,24 +282,14 @@ class Admin extends CI_Controller
 	public function editproduct()
 	{
 		$this->Product_model->editDataProduct();
-		$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  													Product detail has been updated.
-  													<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    												<span aria-hidden="true">&times;</span>
-  													</button>
-													</div>');
+		$this->session->set_flashdata('swal', 'Product has been edited');
 		redirect('admin/products');
 	}
 
 	public function delete_product($id)
 	{
 		$this->Product_model->deleteProduct($id);
-		$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  													Product successful deleted.
-  													<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    												<span aria-hidden="true">&times;</span>
-  													</button>
-													</div>');
+		$this->session->set_flashdata('swal', 'Product has been deleted');
 		redirect('admin/products');
 	}
 }

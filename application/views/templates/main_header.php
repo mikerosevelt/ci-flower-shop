@@ -48,7 +48,7 @@
               <div class="dropdown-menu" aria-labelledby="dropdown04">
                 <!-- CHECK SESSION USER LOGIN -->
                 <?php if ($this->session->userdata('status') != "login") : ?>
-                    <?= '<a class="dropdown-item" href='. base_url('auth') . '>Login</a>'; ?>
+                    <?= '<a class="dropdown-item" href='. base_url('auth') . '>Login / Register</a>'; ?>
                   <?php else: ?>
                     <?= '<a class="dropdown-item" href='. base_url('myaccount') . '>My Profile</a>' ; ?>
                     <?= '<a class="dropdown-item" href='. base_url('myaccount/myorder') . '>My Order</a>'; ?>

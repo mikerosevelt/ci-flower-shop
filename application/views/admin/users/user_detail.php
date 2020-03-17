@@ -8,7 +8,7 @@
           <div class="col-lg col-md-10">
             <h1 class="display-2 text-white"><?= $detail['name']; ?></h1>
             <a class="btn btn-secondary" href="<?= base_url('admin/users'); ?>">back</a>
-            <?php if($detail['is_active'] == 1): ?>
+            <?php if($detail['is_active'] != 1): ?>
               <form action="<?= base_url('admin/resendActivationEmail'); ?>" method="POST">
                 <input type="hidden" name="email" value="<?= $detail['email']; ?>">
                 <input type="hidden" name="id" value="<?= $detail['id']; ?>">

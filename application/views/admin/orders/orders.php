@@ -28,7 +28,7 @@
 <div class="container-fluid mt--7">
 <div class="row mt-5">
   <div class="col-xl mb-5 mb-xl">
-    <?= $this->session->flashdata('message'); ?>
+    <!-- <?= $this->session->flashdata('message'); ?> -->
     <div class="card shadow">
       <div class="card-header">
         <h2 class="float-left">All Order List</h2>
@@ -99,7 +99,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                 <a class="dropdown-item" href="<?= base_url('admin/orderdetail/') . $ol['id']; ?>">Detail</a>
-                                <a class="dropdown-item text-danger" onclick="return confirm('Delete order?')" href="<?= base_url('admin/deleteorder/') . $ol['id']; ?>">Delete</a>
+                                <a class="dropdown-item text-danger del-btn" href="<?= base_url('admin/deleteorder/') . $ol['id']; ?>">Delete</a>
                             </div>
                         </div>
                     </td>

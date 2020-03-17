@@ -1,4 +1,5 @@
     <!-- Header -->
+    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('swal'); ?>"></div>
     <div class="header pb-8 pt-5 pt-md-8" style="background-color:#82ae46">
       <div class="container-fluid">
         <div class="header-body">
@@ -26,7 +27,7 @@
       </div>
     </div>
     <div class="container-fluid mt--7">
-      <?= $this->session->flashdata('message'); ?>
+      <!-- <?= $this->session->flashdata('message'); ?> -->
       <div class="row mt-5">
         <div class="col-xl mb-5 mb-xl">
           <div class="card shadow">
@@ -88,7 +89,7 @@
                                   </a>
                                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                       <a class="dropdown-item" href="<?= base_url('admin/user_detail/').$l['id']; ?>">Detail</a>
-                                      <a class="dropdown-item text-danger" onclick="return confirm('Delete this user?')" href="<?= base_url('admin/delete_user/').$l['id']; ?>">Delete</a>
+                                      <a class="dropdown-item text-danger del-btn" href="<?= base_url('admin/delete_user/').$l['id']; ?>">Delete</a>
                                   </div>
                               </div>
                           </td>
