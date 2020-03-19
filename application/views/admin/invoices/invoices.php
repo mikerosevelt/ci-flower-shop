@@ -1,28 +1,23 @@
 <!-- Header -->
-<div class="header pb-8 pt-5 pt-md-8" style="background-color:#82ae46">
+<div class="header pb-8 pt-5 pt-md-8 bg-default">
 <div class="container-fluid">
   <div class="header-body">
     <!-- Card stats -->
     <div class="row">
       <div class="col-xl col-lg-6">
-        <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card card-stats mb-4 mb-xl-0 bg-light">
           <div class="card-body">
             <div class="row">
               <div class="col">
                 <h5 class="card-title text-uppercase text-muted mb-0">Invoices</h5>
                 <span class="h2 font-weight-bold mb-0"><?= $total; ?></span>
               </div>
-              <div class="col-auto">
-                <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                  <i class="fas fas"></i>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="col-xl col-lg-6">
-        <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card card-stats mb-4 mb-xl-0 bg-light">
           <div class="card-body">
             <div class="row">
               <div class="col">
@@ -34,7 +29,7 @@
         </div>
       </div>
       <div class="col-xl col-lg-6">
-        <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card card-stats mb-4 mb-xl-0 bg-light">
           <div class="card-body">
             <div class="row">
               <div class="col">
@@ -49,19 +44,19 @@
   </div>
 </div>
 </div>
-<div class="container-fluid mt--7">
-<div class="row mt-5">
+<div class="container-fluid mt--7 bg-default">
+<div class="row mt-7">
   <div class="col-xl mb-5 mb-xl">
     <?= $this->session->flashdata('message'); ?>
-    <div class="card shadow">
-      <div class="card-header">
-        <h2 class="float-left">Invoice List</h2>
-        <input class="form-control col-md-3 float-right" type="text" id="search" placeholder="Type to search">
+    <div class="card shadow bg-default">
+      <div class="card-header bg-default">
+        <h2 class="float-left text-light">Invoice List</h2>
+        <input class="form-control col-md-3 float-right bg-light" type="text" id="search" placeholder="Type to search">
       </div>
       <div class="table-responsive">
         <div>
-        <table class="table align-items-center table-hover table-sortable" id="table">
-            <thead class="thead-light">
+        <table class="table align-items-center table-hover table-sortable table-dark">
+            <thead class="thead-dark">
                 <tr>
                     <th scope="col">
                         #

@@ -1,8 +1,8 @@
 <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer bg-default">
       <div class="row align-items-center justify-content-xl-between">
         <div class="col-xl">
-          <div class="copyright text-center text-xl-centertext-muted">
+          <div class="copyright text-center text-xl-center text-muted">
             &copy; <?= date('Y'); ?> <a href="" class="font-weight-bold ml-1" target="_blank">Flower Shop</a>
           </div>
         </div>

@@ -1,6 +1,6 @@
     <!-- Header -->
     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('swal'); ?>"></div>
-    <div class="header pb-8 pt-5 pt-md-8" style="background-color:#82ae46">
+    <div class="header pb-8 pt-5 pt-md-8 bg-default">
       <div class="container-fluid">
         <div class="header-body">
           <!-- Card stats -->
@@ -21,20 +21,9 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid mt--7">
+    <div class="container-fluid">
       <div class="row mt-5">
-        <div class="col-xl mb-5 mb-xl">
-          <div class="card shadow">
-            <div class="table-responsive">
-              <div>
-              	<h1>1</h1>
-              	<h1>1</h1>
-              	<h1>1</h1>
-              	<h1>1</h1>
-              	<h1>1</h1>
-              	<h1>1</h1>
-              </div>
-            </div>
-          </div>
+        <div class="">
+        	<h1>Report Overview</h1>
         </div>
       </div>

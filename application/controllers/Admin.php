@@ -76,7 +76,7 @@ class Admin extends CI_Controller
 		$data['total'] = $this->db->get('invoice')->num_rows();
 
 		$this->load->view('templates/admin_header', $data);
-		$this->load->view('admin/invoices/index',$data);
+		$this->load->view('admin/invoices/invoices',$data);
 		$this->load->view('templates/admin_footer');
 	}
 
@@ -107,6 +107,15 @@ class Admin extends CI_Controller
 		$this->load->view('templates/admin_footer');
 	}
 
+	public function myProfile()
+	{
+		$data['title'] = 'My Profile';
+
+		$this->load->view('templates/admin_header', $data);
+		$this->load->view('admin/profile/index');
+		$this->load->view('templates/admin_footer');
+	}
+
 	/*
 	* USER PART
 	*/
@@ -132,11 +141,23 @@ class Admin extends CI_Controller
 		
 	}
 
-	public function delete_user($id)
+	public function delete_user()
 	{
-		$this->User_model->deleteUser($id);
-		$this->session->set_flashdata('swal', 'User has been deleted');
-		redirect('admin/users');
+		$id = $this->uri->segment(3);
+		if ($id) {
+			$this->User_model->deleteUser($id);
+			$this->session->set_flashdata('swal', 'User has been deleted');
+			redirect('admin/users');
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  													Something went wrong.
+  													<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    												<span aria-hidden="true">&times;</span>
+  													</button>
+													</div>');
+			redirect('admin/users');
+		}
+		
 	}
 
 	public function resendActivationEmail()

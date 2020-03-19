@@ -1,11 +1,12 @@
 <!-- Header -->
-<div class="header pb-8 pt-5 pt-md-8" style="background-color:#82ae46">
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('swal'); ?>"></div>
+<div class="header pb-8 pt-5 pt-md-8 bg-default">
 <div class="container-fluid">
   <div class="header-body">
     <!-- Card stats -->
     <div class="row">
       <div class="col-xl-3 col-lg-6">
-        <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card card-stats mb-4 mb-xl-0 bg-light">
           <div class="card-body">
             <div class="row">
               <div class="col">
@@ -25,19 +26,19 @@
   </div>
 </div>
 </div>
-<div class="container-fluid mt--7">
+<div class="container-fluid mt--7 bg-default">
 <div class="row mt-5">
   <div class="col-xl mb-5 mb-xl">
     <!-- <?= $this->session->flashdata('message'); ?> -->
-    <div class="card shadow">
-      <div class="card-header">
-        <h2 class="float-left">All Order List</h2>
-        <input class="form-control col-md-3 float-right" type="text" id="search" placeholder="Type to search">
+    <div class="card shadow bg-default">
+      <div class="card-header bg-default">
+        <h2 class="float-left text-light">All Order List</h2>
+        <input class="form-control col-md-3 float-right bg-light" type="text" id="search" placeholder="Type to search">
       </div>
       <div class="table-responsive">
         <div>
-        <table class="table align-items-center table-hover table-sortable" id="table">
-            <thead class="thead-light">
+        <table class="table align-items-center table-hover table-sortable table-dark">
+            <thead class="thead-dark">
                 <tr>
                     <th scope="col">
                         #
@@ -94,8 +95,8 @@
                     </td>
                     <td class="text-right">
                         <div class="dropdown">
-                            <a class="btn btn-sm btn-icon-only text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="fas fa-ellipsis-v"></i>
+                            <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-ellipsis-v text-light"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                 <a class="dropdown-item" href="<?= base_url('admin/orderdetail/') . $ol['id']; ?>">Detail</a>

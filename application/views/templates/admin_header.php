@@ -25,7 +25,7 @@
 ?>
 
 <body class="">
-  <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
+  <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-default text-light" id="sidenav-main ">
     <div class="container-fluid">
       <!-- Toggler -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,11 +50,11 @@
             <div class=" dropdown-header noti-title">
               <h6 class="text-overflow m-0">Welcome!</h6>
             </div>
-            <a href="./examples/profile.html" class="dropdown-item">
+            <a href="<?= base_url('admin/myProfile'); ?>" class="dropdown-item">
               <i class="ni ni-single-02"></i>
               <span>My profile</span>
             </a>
-            <a href="./examples/profile.html" class="dropdown-item">
+            <a href="<?= base_url('admin/settings'); ?>" class="dropdown-item">
               <i class="ni ni-settings-gear-65"></i>
               <span>Settings</span>
             </a>
@@ -97,33 +97,34 @@
         </form>
         <!-- Navigation -->
         <ul class="navbar-nav">
-          <li class="nav-item  class=">
-            <a class=" nav-link " href="<?= base_url('admin'); ?>"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
+          <li class="nav-item text-light">
+            <a class="nav-link" href="<?= base_url('admin'); ?>"> <i class="ni ni-tv-2 text-primary"></i>
+              <span class="text-light">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="<?= base_url('admin/users'); ?>">
-              <i class="ni ni-single-02 text-blue"></i> Users
+            <a class="nav-link" href="<?= base_url('admin/users'); ?>">
+              <i class="ni ni-single-02 text-blue"></i><span class="text-light">Users</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="<?= base_url('admin/orders'); ?>">
-              <i class="ni ni-chart-bar-32 text-orange"></i> Orders
+            <a class="nav-link" href="<?= base_url('admin/orders'); ?>">
+              <i class="ni ni-chart-bar-32 text-orange"></i><span class="text-light">Orders</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="<?= base_url('admin/products'); ?>">
-              <i class="ni ni-books text-yellow"></i> Products
+              <i class="ni ni-books text-yellow"></i><span class="text-light">Products</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="<?= base_url('admin/invoices'); ?>">
-              <i class="ni ni-money-coins text-green"></i> Invoices / Transactions
+              <i class="ni ni-money-coins text-green"></i><span class="text-light">Invoices / Transactions</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="<?= base_url('admin/reports'); ?>">
-              <i class="ni ni-chart-pie-35 text-red"></i> Reports
+            <a class="nav-link" href="<?= base_url('admin/reports'); ?>">
+              <i class="ni ni-chart-pie-35 text-red"></i><span class="text-light">Reports</span>
             </a>
           </li>
         </ul>
@@ -134,17 +135,17 @@
         <ul class="navbar-nav mb-md-3">
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('admin/help'); ?>">
-              <i class="ni ni-support-16"></i> Help
+              <i class="ni ni-support-16 text-danger"></i><span class="text-light">Help</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('admin/settings'); ?>">
-              <i class="ni ni-settings-gear-65"></i> Settings
+              <i class="ni ni-settings-gear-65 text-gray"></i><span class="text-light">Settings</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
-              <i class="ni ni-user-run"></i> Logout
+              <i class="ni ni-user-run text-danger"></i><span class="text-light">Logout</span>
             </a>
           </li>
         </ul>
@@ -173,7 +174,7 @@
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="<?= base_url('assets/'); ?>img/default.png">
+                  <img alt="Image placeholder" src="<?= base_url('assets/'); ?>img/theme/team-4-800x800.jpg">
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
                   <span class="mb-0 text-sm  font-weight-bold"><?= $admin['name']; ?></span>
@@ -184,7 +185,7 @@
               <div class=" dropdown-header noti-title">
                 <h6 class="text-overflow m-0">Welcome!</h6>
               </div>
-              <a href="" class="dropdown-item">
+              <a href="<?= base_url('admin/myProfile'); ?>" class="dropdown-item">
                 <i class="ni ni-single-02"></i>
                 <span>My profile</span>
               </a>

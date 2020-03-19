@@ -1,11 +1,11 @@
 <!-- Header -->
-<div class="header pb-8 pt-5 pt-md-8" style="background-color:#82ae46">
+<div class="header pb-8 pt-5 pt-md-8 bg-default">
 <div class="container-fluid">
   <div class="header-body">
     <!-- Card stats -->
     <div class="row">
       <div class="col-xl-3 col-lg-6">
-        <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card card-stats mb-4 mb-xl-0 bg-light">
           <div class="card-body">
             <div class="row">
               <div class="col">
@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="col-xl-3 col-lg-6">
-        <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card card-stats mb-4 mb-xl-0 bg-light">
           <div class="card-body">
             <div class="row">
               <div class="col">
@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="col-xl-3 col-lg-6">
-        <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card card-stats mb-4 mb-xl-0 bg-light">
           <div class="card-body">
             <div class="row">
               <div class="col">
@@ -56,7 +56,7 @@
         </div>
       </div>
       <div class="col-xl-3 col-lg-6">
-        <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card card-stats mb-4 mb-xl-0 bg-light">
           <div class="card-body">
             <div class="row">
               <div class="col">
@@ -76,14 +76,14 @@
   </div>
 </div>
 </div>
-<div class="container-fluid mt--7">
-<div class="row mt-5">
+<div class="container-fluid mt--7 bg-default">
+<div class="row mt-6">
   <div class="col-xl mb-5 mb-xl">
-    <div class="card shadow">
-      <div class="card-header border-0">
+    <div class="card shadow bg-default">
+      <div class="card-header bg-default">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="mb-0">User List</h3>
+            <h3 class="mb-0 text-light">User List</h3>
           </div>
           <div class="col text-right">
             <a href="<?= base_url('admin/users'); ?>" class="btn btn-sm btn-primary">See all user</a>
@@ -92,8 +92,9 @@
       </div>
       <div class="table-responsive">
         <!-- Projects table -->
-        <table class="table align-items-center table-flush">
-          <thead class="thead-light">
+        <div>
+        <table class="table align-items-center table-flush table-dark">
+          <thead class="thead-dark">
             <tr>
               <th scope="col">Customer name</th>
               <th scope="col">Email</th>
@@ -114,13 +115,14 @@
                 <?= $l['status'] = 'Active'; ?>
               </td>
               <td>
-                <!-- <?= $this->User_model->time_ago($l['last_login']); ?> -->
                 <?= time_ago($l['last_login']) ?>
               </td>
             </tr>
           <?php endforeach; ?>
           </tbody>
         </table>
+        </div>
+
       </div>
     </div>
   </div>
