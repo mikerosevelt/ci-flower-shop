@@ -32,7 +32,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Brand -->
-      <a class="navbar-brand pt-0" href="">
+      <a class="navbar-brand pt-0" href="<?= base_url('admin'); ?>">
         <img src="<?= base_url('assets/'); ?>img/logo.png" class="navbar-brand-img" alt="...">
       </a>
       <!-- User -->
@@ -41,7 +41,7 @@
           <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="<?= base_url('assets/'); ?>img/default.png
+                <img alt="Image placeholder" src="<?= base_url('assets/'); ?>img/theme/team-1-800x800.jpg
 ">
               </span>
             </div>
@@ -67,13 +67,13 @@
         </li>
       </ul>
       <!-- Collapse -->
-      <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+      <div class="collapse navbar-collapse bg-default" id="sidenav-collapse-main">
         <!-- Collapse header -->
         <div class="navbar-collapse-header d-md-none">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <a href="">
-                <!-- <img src="<?= base_url('assets/'); ?>img/brand/blue.png"> -->
+              <a href="#">
+                <img src="<?= base_url('assets/'); ?>img/logo.png">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -87,7 +87,7 @@
         <!-- Form -->
         <form class="mt-4 mb-3 d-md-none">
           <div class="input-group input-group-rounded input-group-merge">
-            <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
+            <input type="search" class="form-control form-control-rounded form-control-prepended bg-light" placeholder="Search" aria-label="Search">
             <div class="input-group-prepend">
               <div class="input-group-text">
                 <span class="fa fa-search"></span>
@@ -129,7 +129,7 @@
           </li>
         </ul>
         <!-- Divider -->
-        <hr class="my-3">
+        <hr class="my-3 bg-light">
         <!-- Heading -->
         <!-- Navigation -->
         <ul class="navbar-nav mb-md-3">
@@ -149,7 +149,7 @@
             </a>
           </li>
         </ul>
-        <a class="text-center mt-3">Version 0.1.0</a>
+        <small class="text-center mt-3">Version 0.1.0</small>
       </div>
     </div>
   </nav>
@@ -174,7 +174,7 @@
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="<?= base_url('assets/'); ?>img/theme/team-4-800x800.jpg">
+                  <img alt="Image placeholder" src="<?= base_url('assets/'); ?>img/theme/team-1-800x800.jpg">
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
                   <span class="mb-0 text-sm  font-weight-bold"><?= $admin['name']; ?></span>

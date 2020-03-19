@@ -83,7 +83,7 @@
       <div class="card-header bg-default">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="mb-0 text-light">User List</h3>
+            <h3 class="mb-0 text-light">User Activity</h3>
           </div>
           <div class="col text-right">
             <a href="<?= base_url('admin/users'); ?>" class="btn btn-sm btn-primary">See all user</a>
@@ -96,7 +96,7 @@
         <table class="table align-items-center table-flush table-dark">
           <thead class="thead-dark">
             <tr>
-              <th scope="col">Customer name</th>
+              <th scope="col">Name</th>
               <th scope="col">Email</th>
               <th scope="col">status</th>
               <th scope="col">Last Login</th>

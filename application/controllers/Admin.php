@@ -18,6 +18,7 @@ class Admin extends CI_Controller
 		$this->load->model('User_model');
 		$this->load->model('Product_model');
 		$this->load->model('Order_model');
+		$this->load->model('Invoices_model');
 	}
 
 	public function index()
@@ -73,6 +74,7 @@ class Admin extends CI_Controller
 	{
 		$data['title'] = 'Invoices';
 		// $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['list'] = $this->Invoices_model->getAllInvoiceList()->result_array();
 		$data['total'] = $this->db->get('invoice')->num_rows();
 
 		$this->load->view('templates/admin_header', $data);
@@ -110,9 +112,11 @@ class Admin extends CI_Controller
 	public function myProfile()
 	{
 		$data['title'] = 'My Profile';
-
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$id = $data['user']['id'];
+		$data['detail'] = $this->User_model->getUserDetail($id)->row_array();
 		$this->load->view('templates/admin_header', $data);
-		$this->load->view('admin/profile/index');
+		$this->load->view('admin/profile/index', $data);
 		$this->load->view('templates/admin_footer');
 	}
 
