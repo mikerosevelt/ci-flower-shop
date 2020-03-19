@@ -114,7 +114,8 @@
                 <?= $l['status'] = 'Active'; ?>
               </td>
               <td>
-                <?= $this->User_model->time_ago($l['last_login']); ?>
+                <!-- <?= $this->User_model->time_ago($l['last_login']); ?> -->
+                <?= time_ago($l['last_login']) ?>
               </td>
             </tr>
           <?php endforeach; ?>
