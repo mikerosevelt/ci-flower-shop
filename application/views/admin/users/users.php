@@ -32,11 +32,22 @@
         <div class="col-xl mb-5 mb-xl">
           <div class="card shadow bg-default">
             <div class="card-header bg-default">
-              <input class="form-control col-md-3 float-right bg-light" type="text" id="search" placeholder="Type to search">
+              <!-- <h2 class="float-left text-light">All Customers</h2> -->
+              <!-- <input class="form-control col-md-3 float-right bg-light" type="text" id="search" placeholder="Type to search"> -->
+              <div class="form-group row m-0">
+                <select name="" class="float-left bg-light form-control col-sm-1">
+                <option value="">5</option>
+                <option value="">10</option>
+                option
+              </select>
+              <div class="col-sm-11">
+                <input class="form-control float-right bg-light col-sm-3" type="text" id="search" placeholder="Type to search">
+              </div>
+            </div>
             </div>
             <div class="table-responsive">
               <div>
-              <table class="table table-hover table-sortable table-dark">
+              <table class="table table-hover table-sortable table-dark" id="table">
                   <thead class="thead-dark">
                       <tr>
                           <th scope="col">#</th>

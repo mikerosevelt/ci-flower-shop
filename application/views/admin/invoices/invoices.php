@@ -55,7 +55,7 @@
       </div>
       <div class="table-responsive">
         <div>
-        <table class="table align-items-center table-hover table-sortable table-dark">
+        <table class="table align-items-center table-hover table-sortable table-dark" id="table">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">

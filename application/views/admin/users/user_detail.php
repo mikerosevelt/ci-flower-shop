@@ -1,6 +1,6 @@
     <!-- Header -->
     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('swal'); ?>"></div>
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="background-color:#82ae46">
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center bg-default">
       <!-- Mask -->
       <span class="mask opacity-8"></span>
       <!-- Header container -->
@@ -23,10 +23,10 @@
     </div>
     
     <!-- Page content -->
-    <div class="container-fluid mt--7">
+    <div class="container-fluid mt--7 bg-default">
       <div class="row">
         <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-          <div class="card card-profile shadow">
+          <div class="card card-profile shadow bg-default">
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
               </div>
@@ -39,7 +39,7 @@
             </div> -->
             <div class="card-body pt-0 pt-md-0">
               <div class="text-center pt-3">
-                <h3>
+                <h3 class="text-white">
                   <?= $detail['name']; ?>
                 </h3>
                 <div class="h5 font-weight-300">
@@ -49,14 +49,14 @@
                     <i class="ni location_pin mr-2"></i><span class="text-danger">Inactive</span>
                 <?php endif; ?>
                 </div>
-                <div>
-                  <i class="ni education_hat mr-2"></i>Member since <?= date('d F Y', $detail['date_created']); ?>
+                <div class="text-white">
+                  Member since <?= date('d F Y', $detail['date_created']); ?>
                 </div>
               </div>
               <div>
                 <hr class="my-4" />
-                <h3 class="text-center">User Id[<?= $detail['id'] ?>]</h3>
-                <table class="table-striped mx-auto" width="100%">
+                <h3 class="text-center text-light">User Id[<?= $detail['id'] ?>]</h3>
+                <table class="table-striped mx-auto text-light" width="100%">
                   <tr>
                    <td><small>Last Login</small></td> 
                    <td class="float-right"><small><?= date('H:i:s d F Y', $detail['last_login']); ?></small></td> 
@@ -82,11 +82,11 @@
           </div>
         </div>
         <div class="col-xl-8 order-xl-1">
-          <div class="card bg-secondary shadow">
-            <div class="card-header bg-white border-0">
+          <div class="card bg-default shadow">
+            <div class="card-header bg-transparent border-0">
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h3 class="mb-0">User Detail</h3>
+                  <h3 class="mb-0 text-white">User Detail</h3>
                 </div>
                 <div class="col-4 text-right">
                   <a href="#!" class="btn btn-sm btn-danger">Delete</a>
@@ -101,13 +101,13 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-username">Phone</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="" value="<?= $detail['phone']; ?>">
+                        <input type="text" id="input-username" class="form-control form-control-alternative bg-light" placeholder="" value="<?= $detail['phone']; ?>">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Email address</label>
-                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="" value="<?= $detail['email']; ?>">
+                        <input type="email" id="input-email" class="form-control form-control-alternative bg-light" placeholder="" value="<?= $detail['email']; ?>">
                       </div>
                     </div>
                   </div>
@@ -115,7 +115,7 @@
                     <div class="col-lg-12">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Full name</label>
-                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="" value="<?= $detail['name']; ?>">
+                        <input type="text" id="input-first-name" class="form-control form-control-alternative bg-light" placeholder="" value="<?= $detail['name']; ?>">
                       </div>
                     </div>
                   </div>
@@ -128,13 +128,13 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class="form-control-label" for="input-address">Address</label>
-                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="<?= $detail['address']; ?>" type="text">
+                        <input id="input-address" class="form-control form-control-alternative bg-light" placeholder="Home Address" value="<?= $detail['address']; ?>" type="text">
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <label class="form-control-label" for="input-address">Address 2</label>
-                        <input id="input-address" class="form-control form-control-alternative" placeholder="Appartment, suite, unit etc: (optional)" value="<?= $detail['address_2']; ?>" type="text">
+                        <input id="input-address" class="form-control form-control-alternative bg-light" placeholder="Appartment, suite, unit etc: (optional)" value="<?= $detail['address_2']; ?>" type="text">
                       </div>
                     </div>
                   </div>
@@ -142,25 +142,25 @@
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-city">City</label>
-                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="<?= $detail['city']; ?>">
+                        <input type="text" id="input-city" class="form-control bg-light form-control-alternative" placeholder="City" value="<?= $detail['city']; ?>">
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-city">State</label>
-                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="<?= $detail['state']; ?>">
+                        <input type="text" id="input-city" class="form-control bg-light form-control-alternative" placeholder="City" value="<?= $detail['state']; ?>">
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-country">Country</label>
-                        <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="<?= $detail['country']; ?>">
+                        <input type="text" id="input-country" class="form-control bg-light form-control-alternative" placeholder="Country" value="<?= $detail['country']; ?>">
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-country">Postal code</label>
-                        <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="<?= $detail['zipcode']; ?>">
+                        <input type="text" id="input-postal-code" class="form-control bg-light form-control-alternative" placeholder="Postal Code" value="<?= $detail['zipcode']; ?>">
                       </div>
                     </div>
                   </div>

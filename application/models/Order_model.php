@@ -12,6 +12,28 @@ class Order_model extends CI_Model {
         return $this->db->query($query);
 	}
 
+	public function getOrders($limit, $start)
+	{
+		// $query = "SELECT `order`.*, `user`.`name`,`user`.`email`
+  //         FROM `order`
+  //         JOIN `user` ON `order`.`user_id` = `user`.`id`";
+
+        // return $this->db->query($query)->result_array();
+
+        $this->db->limit($limit, $start);
+        $this->db->select('*');
+        $this->db->from('order');
+        $this->db->join('user', 'user.id = order.user_id');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+	}
+
 	public function deleteOrder($id)
 	{
 		$this->db->where('id', $id);

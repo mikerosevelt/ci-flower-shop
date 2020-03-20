@@ -52,7 +52,18 @@ class Admin extends CI_Controller
 	{
 		$data['title'] = 'Orders';
 		$data['total'] = $this->db->get('order')->num_rows();
-        $data['list'] = $this->Order_model->getAllOrder()->result_array();;
+        
+        // Pagination Config
+        $config['base_url'] = 'http://localhost/flower/admin/orders';
+        $config['total_rows'] = $data['total'];
+        $config['per_page'] = 1;
+        // $config['num_links'] = 1;
+
+        $this->pagination->initialize($config);
+        $data['links'] = $this->pagination->create_links();
+
+        $start = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		$data['list'] = $this->Order_model->getOrders($config['per_page'], $start);
 
 		$this->load->view('templates/admin_header', $data);
 		$this->load->view('admin/orders/orders',$data);
