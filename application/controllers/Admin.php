@@ -131,7 +131,7 @@ class Admin extends CI_Controller
 		$this->load->view('templates/admin_footer');
 	}
 
-	/*
+	/**
 	* USER PART
 	*/
 	public function user_detail()
@@ -193,10 +193,9 @@ class Admin extends CI_Controller
 
 	private function _sendEmail($token)
     {
-        require_once('__config.php');
-        $smtp_config = $config;
-        $this->load->library('email', $smtp_config);
-        $this->email->initialize($smtp_config);
+        $this->load->library('email', $config);
+        // You will NOT need to use the $this->email->initialize() method if you save your preferences in a config file.
+        // $this->email->initialize($config);
         $this->email->from('noreply@flowershop.com', 'Flower Shop'); // from email and from name.
         $this->email->to($this->input->post('email'));
         $this->email->subject('User Activation');
@@ -211,7 +210,7 @@ class Admin extends CI_Controller
         }
     }
 
-	/*
+	/**
 	* ORDER PART
 	*/
 	public function orderDetail()
@@ -322,19 +321,19 @@ class Admin extends CI_Controller
 		redirect('admin/products');
 	}
 
-	/*
+	/**
 	* INVOICES PART
 	*/
 
-	/*
+	/**
 	* REPORTS PART
 	*/
 
-	/*
+	/**
 	* HELP PART
 	*/
 
-	/*
+	/**
 	* SETTINGS PART
 	*/
 }

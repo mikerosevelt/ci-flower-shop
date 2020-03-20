@@ -58,20 +58,12 @@ class Cart extends CI_Controller
 
 	private function _sendEmail()
     {
-    	$cart = $this->cart->contents();
-		foreach ($cart as $c) {
-    	}
+        $this->load->library('email', $config);
 
-        require_once('__config.php');
-
-        $smtp_config = $config;
-
-        $this->load->library('email', $smtp_config);
-
-        $this->email->initialize($smtp_config);
+        // You will NOT need to use the $this->email->initialize() method if you save your preferences in a config file.
+        // $this->email->initialize($config);
 
         $table = '';
-
         foreach ($this->cart->contents() as $c) {
         	$table .= '<tr>
 				<td>' .$c['name'] . '</td>
