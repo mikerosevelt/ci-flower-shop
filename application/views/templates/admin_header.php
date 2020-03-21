@@ -17,11 +17,11 @@
   <!-- CSS Files -->
   <link href="<?= base_url('assets/'); ?>css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
   <!-- CUSTOM CSS -->
-  <link href="<?= base_url('assets/'); ?>css/tables.css" rel="stylesheet" /> 
+  <link href="<?= base_url('assets/'); ?>css/tables.css" rel="stylesheet" />
 </head>
 
 <?php
-  $admin = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+$admin = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 ?>
 
 <body class="">
@@ -128,20 +128,20 @@
             </a>
           </li>
           <li class="nav-item">
-              <a class="nav-link collapsed" href="#navbar-tables" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-tables">
-                <i class="ni ni-align-left-2 text-default"></i>
-                <span class="nav-link-text text-light">Tables</span>
-              </a>
-              <div class="collapse" id="navbar-tables" style="">
-                <ul class="nav nav-sm flex-column">
-                  <li class="nav-item">
-                    <a href="../../pages/tables/tables.html" class="nav-link">
-                      <span class="sidenav-normal text-light"> Tables </span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
+            <a class="nav-link collapsed" href="#navbar-tables" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-tables">
+              <i class="ni ni-align-left-2 text-default"></i>
+              <span class="nav-link-text text-light">Tables</span>
+            </a>
+            <div class="collapse" id="navbar-tables">
+              <ul class="nav nav-sm flex-column">
+                <li class="nav-item">
+                  <a href="../../pages/tables/tables.html" class="nav-link">
+                    <span class="sidenav-normal text-light"> Tables </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
         </ul>
         <!-- Divider -->
         <hr class="my-3 bg-light">

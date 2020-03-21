@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <?php
-  $admin = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+$admin = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 ?>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,24 +23,24 @@
   <link href="<?= base_url('assets/'); ?>js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
   <!-- Page plugins -->
 
-    <!-- DataTables -->
+  <!-- DataTables -->
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css">
   <!-- Argon CSS -->
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/argon.min9f1e.css?v=1.2.0" type="text/css">
   <!-- Google Tag Manager -->
-  
+
   <!-- End Google Tag Manager -->
 </head>
 
 <body>
   <!-- Google Tag Manager (noscript) -->
-  
+
   <!-- End Google Tag Manager (noscript) -->
   <!-- Sidenav -->
   <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-default" id="sidenav-main">
-    <div class="scrollbar-inner">  
+    <div class="scrollbar-inner">
       <!-- Brand -->
       <div class="sidenav-header d-flex align-items-center">
         <a class="navbar-brand" href="../../pages/dashboards/dashboard.html">
@@ -68,10 +69,10 @@
               </a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('admin/users'); ?>">
-              <i class="ni ni-single-02 text-blue"></i>
-              <span class="nav-link-text text-light">Users</span>
-            </a>
+              <a class="nav-link" href="<?= base_url('admin/users'); ?>">
+                <i class="ni ni-single-02 text-blue"></i>
+                <span class="nav-link-text text-light">Users</span>
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?= base_url('admin/orders'); ?>">
@@ -97,7 +98,7 @@
                 <span class="nav-link-text text-light">Reports</span>
               </a>
             </li>
-          <!-- <li class="nav-item">
+            <!-- <li class="nav-item">
             <a class="nav-link" href="#navbar-maps" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-maps">
               <i class="ni ni-map-big text-primary"></i>
               <span class="nav-link-text">Maps</span>
@@ -129,26 +130,26 @@
           </h6> -->
           <!-- Navigation -->
           <ul class="navbar-nav mb-md-3">
-          <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('admin/help'); ?>">
-              <i class="ni ni-support-16 text-danger"></i>
-              <span class="nav-link-text text-light">Help</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('admin/settings'); ?>">
-              <i class="ni ni-settings-gear-65 text-gray"></i>
-              <span class="nav-link-text text-light">Settings</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
-              <i class="ni ni-user-run text-danger"></i>
-              <span class="nav-link-text text-light">Logout</span>
-            </a>
-          </li>
-        </ul>
-        <small class="text-center mt-3">Version 0.1.0</small>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= base_url('admin/help'); ?>">
+                <i class="ni ni-support-16 text-danger"></i>
+                <span class="nav-link-text text-light">Help</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= base_url('admin/settings'); ?>">
+                <i class="ni ni-settings-gear-65 text-gray"></i>
+                <span class="nav-link-text text-light">Settings</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= base_url('auth/logout'); ?>">
+                <i class="ni ni-user-run text-danger"></i>
+                <span class="nav-link-text text-light">Logout</span>
+              </a>
+            </li>
+          </ul>
+          <small class="text-center mt-3">Version 0.1.0</small>
         </div>
       </div>
     </div>

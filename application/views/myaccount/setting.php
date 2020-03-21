@@ -1,10 +1,10 @@
 <div class="container">
-	<div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-          	<br>
+    <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center">
+            <br>
             <h1 class="mt-3 bread">Account Setting</h1>
-          </div>
         </div>
+    </div>
 
     <div class="row">
         <div class="col-lg-6">

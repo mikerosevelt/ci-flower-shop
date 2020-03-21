@@ -1,17 +1,17 @@
 <!-- Footer -->
-    <footer class="footer bg-default">
-      <div class="row align-items-center justify-content-xl-between">
-        <div class="col-xl">
-          <div class="copyright text-center text-xl-center text-muted">
-            &copy; <?= date('Y'); ?> <a href="" class="font-weight-bold ml-1" target="_blank">Flower Shop</a>
-          </div>
-        </div>
+<footer class="footer bg-default">
+  <div class="row align-items-center justify-content-xl-between">
+    <div class="col-xl">
+      <div class="copyright text-center text-xl-center text-muted">
+        &copy; <?= date('Y'); ?> <a href="" class="font-weight-bold ml-1" target="_blank">Flower Shop</a>
       </div>
-    </footer>
+    </div>
   </div>
+</footer>
+</div>
 </div>
 <script type="text/javascript">
-let url = '<?= base_url(); ?>';
+  let url = '<?= base_url(); ?>';
 </script>
 <!--   Core   -->
 <script src="<?= base_url('assets/'); ?>js/plugins/jquery/dist/jquery-3.4.1.js"></script>
