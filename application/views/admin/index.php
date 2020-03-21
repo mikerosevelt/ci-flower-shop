@@ -78,7 +78,7 @@
 </div>
 <div class="container-fluid mt--7 bg-default">
   <div class="row">
-  <div class="col-xl mb-5 mb-xl-0">
+  <div class="col-xl-8 mb-5 mb-xl-0">
     <div class="card bg-gradient-default shadow">
       <div class="card-header bg-transparent">
         <div class="row align-items-center">
@@ -114,19 +114,19 @@
     </div>
   </div>
   <div class="col-xl-4">
-    <div class="card shadow bg-gradient-default">
+    <div class="card bg-gradient-default shadow">
       <div class="card-header bg-transparent">
         <div class="row align-items-center">
           <div class="col">
-            <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-            <h2 class="mb-0 text-white">Total orders</h2>
+            <h6 class="text-uppercase text-light ls-1 mb-1">Performance</h6>
+            <h5 class="h3 mb-0 text-white">Total orders</h5>
           </div>
         </div>
       </div>
       <div class="card-body">
         <!-- Chart -->
         <div class="chart"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-          <canvas id="chart-orders" class="chart-canvas chartjs-render-monitor" width="414" height="350" style="display: block; width: 414px; height: 350px;"></canvas>
+          <canvas id="chart-bars" class="chart-canvas chartjs-render-monitor" width="484" height="700" style="display: block; width: 242px; height: 350px;"></canvas>
         </div>
       </div>
     </div>
@@ -144,10 +144,10 @@
           </div>
         </div>
       </div>
-      <div class="table-responsive">
+      <div class="mb-3">
         <!-- Projects table -->
-        <div>
-        <table class="table align-items-center table-flush table-dark">
+        <div class="table-responsive">
+        <table class="table align-items-center table-hover table-dark" id="datatable-basic">
           <thead class="thead-dark">
             <tr>
               <th scope="col">Name</th>

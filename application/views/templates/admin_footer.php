@@ -16,11 +16,15 @@ let url = '<?= base_url(); ?>';
 <!--   Core   -->
 <script src="<?= base_url('assets/'); ?>js/plugins/jquery/dist/jquery-3.4.1.js"></script>
 <script src="<?= base_url('assets/'); ?>js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/plugins/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/plugins/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+
 <!--   Optional JS   -->
 <script src="<?= base_url('assets/'); ?>js/plugins/chart.js/dist/Chart.min.js"></script>
 <script src="<?= base_url('assets/'); ?>js/plugins/chart.js/dist/Chart.extension.js"></script>
 <!--   Argon JS   -->
 <script src="<?= base_url('assets/'); ?>js/argon-dashboard.min.js?v=1.1.0"></script>
+<script src="<?= base_url('assets/'); ?>js/argon.min.js?v=1.2.0"></script>
 <script src="<?= base_url('assets/'); ?>js/sweetalert2.all.min.js"></script>
 <!-- Custom js -->
 <script src="<?= base_url('assets/'); ?>js/tables.js"></script>

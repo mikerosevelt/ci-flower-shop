@@ -31,22 +31,12 @@
   <div class="col-xl mb-5 mb-xl">
     <!-- <?= $this->session->flashdata('message'); ?> -->
     <div class="card shadow bg-default">
-      <div class="card-header bg-default">
-        <!-- <h2 class="float-left text-light">All Order List</h2> -->
-        <div class="form-group row m-0">
-            <select name="" class="float-left bg-light form-control col-sm-1">
-            <option value="">5</option>
-            <option value="">10</option>
-            option
-          </select>
-          <div class="col-sm-11">
-            <input class="form-control float-right bg-light col-sm-3" type="text" id="search" placeholder="Type to search">
-          </div>
-        </div>
+      <div class="card-header mb-2 bg-default">
+        <h2 class="text-light">All Orders</h2>
       </div>
-      <div class="table-responsive">
-        <div>
-        <table class="table align-items-center table-hover table-sortable table-dark" id="table">
+      <div class="mb-3">
+        <div class="table-responsive">
+        <table class="table table-hover table-dark" id="datatable-basic">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">
@@ -107,8 +97,8 @@
                             <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fas fa-ellipsis-v text-light"></i>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                <a class="dropdown-item" href="<?= base_url('admin/orderdetail/') . $ol['id']; ?>">Detail</a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow bg-light">
+                                <a class="dropdown-item text-dark" href="<?= base_url('admin/orderdetail/') . $ol['id']; ?>">Detail</a>
                                 <a class="dropdown-item text-danger del-btn" href="<?= base_url('admin/deleteorder/') . $ol['id']; ?>">Delete</a>
                             </div>
                         </div>
@@ -121,7 +111,6 @@
       </div>
       </div>
       <div>
-        <?= $links ?>
       </div>
     </div>
   </div>

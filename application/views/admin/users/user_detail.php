@@ -56,7 +56,7 @@
               <div>
                 <hr class="my-4" />
                 <h3 class="text-center text-light">User Id[<?= $detail['id'] ?>]</h3>
-                <table class="table-striped mx-auto text-light" width="100%">
+                <table class="mx-auto text-light" width="100%">
                   <tr>
                    <td><small>Last Login</small></td> 
                    <td class="float-right"><small><?= date('H:i:s d F Y', $detail['last_login']); ?></small></td> 

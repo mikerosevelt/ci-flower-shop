@@ -31,12 +31,13 @@
       <div class="row mt-5">
         <div class="col-xl mb-5 mb-xl">
           <div class="card shadow bg-default">
-            <div class="card-header bg-default">
-              <input class="form-control col-md-3 float-right bg-light" type="text" id="search" placeholder="Type to search">
+            <div class="card-header mb-2 bg-default">
+              <h2 class="text-light">All Products</h2>
+              <!-- <input class="form-control col-md-3 float-right bg-light" type="text" id="search" placeholder="Type to search"> -->
             </div>
-            <div class="table-responsive">
-              <div>
-                <table class="table table-hover align-items-center table-sortable table-dark">
+            <div class="mb-3">
+              <div class="table-responsive">
+                <table class="table table-hover align-items-center table-dark" id="datatable-basic">
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">
@@ -92,8 +93,8 @@
                             <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fas fa-ellipsis-v text-light"></i>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                              <a class="dropdown-item" href="<?= base_url('admin/detail_product/') . $li['id']; ?>">Detail</a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow bg-light">
+                              <a class="dropdown-item text-dark" href="<?= base_url('admin/detail_product/') . $li['id']; ?>">Detail</a>
                               <!-- <a class="dropdown-item" href="<?= base_url('admin/edit_product/') . $li['id']; ?>">Edit</a> -->
                               <a class="dropdown-item text-danger del-btn" href="<?= base_url('admin/delete_product/') . $li['id']; ?>">Delete</a>
                             </div>

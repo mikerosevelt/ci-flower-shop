@@ -1,5 +1,5 @@
     <!-- Header -->
-    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="background-color:#82ae46">
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center bg-default">
       <!-- Mask -->
       <span class="mask opacity-8"></span>
       <!-- Header container -->
@@ -7,19 +7,19 @@
         <div class="row">
           <div class="col-lg col-md-10">
             <h1 class="display-2 text-white">Product Detail</h1>
-            <a class="btn btn-secondary" href="<?= base_url('admin/products'); ?>" class="btn btn-sm btn-danger">back</a>
+            <a class="btn btn-light" href="<?= base_url('admin/products'); ?>" class="btn btn-sm btn-danger">back</a>
           </div>
         </div>
       </div>
     </div>
     <!-- Page content -->
-    <div class="container-fluid mt--7">
+    <div class="container-fluid mt--7 bg-default">
       <div class="row">
         <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
-          <div class="card card-profile shadow" style="width: 18rem;">
+          <div class="card card-profile shadow bg-default" style="width: 18rem;">
             <img class="card-img-top" src="<?= base_url('assets/img/') . $detail['image']; ?>" alt="Card image cap">
-            <div class="card-body pt-0 pt-md-0">
-              <h3 class="card-title mt-3"><?= $detail['name']; ?></h3>
+            <div class="card-body pt-0 pt-md-0 text-white">
+              <h3 class="card-title mt-3 text-white"><?= $detail['name']; ?></h3>
               <small>Added <?= date('d F Y', $detail['date_added']); ?></small><br>
               <small>Rp.<?= number_format($detail['price'], 0, ",", "."); ?></small>
               <p class="card-text"><?= $detail['description']; ?></p>
@@ -27,11 +27,11 @@
           </div>
         </div>
         <div class="col-xl-8 order-xl-1">
-          <div class="card bg-secondary shadow">
-            <div class="card-header bg-white border-0">
+          <div class="card bg-default shadow">
+            <div class="card-header bg-default border-0">
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h3 class="mb-0">Product Detail</h3>
+                  <h3 class="mb-0 text-light">Product Detail</h3>
                 </div>
                 <div class="col-4 text-right">
                   <a onclick="return confirm('Delete product?')" href="<?= base_url('admin/delete_product/') . $detail['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
@@ -46,14 +46,14 @@
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-username">Product Name</label>
-                        <input type="text" id="name" name="name" class="form-control form-control-alternative" value="<?= $detail['name']; ?>">
+                        <input type="text" id="name" name="name" class="form-control bg-light form-control-alternative" value="<?= $detail['name']; ?>">
                         <?= form_error('name', '<small class="text-danger pl-1">', '</small>'); ?>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Price</label>
-                        <input type="text" id="price" name="price" class="form-control form-control-alternative" value="<?= $detail['price']; ?>">
+                        <input type="text" id="price" name="price" class="form-control form-control-alternative bg-light" value="<?= $detail['price']; ?>">
                         <?= form_error('price', '<small class="text-danger pl-1">', '</small>'); ?>
                       </div>
                     </div>
@@ -71,7 +71,7 @@
                 <div class="pl-lg-4">
                   <div class="form-group">
                     <label>Description</label>
-                    <textarea id="description" name="description" required rows="4" value="<?= $detail['description']; ?>" class="form-control form-control-alternative"></textarea>
+                    <textarea id="description" name="description" required rows="4" value="<?= $detail['description']; ?>" class="form-control form-control-alternative bg-light"></textarea>
                     <?= form_error('description', '<small class="text-danger pl-1">', '</small>'); ?>
                   </div>
                 </div>

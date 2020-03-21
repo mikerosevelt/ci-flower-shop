@@ -1,16 +1,16 @@
 <!-- Header -->
-<div class="header pb-8 pt-5 pt-md-8" style="background-color:#82ae46">
+<div class="header pb-8 pt-5 pt-md-8 bg-default">
 <div class="container-fluid">
   <div class="header-body">
     <div class="mb-3">
-      <a class="btn btn-secondary" href="<?= base_url('admin/orders'); ?>" class="btn btn-sm btn-danger">back</a>
+      <a class="btn btn-light" href="<?= base_url('admin/orders'); ?>" class="btn btn-sm btn-danger">back</a>
     </div>
     <!-- Card stats -->
     <div class="row">
       <div class="col-xl col-lg-6">
-        <div class="card shadow card-stats mb-3 mb-xl-0">
+        <div class="card shadow card-stats mb-3 mb-xl-0 bg-transparent">
           <div class="card-body">
-            <table class="table-striped" width="100%">
+            <table class="table-striped table-dark" width="100%">
                 <tbody>
                   <tr>
                     <td width="50%" class="">Date / Time</td>
@@ -42,9 +42,9 @@
         </div>
       </div>
       <div class="col-xl col-lg-6">
-        <div class="card card-stats mb-3 mb-xl-0">
+        <div class="card shadow card-stats mb-3 mb-xl-0 bg-transparent">
           <div class="card-body">
-            <table class="table-striped" width="100%">
+            <table class="table-striped table-dark" width="100%">
                 <tbody>
                   <tr>
                     <td width="50%">Payment Method</td>
@@ -100,20 +100,20 @@
   </div>
 </div>
 </div>
-<div class="container-fluid mt--7">
+<div class="container-fluid mt--7 bg-default">
 <div class="row mt-5">
   <div class="col-xl mb-5 mb-xl">
-    <div class="card shadow">
-      <div class="card-header border-0">
+    <div class="card shadow bg-default">
+      <div class="card-header mb-2 border-0 bg-default">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="mb-0">Item List</h3>
+            <h3 class="mb-0 text-light">Item List</h3>
           </div>
         </div>
       </div>
-      <div class="table-responsive">
-        <table class="table">
-          <thead class="thead-light">
+      <div class="table-responsive mb-3">
+        <table class="table table-dark" id="datatable-basic">
+          <thead class="thead-dark">
               <th scope="col">Product</th>
               <th scope="col">Price</th>
               <th scope="col">Quantity</th>
@@ -129,7 +129,7 @@
             </tr>
           <?php endforeach; ?>
           </tbody>
-          <tfoot class="thead-light">
+          <tfoot class="thead-dark">
             <th colspan="2" class="text-right">Total :</th>
             <th colspan="2" class="">Rp.<?= number_format($detail['total'], 0, ",", "."); ?></th>
           </tfoot>

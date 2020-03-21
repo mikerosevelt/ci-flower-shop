@@ -1,5 +1,5 @@
 
-    <div class="header pb-8 pt-5 pt-md-8" style="background-color:#82ae46">
+    <div class="header pb-8 pt-5 pt-md-8 bg-gradient-default">
       <!-- Mask -->
       <span class="mask opacity-8"></span>
       <!-- Header container -->
@@ -12,37 +12,37 @@
       </div>
     </div>
     <!-- Page content -->
-    <div class="container-fluid mt--6">
+    <div class="container-fluid mt--6 bg-default">
       <div class="row">
         <div class="col-xl-8 order-xl">
-          <div class="card bg-secondary shadow">
-            <div class="card-header bg-white border-0">
+          <div class="card bg-default shadow">
+            <div class="card-header bg-default border-0">
               <div class="row align-items-center">
                 <div class="col-8">
                   <h3 class="mb-0">Product Detail</h3>
                 </div>
               </div>
             </div>
-            <div class="card-body">
+            <div class="card-body bg-default">
               <form method="post" action="<?= base_url('admin/addProduct'); ?>">
                 <div class="pl-lg">
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-username">Product Name</label>
-                        <input type="text" id="name" name="name" class="form-control form-control-alternative" placeholder="Product Name">
+                        <input type="text" id="name" name="name" class="form-control form-control-alternative bg-light" placeholder="Product Name">
                         <?= form_error('name', '<small class="text-danger pl-1">', '</small>'); ?>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Price</label>
-                        <input type="text" id="price" name="price" class="form-control form-control-alternative" placeholder="10000">
+                        <input type="text" id="price" name="price" class="form-control form-control-alternative bg-light" placeholder="10000">
                         <?= form_error('price', '<small class="text-danger pl-1">', '</small>'); ?>
                       </div>
                     </div>
                     <div class="col-lg-6">
-  					  <div class="form-group">
+  					  <div class="custom-file">
     					<label>Upload an image</label>
     					<input type="file" class="form-control-file" id="image" name="image">
   					  </div>

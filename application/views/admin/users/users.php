@@ -30,24 +30,15 @@
       <?= $this->session->flashdata('message'); ?>
       <div class="row mt-7">
         <div class="col-xl mb-5 mb-xl">
-          <div class="card shadow bg-default">
-            <div class="card-header bg-default">
-              <!-- <h2 class="float-left text-light">All Customers</h2> -->
-              <!-- <input class="form-control col-md-3 float-right bg-light" type="text" id="search" placeholder="Type to search"> -->
-              <div class="form-group row m-0">
-                <select name="" class="float-left bg-light form-control col-sm-1">
-                <option value="">5</option>
-                <option value="">10</option>
-                option
-              </select>
-              <div class="col-sm-11">
-                <input class="form-control float-right bg-light col-sm-3" type="text" id="search" placeholder="Type to search">
+          <div class="card shadow-lg bg-default">
+              <div class="card-header mb-3 bg-default">
+                <h2 class="m-0 text-light">All Customers</h2>
+                <!-- <input class="form-control col-md-3 float-right bg-light" type="text" id="search" placeholder="Type to search"> -->
               </div>
-            </div>
-            </div>
-            <div class="table-responsive">
-              <div>
-              <table class="table table-hover table-sortable table-dark" id="table">
+
+            <div class="mb-3">
+              <div class="table-responsive">
+              <table class="table table-hover table-dark" id="datatable-basic">
                   <thead class="thead-dark">
                       <tr>
                           <th scope="col">#</th>
@@ -89,8 +80,8 @@
                                     <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                       <i class="fas fa-ellipsis-v text-light"></i>
                                     </a>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <a class="dropdown-item" href="<?= base_url('admin/user_detail/').$l['id']; ?>">Detail</a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow bg-light">
+                                        <a class="dropdown-item text-dark" href="<?= base_url('admin/user_detail/').$l['id']; ?>">Detail</a>
                                         <a class="dropdown-item text-danger del-btn" href="<?= base_url('admin/delete_user/').$l['id']; ?>">Delete</a>
                                     </div>
                                 </div>
