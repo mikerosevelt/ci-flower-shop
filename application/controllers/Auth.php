@@ -1,33 +1,36 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Auth extends CI_Controller {
-    
-	public function index() {
-		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+class Auth extends CI_Controller
+{
+
+    public function index()
+    {
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-        	$data['title'] = 'Login Page';
-			$this->load->view('templates/auth_header', $data);
-			$this->load->view('auth/login');
-			$this->load->view('templates/auth_footer');
+            $data['title'] = 'Login Page';
+            $this->load->view('templates/auth/header', $data);
+            $this->load->view('auth/login');
+            $this->load->view('templates/auth/footer');
         } else {
-        	// login
-        	$this->_login();
+            // login
+            $this->_login();
         }
-	}
+    }
 
-	private function _login() {
-		$email = $this->input->post('email');
-		$password = $this->input->post('password');
+    private function _login()
+    {
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
 
-		$user = $this->db->get_where('user', ['email' => $email])->row_array();
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
 
-		if ($user) {
-			if ($user['is_active'] == 1) {
-				if (password_verify($password, $user['password'])) {
-					$data = [
+        if ($user) {
+            if ($user['is_active'] == 1) {
+                if (password_verify($password, $user['password'])) {
+                    $data = [
                         'email' => $user['email'],
                         'role_id' => $user['role_id'],
                         'status' => "login"
@@ -54,33 +57,34 @@ class Auth extends CI_Controller {
                     }
                     $this->session->set_userdata($data);
                     if ($user['role_id'] == 1) {
-                    	redirect('admin');
+                        redirect('admin');
                     } else {
-                    	redirect('home');
+                        redirect('home');
                     }
-				} else {
-					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
                     redirect('auth');
-				}
-			} else {
-				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not been activated!</div>');
+                }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not been activated!</div>');
                 redirect('auth');
-			}
-		} else {
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
             redirect('auth');
-		}
-	}
+        }
+    }
 
-	
 
-	public function register() {
+
+    public function register()
+    {
         // check if user already login cannot visit auth page.
         if ($this->session->userdata('email')) {
             redirect('admin');
         }
 
-		$this->form_validation->set_rules('name', 'Name', 'required|trim');
+        $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
             'is_unique' => 'Email is already registered!'
         ]);
@@ -89,20 +93,20 @@ class Auth extends CI_Controller {
         ]);
 
         if ($this->form_validation->run() == false) {
-        	$data['title'] = 'Register Page';
-        	$this->load->view('templates/auth_header', $data);
-			$this->load->view('auth/register');
-			$this->load->view('templates/auth_footer');
+            $data['title'] = 'Register Page';
+            $this->load->view('templates/auth/header', $data);
+            $this->load->view('auth/register');
+            $this->load->view('templates/auth/footer');
         } else {
             $email = $this->input->post('email', true);
-        	$data = [
-        		'name' => htmlspecialchars($this->input->post('name', true)),
-        		'email' => htmlspecialchars($this->input->post('email', true)),
-        		'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+            $data = [
+                'name' => htmlspecialchars($this->input->post('name', true)),
+                'email' => htmlspecialchars($this->input->post('email', true)),
+                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'role_id' => 2,
                 'is_active' => 0,
                 'date_created' => time()
-        	];
+            ];
 
             $token = base64_encode(random_bytes(32));
             $user_token = [
@@ -111,15 +115,15 @@ class Auth extends CI_Controller {
                 'date_created' => time()
             ];
 
-        	$this->db->insert('user', $data);
+            $this->db->insert('user', $data);
             $this->db->insert('user_token', $user_token);
             // send email
             $this->_sendEmail($token, 'verify'); // 'verify is a type to send email , it's mean for sending email verificaion
 
-        	$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Hooray! your account has been created. Please activate your account</div>');
-        	redirect('auth');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Hooray! your account has been created. Please activate your account</div>');
+            redirect('auth');
         }
-	}
+    }
 
     private function _sendEmail($token, $type)
     {
@@ -180,22 +184,23 @@ class Auth extends CI_Controller {
         }
     }
 
-	public function logout() {
-		$this->session->unset_userdata('email');
+    public function logout()
+    {
+        $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
         $this->session->unset_userdata('status');
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logout.</div>');
         redirect('auth');
-	}
+    }
 
     public function forgotPassword()
     {
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Forgot Password | THTHost';
-            $this->load->view('templates/auth_header', $data);
+            $this->load->view('templates/auth/header', $data);
             $this->load->view('auth/forgot-password');
-            $this->load->view('templates/auth_footer');
+            $this->load->view('templates/auth/footer');
         } else {
             $email = $this->input->post('email', true);
             $user = $this->db->get_where('user', ['email' => $email, 'is_active' => 1])->row_array();
@@ -252,9 +257,9 @@ class Auth extends CI_Controller {
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Change Password | THTHost';
-            $this->load->view('templates/auth_header', $data);
+            $this->load->view('templates/auth/header', $data);
             $this->load->view('auth/change-password');
-            $this->load->view('templates/auth_footer');
+            $this->load->view('templates/auth/footer');
         } else {
             $password = password_hash($this->input->post('password1'), PASSWORD_DEFAULT);
             $email = $this->session->userdata('reset_email');
@@ -262,7 +267,7 @@ class Auth extends CI_Controller {
             $this->db->set('password', $password);
             $this->db->where('email', $email);
             $this->db->update('user');
-            
+
             $this->db->delete('user_token', ['email' => $email]);
             $this->session->unset_userdata('reset_email');
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password has been changed.</div>');

@@ -15,9 +15,9 @@ class Product extends CI_Controller
 	{
 		$data['title'] = 'Product Page';
 		$data['list'] = $this->Product_model->getAllProduct()->result_array();
-		$this->load->view('templates/main_header', $data);
+		$this->load->view('templates/main/header', $data);
 		$this->load->view('product/index', $data);
-		$this->load->view('templates/main_footer');
+		$this->load->view('templates/main/footer');
 	}
 
 	public function detail()
@@ -25,9 +25,9 @@ class Product extends CI_Controller
 		$data['title'] = 'Detail Page';
 		$id = $this->uri->segment(3);
 		$data['item'] = $this->Product_model->getProductById($id)->row_array();
-		$this->load->view('templates/main_header', $data);
+		$this->load->view('templates/main/header', $data);
 		$this->load->view('product/detail', $data);
-		$this->load->view('templates/main_footer');
+		$this->load->view('templates/main/footer');
 	}
 
 	public function addToCart()
