@@ -26,88 +26,88 @@
   </div>
 </div>
 <div class="container-fluid mt--6">
-      <div class="row">
-        <div class="col-xl-8">
-          <div class="card bg-default">
-            <div class="card-header bg-transparent">
-              <div class="row align-items-center">
-                <div class="col">
-                  <h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6>
-                  <h5 class="h3 text-white mb-0">Sales value</h5>
-                </div>
-                <div class="col">
-                  <ul class="nav nav-pills justify-content-end">
-                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
-                      <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
-                        <span class="d-none d-md-block">Month</span>
-                        <span class="d-md-none">M</span>
-                      </a>
-                    </li>
-                    <li class="nav-item" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix="$" data-suffix="k">
-                      <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
-                        <span class="d-none d-md-block">Week</span>
-                        <span class="d-md-none">W</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+  <div class="row">
+    <div class="col-xl-8">
+      <div class="card bg-default">
+        <div class="card-header bg-transparent">
+          <div class="row align-items-center">
+            <div class="col">
+              <h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6>
+              <h5 class="h3 text-white mb-0">Sales value</h5>
             </div>
-            <div class="card-body">
-              <!-- Chart -->
-              <div class="chart">
-                <!-- Chart wrapper -->
-                <canvas id="chart-sales-dark" class="chart-canvas"></canvas>
-              </div>
+            <div class="col">
+              <ul class="nav nav-pills justify-content-end">
+                <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
+                  <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
+                    <span class="d-none d-md-block">Month</span>
+                    <span class="d-md-none">M</span>
+                  </a>
+                </li>
+                <li class="nav-item" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix="$" data-suffix="k">
+                  <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
+                    <span class="d-none d-md-block">Week</span>
+                    <span class="d-md-none">W</span>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-        <div class="col-xl-4">
-          <div class="card">
-            <div class="card-header bg-transparent">
-              <div class="row align-items-center">
-                <div class="col">
-                  <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                  <h5 class="h3 mb-0">Total orders</h5>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <!-- Chart -->
-              <div class="chart">
-                <canvas id="chart-bars" class="chart-canvas"></canvas>
-              </div>
-            </div>
+        <div class="card-body">
+          <!-- Chart -->
+          <div class="chart">
+            <!-- Chart wrapper -->
+            <canvas id="chart-sales-dark" class="chart-canvas"></canvas>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-xl-12">
-          <div class="row">
+    </div>
+    <div class="col-xl-4">
+      <div class="card">
+        <div class="card-header bg-transparent">
+          <div class="row align-items-center">
             <div class="col">
-              <div class="card shadow bg-default">
-                <!-- Card header -->
-                <div class="card-header border-0 bg-default">
-                  <div class="row align-items-center">
-                    <div class="col">
-                      <h3 class="mb-0 text-light">Recent Orders</h3>
-                    </div>
-                    <div class="col text-right">
-                      <a href="<?= base_url('admin/users'); ?>" class="mb-0 btn btn-sm btn-primary">See all orders</a>
-                    </div>
-                  </div>
+              <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
+              <h5 class="h3 mb-0">Total orders</h5>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- Chart -->
+          <div class="chart">
+            <canvas id="chart-bars" class="chart-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="row">
+        <div class="col">
+          <div class="card shadow bg-default">
+            <!-- Card header -->
+            <div class="card-header border-0 bg-default">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0 text-light">Recent Orders</h3>
                 </div>
-                <div class="table-responsive mb-3">
-                  <table class="table align-items-center table-hover table-dark">
-                    <thead class="thead-dark">
-                      <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Total Order</th>
-                        <th scope="col">Status</th>
-                      </tr>
-                    </thead>
-<!--                     <tbody class="list">
+                <div class="col text-right">
+                  <a href="<?= base_url('admin/users'); ?>" class="mb-0 btn btn-sm btn-primary">See all orders</a>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive mb-3">
+              <table class="table align-items-center table-hover table-dark">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Total Order</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <!--                     <tbody class="list">
                       <?php foreach ($list as $l) : ?>
                     <tr>
                       <th scope="row">
@@ -125,11 +125,11 @@
                     </tr>
                   <?php endforeach; ?>
                     </tbody> -->
-                  </table>
-                </div>
-              </div>
+              </table>
             </div>
           </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-xl-4">
           <!-- Members list group card -->
@@ -166,7 +166,7 @@
                     </div>
                   </div>
                 </li>
-                
+
               </ul>
             </div>
           </div>
@@ -178,14 +178,14 @@
             <div class="card-header bg-default">
               <!-- Title -->
               <div class="row align-items-center">
-                    <div class="col">
-                      <h3 class="mb-0 text-light">To Do List</h3>
-                    </div>
-                    <div class="col text-right">
-                      <a href="#" class="mb-0 btn btn-sm btn-primary">
-                        <i class="ni ni-fat-add"></i></a>
-                    </div>
-                  </div>
+                <div class="col">
+                  <h3 class="mb-0 text-light">To Do List</h3>
+                </div>
+                <div class="col text-right">
+                  <a href="#" class="mb-0 btn btn-sm btn-primary">
+                    <i class="ni ni-fat-add"></i></a>
+                </div>
+              </div>
             </div>
             <!-- Card body -->
             <div class="card-body p-0 bg-default">
@@ -205,7 +205,7 @@
                     </div>
                   </div>
                 </li>
-                
+
               </ul>
             </div>
           </div>
@@ -238,7 +238,7 @@
                     </div>
                   </div>
                 </li>
-                
+
               </ul>
             </div>
           </div>
@@ -270,7 +270,7 @@
                         <th scope="col">Last Login</th>
                       </tr>
                     </thead>
-<!--                     <tbody class="list">
+                    <!--                     <tbody class="list">
                       <?php foreach ($list as $l) : ?>
                     <tr>
                       <th scope="row">

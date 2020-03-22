@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
-<?php
-$admin = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-?>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -37,4 +35,3 @@ $admin = $this->db->get_where('user', ['email' => $this->session->userdata('emai
   <!-- Google Tag Manager (noscript) -->
 
   <!-- End Google Tag Manager (noscript) -->
-  

@@ -1,7 +1,7 @@
 <!-- Header -->
 <div class="header bg-default pb-6">
   <div class="container-fluid">
-      <div class="header-body">
+    <div class="header-body">
       <!-- <div class="row align-items-center py-4">
         <a class="btn btn-light" href="<?= base_url('admin/orders'); ?>" class="btn btn-sm btn-danger">back</a>
       </div> -->
@@ -9,7 +9,7 @@
         <div class="col-lg-6 col-7">
           <h6 class="h2 text-white d-inline-block mb-0">#<?= $detail['order_number'] ?> <?= $detail['shipping_name'] ?></h6>
           <div>
-          <a class="btn btn-sm btn-neutral mt-2" href="<?= base_url('admin/orders'); ?>" class="btn btn-sm btn-danger">back</a>
+            <a class="btn btn-sm btn-neutral mt-2" href="<?= base_url('admin/orders'); ?>" class="btn btn-sm btn-danger">back</a>
           </div>
         </div>
         <div class="col-lg-6 col-5 text-right">
