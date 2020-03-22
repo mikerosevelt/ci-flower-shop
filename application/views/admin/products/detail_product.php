@@ -1,26 +1,33 @@
 <!-- Header -->
-<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center bg-default">
-  <!-- Mask -->
-  <span class="mask opacity-8"></span>
+<div class="header bg-default pb-6">
   <!-- Header container -->
-  <div class="container-fluid d-flex align-items-center">
-    <div class="row">
-      <div class="col-lg col-md-10">
-        <h1 class="display-2 text-white">Product Detail</h1>
-        <a class="btn btn-light" href="<?= base_url('admin/products'); ?>" class="btn btn-sm btn-danger">back</a>
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-8 col-7">
+          <h6 class="h2 text-white d-inline-block mb-0">Detail product</h6>
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+              <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>">Dashboards</a></li>
+              <li class="breadcrumb-item"><a href="<?= base_url('admin/products'); ?>">Products</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Detail product</li>
+            </ol>
+          </nav>
+        </div>
       </div>
     </div>
   </div>
 </div>
 <!-- Page content -->
-<div class="container-fluid mt--7 bg-default">
+<div class="container-fluid mt--6 bg-default">
   <div class="row">
     <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
       <div class="card card-profile shadow bg-default" style="width: 18rem;">
         <img class="card-img-top" src="<?= base_url('assets/img/') . $detail['image']; ?>" alt="Card image cap">
         <div class="card-body pt-0 pt-md-0 text-white">
           <h3 class="card-title mt-3 text-white"><?= $detail['name']; ?></h3>
-          <small>Added <?= date('d F Y', $detail['date_added']); ?></small><br>
+          <small>Added <?= date('d F Y H:i:s', $detail['date_added']); ?></small><br>
           <small>Rp.<?= number_format($detail['price'], 0, ",", "."); ?></small>
           <p class="card-text"><?= $detail['description']; ?></p>
         </div>

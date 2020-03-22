@@ -4,11 +4,11 @@
     <div class="header-body">
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
-          <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
+          <h6 class="h2 text-white d-inline-block mb-0">View all users</h6>
           <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-              <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-              <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
+              <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+              <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>">Dashboards</a></li>
               <li class="breadcrumb-item active" aria-current="page">Users</li>
             </ol>
           </nav>
@@ -115,6 +115,7 @@
 <!-- Page content -->
 <div class="container-fluid mt--6 bg-default">
   <div class="row">
+    <?= $this->session->flashdata('message'); ?>
     <div class="col-xl mb-5 mb-xl">
       <div class="card shadow-lg bg-default">
         <div class="card-header mb-3 bg-default">

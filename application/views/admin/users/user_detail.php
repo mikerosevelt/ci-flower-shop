@@ -1,14 +1,12 @@
 <!-- Header -->
 <div class="flash-data" data-flashdata="<?= $this->session->flashdata('swal'); ?>"></div>
-<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center bg-default">
-  <!-- Mask -->
-  <span class="mask opacity-8"></span>
+<div class="header bg-default pb-6">
   <!-- Header container -->
-  <div class="container-fluid d-flex align-items-center">
-    <div class="row">
+  <div class="container-fluid">
+    <div class="row align-items-center py-4">
       <div class="col-lg col-md-10">
         <h1 class="display-2 text-white"><?= $detail['name']; ?></h1>
-        <a class="btn btn-secondary" href="<?= base_url('admin/users'); ?>">back</a>
+        <a class="btn btn-sm btn-secondary" href="<?= base_url('admin/users'); ?>">back</a>
         <?php if ($detail['is_active'] != 1) : ?>
           <form action="<?= base_url('admin/resendActivationEmail'); ?>" method="POST">
             <input type="hidden" name="email" value="<?= $detail['email']; ?>">
@@ -23,7 +21,7 @@
 </div>
 
 <!-- Page content -->
-<div class="container-fluid mt--7 bg-default">
+<div class="container-fluid mt--6 bg-default">
   <div class="row">
     <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
       <div class="card card-profile shadow bg-default">

@@ -1,11 +1,20 @@
-<div class="header pb-8 pt-5 pt-md-8 bg-gradient-default">
-  <!-- Mask -->
-  <span class="mask opacity-8"></span>
+<div class="header bg-default pb-6">
   <!-- Header container -->
-  <div class="container-fluid d-flex align-items-center">
-    <div class="row">
-      <div class="col-lg col-md-0">
-        <h1 class="text-white">Add New Product</h1>
+  <div class="container-fluid">
+    <div class="row align-items-center py-4">
+      <div class="col-lg-8 col-7">
+        <h6 class="h2 text-white d-inline-block mb-0">Add new product</h6>
+        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+          <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+            <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>"><i class="fas fa-home"></i></a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url('admin'); ?>">Dashboards</a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url('admin/products'); ?>">Products</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add new product</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="col-lg-4 col-5 text-right">
+        <a href="#" class="btn btn-sm btn-danger">Cancel</a>
       </div>
     </div>
   </div>
@@ -18,7 +27,7 @@
         <div class="card-header bg-default border-0">
           <div class="row align-items-center">
             <div class="col-8">
-              <h3 class="mb-0">Product Detail</h3>
+              <h3 class="mb-0 text-light">Product Detail</h3>
             </div>
           </div>
         </div>
@@ -54,7 +63,7 @@
             <div class="pl-lg-4">
               <div class="form-group">
                 <label>Description</label>
-                <textarea id="description" name="description" rows="4" class="form-control form-control-alternative" placeholder="A few words about product ..."></textarea>
+                <textarea id="description" name="description" rows="4" class="form-control form-control-alternative bg-light" placeholder="A few words about product ..."></textarea>
                 <?= form_error('description', '<small class="text-danger pl-1">', '</small>'); ?>
               </div>
             </div>

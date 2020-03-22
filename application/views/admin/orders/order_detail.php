@@ -1,9 +1,21 @@
 <!-- Header -->
-<div class="header pb-8 pt-5 pt-md-8 bg-default">
+<div class="header bg-default pb-6">
   <div class="container-fluid">
-    <div class="header-body">
-      <div class="mb-3">
+      <div class="header-body">
+      <!-- <div class="row align-items-center py-4">
         <a class="btn btn-light" href="<?= base_url('admin/orders'); ?>" class="btn btn-sm btn-danger">back</a>
+      </div> -->
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-white d-inline-block mb-0">#<?= $detail['order_number'] ?> <?= $detail['shipping_name'] ?></h6>
+          <div>
+          <a class="btn btn-sm btn-neutral mt-2" href="<?= base_url('admin/orders'); ?>" class="btn btn-sm btn-danger">back</a>
+          </div>
+        </div>
+        <div class="col-lg-6 col-5 text-right">
+          <a href="#" class="btn btn-sm btn-neutral">New</a>
+          <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+        </div>
       </div>
       <!-- Card stats -->
       <div class="row">
@@ -100,7 +112,7 @@
     </div>
   </div>
 </div>
-<div class="container-fluid mt--7 bg-default">
+<div class="container-fluid mt--6 bg-default">
   <div class="row mt-5">
     <div class="col-xl mb-5 mb-xl">
       <div class="card shadow bg-default">

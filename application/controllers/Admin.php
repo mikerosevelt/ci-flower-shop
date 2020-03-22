@@ -82,6 +82,8 @@ class Admin extends CI_Controller
 		$data['total'] = $this->Product_model->getAllProduct()->num_rows();
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar');
+		$this->load->view('templates/admin/topbar',$data);
 		$this->load->view('admin/products/products', $data);
 		$this->load->view('templates/admin/footer');
 	}
@@ -94,6 +96,8 @@ class Admin extends CI_Controller
 		$data['total'] = $this->db->get('invoice')->num_rows();
 
 		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar');
+		$this->load->view('templates/admin/topbar',$data);
 		$this->load->view('admin/invoices/invoices',$data);
 		$this->load->view('templates/admin/footer');
 	}
@@ -103,6 +107,8 @@ class Admin extends CI_Controller
 		$data['title'] = 'Reports';
 
 		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar');
+		$this->load->view('templates/admin/topbar',$data);
 		$this->load->view('admin/reports/reports');
 		$this->load->view('templates/admin/footer');
 	}
@@ -112,6 +118,8 @@ class Admin extends CI_Controller
 		$data['title'] = 'Help';
 
 		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar');
+		$this->load->view('templates/admin/topbar',$data);
 		$this->load->view('admin/help/help');
 		$this->load->view('templates/admin/footer');
 	}
@@ -121,6 +129,8 @@ class Admin extends CI_Controller
 		$data['title'] = 'Settings';
 
 		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar');
+		$this->load->view('templates/admin/topbar',$data);
 		$this->load->view('admin/setting/setting');
 		$this->load->view('templates/admin/footer');
 	}
@@ -132,6 +142,8 @@ class Admin extends CI_Controller
 		$id = $data['user']['id'];
 		$data['detail'] = $this->User_model->getUserDetail($id)->row_array();
 		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar');
+		$this->load->view('templates/admin/topbar',$data);
 		$this->load->view('admin/profile/index', $data);
 		$this->load->view('templates/admin/footer');
 	}
@@ -147,6 +159,8 @@ class Admin extends CI_Controller
 		if ($id) {
 			$data['detail'] = $this->User_model->getUserDetail($id)->row_array();
 			$this->load->view('templates/admin/header', $data);
+			$this->load->view('templates/admin/sidebar');
+			$this->load->view('templates/admin/topbar',$data);
 			$this->load->view('admin/users/user_detail', $data);
 			$this->load->view('templates/admin/footer');
 		} else {
@@ -230,6 +244,8 @@ class Admin extends CI_Controller
 			$data['orderstat'] = ['Pending', 'On Process', 'Shipped', 'Delivered', 'Cancelled'];
 			$data['paystatus'] = ['Unpaid', 'Paid'];
 			$this->load->view('templates/admin/header', $data);
+			$this->load->view('templates/admin/sidebar');
+			$this->load->view('templates/admin/topbar',$data);
 			$this->load->view('admin/orders/order_detail', $data);
 			$this->load->view('templates/admin/footer');
 		} else {
@@ -281,9 +297,11 @@ class Admin extends CI_Controller
 		if ($this->form_validation->run() == FALSE) {
 			$data['title'] = 'Add New Product';
 			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-			$this->load->view('templates/admin_header', $data);
+			$this->load->view('templates/admin/header', $data);
+			$this->load->view('templates/admin/sidebar');
+			$this->load->view('templates/admin/topbar',$data);
 			$this->load->view('admin/products/add_product');
-			$this->load->view('templates/admin_footer');
+			$this->load->view('templates/admin/footer');
 		} else {
 			$this->Product_model->addNewProduct();
 			$this->session->set_flashdata('swal', 'New product has been added.');
@@ -299,6 +317,8 @@ class Admin extends CI_Controller
 		$data['detail'] = $this->Product_model->getProductById($id)->row_array();
 		if ($id) {
 			$this->load->view('templates/admin/header', $data);
+			$this->load->view('templates/admin/sidebar');
+			$this->load->view('templates/admin/topbar',$data);
 			$this->load->view('admin/products/detail_product', $data);
 			$this->load->view('templates/admin/footer');
 		} else {
