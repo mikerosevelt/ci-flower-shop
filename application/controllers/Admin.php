@@ -24,15 +24,15 @@ class Admin extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Dashboard';
-		$query = "SELECT `user`.`name`,`user`.`email`,`user`.`is_active`,`user_log`.`last_login`
-				  FROM `user`
-				  JOIN `user_log` ON `user_log`.`user_id` = `user`.`id`";
-		$data['list'] = $this->db->query($query)->result_array();
+		
+		$data['list'] = $this->User_model->getUserActivityList()->result_array();
 		$data['total'] = $this->db->get('user')->num_rows();
 		$data['totalproduct'] = $this->db->get('product')->num_rows();
 		$data['totalorder'] = $this->db->get('order')->num_rows();
 
 		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar');
+		$this->load->view('templates/admin/topbar',$data);
 		$this->load->view('admin/index', $data);
 		$this->load->view('templates/admin/footer');
 	}
@@ -44,6 +44,8 @@ class Admin extends CI_Controller
 		$data['total'] = $this->User_model->getAllUser()->num_rows();
 
 		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar');
+		$this->load->view('templates/admin/topbar',$data);
 		$this->load->view('admin/users/users', $data);
 		$this->load->view('templates/admin/footer');
 	}
@@ -67,6 +69,8 @@ class Admin extends CI_Controller
 		$data['list'] = $this->Order_model->getAllOrder()->result_array();
 
 		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar');
+		$this->load->view('templates/admin/topbar',$data);
 		$this->load->view('admin/orders/orders',$data);
 		$this->load->view('templates/admin/footer');
 	}

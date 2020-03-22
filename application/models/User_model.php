@@ -7,6 +7,16 @@ class User_model extends CI_Model {
 		return $this->db->get('user');
 	}
 
+	public function getUserActivityList()
+	{
+		$query = "SELECT `user`.`name`,`user`.`email`,`user_role`.`role`,`user_log`.`last_login`
+				  FROM `user`
+				  JOIN `user_log` ON `user_log`.`user_id` = `user`.`id`
+				  JOIN `user_role` ON `user_role`.`id` = `user`.`role_id`";
+
+		return $this->db->query($query);
+	}
+
 	public function getUserById($id) {
 		$query = $this->db->get_where('user', ['id' => $id]);
 		return $query;
