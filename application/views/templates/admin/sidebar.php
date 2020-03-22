@@ -52,34 +52,52 @@
                 <span class="nav-link-text text-light">Invoices / Transactions</span>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="<?= base_url('admin/reports'); ?>">
                 <i class="ni ni-chart-pie-35 text-red"></i>
                 <span class="nav-link-text text-light">Reports</span>
               </a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="#navbar-maps" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-maps">
+                <i class="ni ni-chart-pie-35 text-red"></i>
+                <span class="nav-link-text text-light">Reports</span>
+              </a>
+              <div class="collapse" id="navbar-maps">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin/reports'); ?>" class="nav-link">
+                      <span class="sidenav-mini-icon text-light"> R </span>
+                      <span class="sidenav-normal text-light"> Reports Overview </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <span class="sidenav-mini-icon text-light"> I </span>
+                      <span class="sidenav-normal text-light"> Income </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <span class="sidenav-mini-icon text-light"> C </span>
+                      <span class="sidenav-normal text-light"> Customers </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <span class="sidenav-mini-icon text-light"> P </span>
+                      <span class="sidenav-normal text-light"> PDF Exports </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <span class="sidenav-mini-icon text-light"> L </span>
+                      <span class="sidenav-normal text-light"> Logs </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </li>
-            <!-- <li class="nav-item">
-            <a class="nav-link" href="#navbar-maps" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-maps">
-              <i class="ni ni-map-big text-primary"></i>
-              <span class="nav-link-text">Maps</span>
-            </a>
-            <div class="collapse" id="navbar-maps">
-              <ul class="nav nav-sm flex-column">
-                <li class="nav-item">
-                  <a href="../../pages/maps/google.html" class="nav-link">
-                    <span class="sidenav-mini-icon"> G </span>
-                    <span class="sidenav-normal"> Google </span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../../pages/maps/vector.html" class="nav-link">
-                    <span class="sidenav-mini-icon"> V </span>
-                    <span class="sidenav-normal"> Vector </span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li> -->
           </ul>
           <!-- Divider -->
           <hr class="my-3">
@@ -96,11 +114,57 @@
                 <span class="nav-link-text text-light">Help</span>
               </a>
             </li>
-            <li class="nav-item">
+<!--             <li class="nav-item">
               <a class="nav-link" href="<?= base_url('admin/settings'); ?>">
-                <i class="ni ni-settings-gear-65 text-gray"></i>
+                <i class="ni ni-settings-gear-65 text-light"></i>
                 <span class="nav-link-text text-light">Settings</span>
               </a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="#navbar-settings" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-settings">
+                <i class="ni ni-settings-gear-65 text-light"></i>
+                <span class="nav-link-text text-light">Settings</span>
+              </a>
+              <div class="collapse" id="navbar-settings">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin/reports'); ?>" class="nav-link">
+                      <span class="sidenav-mini-icon text-light"> G </span>
+                      <span class="sidenav-normal text-light"> General Settings </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin/reports'); ?>" class="nav-link">
+                      <span class="sidenav-mini-icon text-light"> A </span>
+                      <span class="sidenav-normal text-light"> API Settings </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <span class="sidenav-mini-icon text-light"> N </span>
+                      <span class="sidenav-normal text-light"> Notifications </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <span class="sidenav-mini-icon text-light"> A </span>
+                      <span class="sidenav-normal text-light"> Add New Admin </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <span class="sidenav-mini-icon text-light"> S </span>
+                      <span class="sidenav-normal text-light"> WebShop Settings </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <span class="sidenav-mini-icon text-light"> S </span>
+                      <span class="sidenav-normal text-light"> Security Settings </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?= base_url('auth/logout'); ?>">

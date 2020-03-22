@@ -11,7 +11,7 @@
           <form action="<?= base_url('admin/resendActivationEmail'); ?>" method="POST">
             <input type="hidden" name="email" value="<?= $detail['email']; ?>">
             <input type="hidden" name="id" value="<?= $detail['id']; ?>">
-            <button class="btn btn-secondary mt-3" type="submit">Resend Activation Email</button>
+            <button class="btn btn-sm btn-primary mt-3" type="submit">Resend Activation Email</button>
           </form>
           <!-- <a class="btn btn-secondary float-right" href="<?= base_url('admin/resendActivationEmail'); ?>"></a> -->
         <?php endif; ?>

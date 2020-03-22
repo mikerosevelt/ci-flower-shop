@@ -284,7 +284,7 @@ class Admin extends CI_Controller
 		$this->db->update('order');
 	}
 
-	/*
+	/**
 	* PRODUCT PART
 	*/
 	public function addProduct()
