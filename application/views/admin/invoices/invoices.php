@@ -14,7 +14,7 @@
           </nav>
         </div>
         <div class="col-lg-6 col-5 text-right">
-          <a href="#" class="btn btn-sm btn-neutral">Add New Invoice</a>
+          <a href="#" class="btn btn-sm btn-neutral">Create New Invoice</a>
           <!-- <a href="#" class="btn btn-sm btn-neutral">Filters</a> -->
         </div>
       </div>
@@ -168,8 +168,8 @@
                         <a class="btn btn-sm btn-icon-only" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="fas fa-ellipsis-v text-light"></i>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="<?= base_url('admin/invoice_detail/') . $l['id']; ?>">Detail</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow bg-light">
+                          <a class="dropdown-item text-success" href="<?= base_url('admin/detail_invoice/') . $l['id']; ?>">Detail</a>
                           <a class="dropdown-item text-danger del-btn" href="<?= base_url('admin/delete_invoice/') . $l['id']; ?>">Delete</a>
                         </div>
                       </div>

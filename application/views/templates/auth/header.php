@@ -15,16 +15,16 @@
   <link href="<?= base_url('assets/'); ?>js/plugins/nucleo/css/nucleo.css" rel="stylesheet" />
   <link href="<?= base_url('assets/'); ?>js/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
   <!-- CSS Files -->
-  <link href="<?= base_url('assets/'); ?>css/argon-dashboard.css?v=1.1.0" rel="stylesheet" />
+  <link href="<?= base_url('assets/'); ?>css/argon.min9f1e.css?v=1.2.0" rel="stylesheet" />
 </head>
 
 <body class="bg-white">
   <div class="main-content">
     <!-- Navbar -->
-    <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
+<!--     <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark" style="background-color:#82ae46">
       <div class="container px-4">
         <a class="navbar-brand" href="<?= base_url(); ?>">
           <img src="<?= base_url('assets/'); ?>img/logo.png" />
         </a>
       </div>
-    </nav>
+    </nav> -->

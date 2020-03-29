@@ -350,6 +350,39 @@ class Admin extends CI_Controller
 	* INVOICES PART
 	*/
 
+	public function detail_invoice()
+	{
+		$data['title'] = 'Detail Invoice';
+		$id = $this->uri->segment(3);
+		$data['detail'] = $this->Invoices_model->getInvoiceDetail($id)->row_array();
+		$oid = $data['detail']['order_id'];
+		$data['items'] = $this->Order_model->getOrderItems($oid)->result_array();
+		$data['orderstat'] = ['Pending', 'On Process', 'Shipped', 'Delivered', 'Cancelled'];
+		$data['paystatus'] = ['Unpaid', 'Paid'];
+		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar');
+		$this->load->view('templates/admin/topbar',$data);
+		$this->load->view('admin/invoices/detail_invoice', $data);
+		$this->load->view('templates/admin/footer');
+
+
+	}
+
+	public function print_invoice()
+	{
+		$id = $this->uri->segment(3);
+		$data['detail'] = $this->Invoices_model->getInvoiceDetail($id)->row_array();
+		$oid = $data['detail']['order_id'];
+		$data['items'] = $this->Order_model->getOrderItems($oid)->result_array();
+		$this->load->view('admin/invoices/temp_invoice', $data);
+	}
+
+	public function test()
+	{
+		$email = file_get_contents('application/views/admin/invoices/test.txt');
+		echo $email;
+	}
+
 	/**
 	* REPORTS PART
 	*/

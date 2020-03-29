@@ -20,7 +20,7 @@
       <!-- Card stats -->
       <div class="row">
         <div class="col-xl-3 col-md-6">
-          <div class="card card-stats">
+          <div class="card card-stats bg-light">
             <!-- Card body -->
             <div class="card-body">
               <div class="row">
@@ -42,7 +42,7 @@
           </div>
         </div>
         <div class="col-xl-3 col-md-6">
-          <div class="card card-stats">
+          <div class="card card-stats bg-light">
             <!-- Card body -->
             <div class="card-body">
               <div class="row">
@@ -64,7 +64,7 @@
           </div>
         </div>
         <div class="col-xl-3 col-md-6">
-          <div class="card card-stats">
+          <div class="card card-stats bg-light">
             <!-- Card body -->
             <div class="card-body">
               <div class="row">
@@ -86,7 +86,7 @@
           </div>
         </div>
         <div class="col-xl-3 col-md-6">
-          <div class="card card-stats">
+          <div class="card card-stats bg-light">
             <!-- Card body -->
             <div class="card-body">
               <div class="row">
@@ -150,8 +150,8 @@
       </div>
     </div>
     <div class="col-xl-4">
-      <div class="card">
-        <div class="card-header bg-transparent">
+      <div class="card bg-default">
+        <div class="card-header bg-default">
           <div class="row align-items-center">
             <div class="col">
               <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
@@ -220,9 +220,9 @@
       <div class="row">
         <div class="col-xl-4">
           <!-- Members list group card -->
-          <div class="card">
+          <div class="card bg-light">
             <!-- Card header -->
-            <div class="card-header">
+            <div class="card-header bg-light">
               <!-- Title -->
               <h5 class="h3 mb-0">Admin members</h5>
             </div>
@@ -230,7 +230,7 @@
             <div class="card-body">
               <!-- List group -->
               <ul class="list-group list-group-flush list my--3">
-                <li class="list-group-item px-0">
+                <li class="list-group-item px-0 bg-light">
                   <div class="row align-items-center">
                     <div class="col-auto">
                       <!-- Avatar -->
@@ -299,9 +299,9 @@
         </div>
         <div class="col-xl-4">
           <!-- Progress track -->
-          <div class="card">
+          <div class="card bg-light">
             <!-- Card header -->
-            <div class="card-header">
+            <div class="card-header bg-light">
               <!-- Title -->
               <h5 class="h3 mb-0">Progress track</h5>
             </div>
@@ -309,7 +309,7 @@
             <div class="card-body">
               <!-- List group -->
               <ul class="list-group list-group-flush list my--3">
-                <li class="list-group-item px-0">
+                <li class="list-group-item px-0 bg-light">
                   <div class="row align-items-center">
                     <div class="col-auto">
                       <!-- Avatar -->
