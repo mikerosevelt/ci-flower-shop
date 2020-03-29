@@ -27,6 +27,9 @@
 </div>
 </div>
 <!-- Argon Scripts -->
+<script type="text/javascript">
+  const url = '<?= base_url(); ?>'
+</script>
 <!-- Core -->
 <script src="<?= base_url('assets/'); ?>vendor/jquery/dist/jquery.min.js"></script>
 <script src="<?= base_url('assets/'); ?>vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -45,9 +48,13 @@
 <script src="<?= base_url('assets/'); ?>vendor/datatables.net-buttons/js/buttons.flash.min.js"></script>
 <script src="<?= base_url('assets/'); ?>vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
 <script src="<?= base_url('assets/'); ?>vendor/datatables.net-select/js/dataTables.select.min.js"></script>
+
+<script src="<?= base_url('assets/'); ?>js/sweetalert2.all.min.js"></script>
 <!-- Argon JS -->
 <script src="<?= base_url('assets/'); ?>js/argon.min9f1e.js?v=1.1.0"></script>
 <!-- Demo JS - remove this in your project -->
+<script src="<?= base_url('assets/'); ?>js/custom.js"></script>
+<script src="<?= base_url('assets/'); ?>js/sweet.js"></script>
 <!-- <script src="<?= base_url('assets/'); ?>js/demo.min.js"></script> -->
 </body>
 

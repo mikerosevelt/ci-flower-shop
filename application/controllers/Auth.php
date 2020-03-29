@@ -127,7 +127,7 @@ class Auth extends CI_Controller
 
     private function _sendEmail($token, $type)
     {
-        $this->load->library('email', $config);
+        // $this->load->library('email', $config);
         // You will NOT need to use the $this->email->initialize() method if you save your preferences in a config file.
         // $this->email->initialize($config);
         $this->email->from('noreply@flowershop.com', 'Flower Shop'); // from email and from name.

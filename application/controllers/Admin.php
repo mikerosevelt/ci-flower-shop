@@ -3,22 +3,24 @@ defined('BASEPATH') or exit('No direct script access allowed');
 date_default_timezone_set('Asia/Bangkok');
 class Admin extends CI_Controller
 {
-
 	public function __construct()
 	{
 		parent::__construct();
+		// Check user role
 		if ($this->session->userdata['role_id'] != 1) {
 			redirect('home');
 		}
-
+		// Check user session
 		if ($this->session->userdata['status'] != 'login') {
 			redirect('auth');
 		}
-
+		// MODEL
 		$this->load->model('User_model');
 		$this->load->model('Product_model');
 		$this->load->model('Order_model');
 		$this->load->model('Invoices_model');
+		// LIBRARY
+		// $this->load->library('pdf');
 	}
 
 	public function index()
@@ -172,7 +174,6 @@ class Admin extends CI_Controller
 													</div>');
 			redirect('admin/users');
 		}
-		
 	}
 
 	public function delete_user()
@@ -212,8 +213,8 @@ class Admin extends CI_Controller
 
 	private function _sendEmail($token)
     {
-        $this->load->library('email', $config);
-        // You will NOT need to use the $this->email->initialize() method if you save your preferences in a config file.
+        // $this->load->library('email', $config);
+        // You will NOT need to use the $this->email->initialize() method if you save your preferences in a config file (email.php).
         // $this->email->initialize($config);
         $this->email->from('noreply@flowershop.com', 'Flower Shop'); // from email and from name.
         $this->email->to($this->input->post('email'));
@@ -262,7 +263,7 @@ class Admin extends CI_Controller
 	public function deleteOrder($id)
 	{
 		$this->Order_model->deleteOrder($id);
-		$this->session->set_flashdata('swal', 'deleted');
+		$this->session->set_flashdata('swal', 'Order successfully deleted');
 		redirect('admin/orders', 'refresh');
 	}
 
@@ -349,38 +350,69 @@ class Admin extends CI_Controller
 	/**
 	* INVOICES PART
 	*/
-
 	public function detail_invoice()
 	{
 		$data['title'] = 'Detail Invoice';
 		$id = $this->uri->segment(3);
-		$data['detail'] = $this->Invoices_model->getInvoiceDetail($id)->row_array();
-		$oid = $data['detail']['order_id'];
-		$data['items'] = $this->Order_model->getOrderItems($oid)->result_array();
-		$data['orderstat'] = ['Pending', 'On Process', 'Shipped', 'Delivered', 'Cancelled'];
-		$data['paystatus'] = ['Unpaid', 'Paid'];
-		$this->load->view('templates/admin/header', $data);
-		$this->load->view('templates/admin/sidebar');
-		$this->load->view('templates/admin/topbar',$data);
-		$this->load->view('admin/invoices/detail_invoice', $data);
-		$this->load->view('templates/admin/footer');
-
-
+		if ($id) {
+			$data['detail'] = $this->Invoices_model->getInvoiceDetail($id)->row_array();
+			$oid = $data['detail']['order_id'];
+			$data['items'] = $this->Order_model->getOrderItems($oid)->result_array();
+			$data['orderstat'] = ['Pending', 'On Process', 'Shipped', 'Delivered', 'Cancelled'];
+			$data['paystatus'] = ['Unpaid', 'Paid'];
+			$this->load->view('templates/admin/header', $data);
+			$this->load->view('templates/admin/sidebar');
+			$this->load->view('templates/admin/topbar',$data);
+			$this->load->view('admin/invoices/detail_invoice', $data);
+			$this->load->view('templates/admin/footer');
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  													Something went wrong.
+  													<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    												<span aria-hidden="true">&times;</span>
+  													</button>
+													</div>');
+			redirect('admin/invoices');
+		}
 	}
 
 	public function print_invoice()
 	{
 		$id = $this->uri->segment(3);
-		$data['detail'] = $this->Invoices_model->getInvoiceDetail($id)->row_array();
-		$oid = $data['detail']['order_id'];
-		$data['items'] = $this->Order_model->getOrderItems($oid)->result_array();
-		$this->load->view('admin/invoices/temp_invoice', $data);
+		if ($id) {
+			$data['detail'] = $this->Invoices_model->getInvoiceDetail($id)->row_array();
+			$oid = $data['detail']['order_id'];
+			$data['items'] = $this->Order_model->getOrderItems($oid)->result_array();
+			$this->pdf->setPaper('A4', 'potrait');
+			$this->pdf->filename = "Flower Shop - invoice #". $id .".pdf";
+			$this->pdf->load_view('admin/invoices/temp_invoice', $data);
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  													Something went wrong.
+  													<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    												<span aria-hidden="true">&times;</span>
+  													</button>
+													</div>');
+			redirect('admin/invoices');
+		}
 	}
 
-	public function test()
+	public function delete_invoice()
 	{
-		$email = file_get_contents('application/views/admin/invoices/test.txt');
-		echo $email;
+		$id = $this->uri->segment(3);
+		if ($id) {
+			$this->Product_model->deleteProduct($id);
+			$this->session->set_flashdata('swal', 'Invoice has been deleted');
+			redirect('admin/invoices');
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  													Something went wrong.
+  													<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    												<span aria-hidden="true">&times;</span>
+  													</button>
+													</div>');
+			redirect('admin/invoices');
+		}
 	}
 
 	/**

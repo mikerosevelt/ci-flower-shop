@@ -58,8 +58,7 @@ class Cart extends CI_Controller
 
 	private function _sendEmail()
 	{
-		$this->load->library('email', $config);
-
+		// $this->load->library('email', $config);
 		// You will NOT need to use the $this->email->initialize() method if you save your preferences in a config file.
 		// $this->email->initialize($config);
 

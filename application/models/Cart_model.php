@@ -5,10 +5,10 @@ class Cart_model extends CI_Model {
 
 public function completeOrder()
 	{
-		$n = $this->db->get('order')->num_rows();
+		// insert order
+		// $n = $this->db->get('order')->num_rows();
 		$dataOrder = [
 				'user_id' => $this->input->post('id'),
-				'order_number' => ++$n,
 				'total' => $this->cart->total(),
 				'payment_method' => $this->input->post('payment'),
 				'shipping_name' => $this->input->post('name'),
@@ -26,6 +26,7 @@ public function completeOrder()
 			];
 			$this->db->insert('order', $dataOrder);
 		$order_id = $this->db->insert_id();
+		// insert order_detail
 		foreach ($this->cart->contents() as $c) {
 			$orderDetail = [
 				'order_id' => $order_id,
@@ -36,6 +37,14 @@ public function completeOrder()
 			];
 			$this->db->insert('order_detail', $orderDetail);
 		}
+		// insert invoice
+			$dataInvoice = [
+				'user_id' => $this->input->post('id'),
+				'order_id' => $order_id,
+				'invoice_date' => time(),
+				'due_date' => time()
+			];
+			$this->db->insert('invoice', $dataInvoice);
 	}	
 }
 

@@ -7,7 +7,7 @@
       </div> -->
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
-          <h6 class="h2 text-white d-inline-block mb-0">#<?= $detail['order_number'] ?> <?= $detail['shipping_name'] ?></h6>
+          <h6 class="h2 text-white d-inline-block mb-0">#<?= $detail['id'] ?> <?= $detail['shipping_name'] ?></h6>
           <div>
             <a class="btn btn-sm btn-neutral mt-2" href="<?= base_url('admin/orders'); ?>" class="btn btn-sm btn-danger">back</a>
           </div>
@@ -30,7 +30,7 @@
                   </tr>
                   <tr>
                     <td width="50%">Order #</td>
-                    <td width="50%"><?= $detail['order_number'] ?></td>
+                    <td width="50%"><?= $detail['id'] ?></td>
                   </tr>
                   <tr>
                     <td width="50%">Customer</td>

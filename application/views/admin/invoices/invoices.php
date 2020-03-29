@@ -1,4 +1,5 @@
 <!-- Header -->
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('swal'); ?>"></div>
 <div class="header bg-default pb-6">
   <div class="container-fluid">
     <div class="header-body">
@@ -158,7 +159,7 @@
                 foreach ($list as $l) : ?>
                   <tr class="">
                     <td><?= $n++ ?></td>
-                    <td>#<?= $l['invoice_number']; ?></td>
+                    <td>#<?= $l['id']; ?></td>
                     <td><?= $l['name']; ?></td>
                     <td><?= date('d F Y', $l['invoice_date']); ?></td>
                     <td>Rp.<?= number_format($l['total'], 0, ".", "."); ?></td>
@@ -169,7 +170,7 @@
                           <i class="fas fa-ellipsis-v text-light"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow bg-light">
-                          <a class="dropdown-item text-success" href="<?= base_url('admin/detail_invoice/') . $l['id']; ?>">Detail</a>
+                          <a class="dropdown-item text-dark" href="<?= base_url('admin/detail_invoice/') . $l['id']; ?>">Detail</a>
                           <a class="dropdown-item text-danger del-btn" href="<?= base_url('admin/delete_invoice/') . $l['id']; ?>">Delete</a>
                         </div>
                       </div>

@@ -7,14 +7,14 @@
       </div> -->
       <div class="row align-items-center py-4">
         <div class="col-lg-6 col-7">
-          <h6 class="h2 text-white d-inline-block mb-0">#<?= $detail['invoice_number'] ?> <?= $detail['shipping_name'] ?></h6>
+          <h6 class="h2 text-white d-inline-block mb-0">#<?= $detail['id'] ?> <?= $detail['shipping_name'] ?></h6>
           <div>
             <a class="btn btn-sm btn-neutral mt-2" href="<?= base_url('admin/invoices'); ?>" class="btn btn-sm btn-danger">back</a>
           </div>
         </div>
         <div class="col-lg-6 col-5 text-right">
           <!-- <a href="#" class="btn btn-sm btn-neutral">New</a> -->
-          <a href="<?= base_url('admin/print_invoice/').$detail['id']; ?>" class="btn btn-sm btn-neutral">Print</a>
+          <a target="blank" href="<?= base_url('admin/print_invoice/').$detail['id']; ?>" class="btn btn-sm btn-neutral">Print</a>
         </div>
       </div>
       <!-- Card stats -->
@@ -30,7 +30,7 @@
                   </tr>
                   <tr>
                     <td width="50%">Invoice #</td>
-                    <td width="50%"><?= $detail['order_number'] ?></td>
+                    <td width="50%"><?= $detail['id'] ?></td>
                   </tr>
                   <tr>
                     <td width="50%">Customer</td>
@@ -68,7 +68,7 @@
                   </tr>
                   <tr>
                     <td width="50%">Order #</td>
-                    <td width="50%"><?= $detail['order_number'] ?></td>
+                    <td width="50%"><?= $detail['order_id'] ?></td>
                   </tr>
                   <tr>
                     <td width="50%">Status</td>

@@ -28,7 +28,7 @@
               foreach ($myorder as $res) : ?>
                 <tr>
                   <td><?= $n++; ?></td>
-                  <td><a href="<?= base_url('myaccount/orderdetail/') . $res['id']; ?>"><?= $res['order_number']; ?></a></td>
+                  <td><a href="<?= base_url('myaccount/orderdetail/') . $res['id']; ?>"><?= $res['id']; ?></a></td>
                   <td><?= date('d F Y H:i:s', $res['date_order']); ?></td>
                   <td>Rp.<?= number_format($res['total'], 0, ",", "."); ?></td>
                   <td><?= $res['status']; ?></td>

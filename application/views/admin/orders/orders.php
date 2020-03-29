@@ -95,7 +95,7 @@
 <div class="container-fluid mt--6 bg-default">
   <div class="row mt-5">
     <div class="col-xl mb-5 mb-xl">
-      <!-- <?= $this->session->flashdata('message'); ?> -->
+      <?= $this->session->flashdata('message'); ?>
       <div class="card shadow bg-default">
         <div class="card-header mb-2 bg-default">
           <h2 class="text-light">All Orders</h2>
@@ -137,7 +137,7 @@
                   <?php foreach ($list as $ol) : ?>
                     <tr>
                       <td>
-                        <?= $ol['order_number']; ?>
+                        <?= $ol['id']; ?>
                       </td>
                       <td class="budget">
                         <?= $ol['name']; ?>

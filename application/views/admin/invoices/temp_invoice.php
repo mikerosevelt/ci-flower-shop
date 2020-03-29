@@ -112,8 +112,8 @@
                             </td>
 
                             <td>
-                                Invoice #: <?= $detail['invoice_number']; ?><br>
-                                Order #: <?= $detail['order_number']; ?><br>
+                                Invoice #: <?= $detail['id']; ?><br>
+                                Order #: <?= $detail['order_id']; ?><br>
                                 Created: <?= date('d F Y',$detail['invoice_date']); ?><br>
                                 Due: <?= date('F d, Y',$detail['due_date']); ?>
                             </td>
@@ -199,7 +199,7 @@
                 <td>Delivery Method</td>
                 <td></td>
                 <td></td>
-                <td>Cost</td>
+                <td>Fee</td>
             </tr>
             <tr class="item">
                 <td>Free Shipping</td>
