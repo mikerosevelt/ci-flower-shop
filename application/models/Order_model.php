@@ -5,21 +5,14 @@ class Order_model extends CI_Model {
 
 	public function getAllOrder()
 	{
-		$query = "SELECT `order`.*, `user`.`name`,`user`.`email`
-          FROM `order`
-          JOIN `user` ON `order`.`user_id` = `user`.`id`";
-
-        return $this->db->query($query);
+		$this->db->select('order.*, user.name, user.email');
+		$this->db->from('order');
+		$this->db->join('user', 'order.user_id = user.id');
+		return $this->db->get();
 	}
 
 	public function getOrders($limit, $start)
 	{
-		// $query = "SELECT `order`.*, `user`.`name`,`user`.`email`
-  //         FROM `order`
-  //         JOIN `user` ON `order`.`user_id` = `user`.`id`";
-
-        // return $this->db->query($query)->result_array();
-
         $this->db->limit($limit, $start);
         $this->db->select('*');
         $this->db->from('order');
@@ -47,15 +40,15 @@ class Order_model extends CI_Model {
 		return $this->db->get_where('order', ['user_id' => $id]);
 	}
 
-	public function getUserOrderDetail()
+	public function getUserOrderDetail($id)
 	{
-		$query = "SELECT `order`.*, `order_detail`.* `order_statuses`.`order_status`,`order_statuses`.`order_color`, `payment_statuses`.`payment_status`, `payment_statuses`.`payment_color`
-          FROM `order`
-          JOIN `order_statuses` ON `order_statuses`.`id` = `order`.`status_id`
-          JOIN `payment_statuses` ON `payment_statuses`.`id` = `order`.`payment_status`
-          WHERE `order`.`user_id` = $id";
+		$this->db->select('order_detail.*, order_statuses.*, payment_statuses.*, order.*');
+		$this->db->from('order');
+		$this->db->join('order_statuses', 'order_statuses.id = order.status_id');
+		$this->db->join('payment_statuses', 'payment_statuses.id = order.payment_status');
+		$this->db->where('order.user_id', $id);
+		return $this->db->get();
 
-          return $this->db->query($query);
 	}
 
 	public function getOrderDetail($id)
@@ -65,11 +58,12 @@ class Order_model extends CI_Model {
 
 	public function getOrderItems($id)
 	{
-		$query = "SELECT `order`.*, `order_detail`.*
-				  FROM `order`
-				  JOIN `order_detail` ON `order_detail`.`order_id` = `order`.`id`
-				  WHERE `order_detail`.`order_id` = $id";
-		return $this->db->query($query);
+		$this->db->select('order.*, order_detail.*');
+		$this->db->from('order');
+		$this->db->join('order_detail', 'order.id = order_detail.order_id');
+		$this->db->where('order_detail.order_id', $id);
+		return $this->db->get();
+
 	}
 
 }

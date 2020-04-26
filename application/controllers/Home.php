@@ -58,14 +58,6 @@ class Home extends CI_Controller
 
 	private function _sendEmail()
 	{
-		require_once('__config.php');
-
-		$smtp_config = $config;
-
-		$this->load->library('email', $smtp_config);
-
-		$this->email->initialize($smtp_config);
-
 		$this->email->from('cs@flowershop.com', 'Flower Shop'); // from email and from name.
 		$this->email->to($this->input->post('email'));
 		$this->email->subject('Thank you for join our newsletter');

@@ -91,12 +91,18 @@ if ($cart = $this->cart->contents()) {
 						<p>Enter your destination to get a shipping estimate</p>
 						<form action="#" class="info">
 							<div class="form-group">
-								<label for="">Country</label>
-								<input type="text" class="form-control text-left px-3" placeholder="" value="Indonesia">
+								<label for="">Province</label>
+								<select name="province" class="custom-select">
+									<?php foreach ($province['rajaongkir']['results'] as $p) : ?>
+										<option value="<?= $p['province_id'] ?>"><?= $p['province'] ?></option>
+									<?php endforeach; ?>
+								</select>
 							</div>
 							<div class="form-group">
-								<label for="country">State/Province</label>
-								<input type="text" class="form-control text-left px-3" placeholder="" value="">
+								<label for="country">City</label>
+								<select name="" class="custom-select">
+									<option value=""></option>
+								</select>
 							</div>
 							<div class="form-group">
 								<label for="country">Zip/Postal Code</label>

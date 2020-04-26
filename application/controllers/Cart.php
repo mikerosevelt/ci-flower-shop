@@ -1,9 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use GuzzleHttp\Client;
+
 class Cart extends CI_Controller
 {
-
 	public function __construct()
 	{
 		parent::__construct();
@@ -13,8 +14,15 @@ class Cart extends CI_Controller
 	public function index()
 	{
 		$item['list'] = $this->cart->contents();
+		if ($item['list']) {
+			$client = new Client();
+			$response = $client->get('http://api.rajaongkir.com/starter/province?key=dea39333c45f5615bf12902d52566452');
+			$data['province'] = json_decode($response->getBody()->getContents(), true);
+		}
 		$data['title'] = 'Cart Page';
-
+		// echo $data['province'];
+		// var_dump($data['province']['results']);
+		// die();
 		$this->load->view('templates/main/header', $data);
 		$this->load->view('cart/index', $data, $item);
 		$this->load->view('templates/main/footer');

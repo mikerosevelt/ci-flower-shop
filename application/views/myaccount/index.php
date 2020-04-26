@@ -9,7 +9,7 @@
 <section class="ftco-section">
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="col-xl-7 ftco-animate">
+			<div class="col-xl-7 ftco-animate card shadow pb-3 pt-3">
 				<?= $this->session->flashdata('message'); ?>
 				<form action="<?= base_url('myaccount'); ?>" class="billing-form" method="post">
 					<input type="hidden" name="id" id="id" value="<?= $user['id']; ?>">
@@ -100,7 +100,7 @@
 			<div class="col-xl-5">
 				<div class="row mt-5 pt-3">
 					<div class="col-md-12">
-						<div class="cart-detail p-2 p-md-4">
+						<div class="cart-detail p-2 p-md-4 card shadow">
 							<h4 class="billing-heading mb-2">Menu</h4>
 							<ul style="list-style: none">
 								<li>
