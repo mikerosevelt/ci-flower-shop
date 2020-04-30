@@ -37,7 +37,7 @@
         <h5>Join our mailing list</h5>
         <p>We would like to send you occasional news, information and special offers by email. To join our mailing list, simply click the switch button below. You can unsubscribe at any time.</p>
         <div class="custom-control custom-switch">
-            <input type="hidden" class="custom-control-input" id="" name="mailinglist" value="0">
+            <input type="hidden" class="custom-control-input" id="userid" name="userid" value="0">
             <input type="checkbox" class="custom-control-input" id="customSwitch1" name="mailinglist" value="1" checked>
             <label class="custom-control-label" for="customSwitch1">Join mailing list</label>
         </div>
