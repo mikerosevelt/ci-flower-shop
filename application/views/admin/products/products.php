@@ -134,7 +134,7 @@
                     <td class="budget">
                       <div class="media align-items-center">
                         <a href="#" class="avatar rounded-circle mr-3">
-                          <img alt="Image placeholder" src="<?= base_url('assets/img/') . $li['image']; ?>">
+                          <img alt="img" src="<?= base_url('assets/img/') . $li['image']; ?>">
                         </a>
                         <div class="media-body">
                           <span class="mb-0 text-sm"><?= $li['name']; ?></span>

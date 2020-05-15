@@ -32,7 +32,8 @@
           </div>
         </div>
         <div class="card-body bg-default">
-          <form method="post" action="<?= base_url('admin/addProduct'); ?>">
+         <?= form_open_multipart('admin/addProduct'); ?>
+          <!-- <form method="post" action="<?= base_url('admin/addProduct'); ?>" enctype="multipart/form-data"> -->
             <div class="pl-lg">
               <div class="row">
                 <div class="col-lg-6">
@@ -68,7 +69,8 @@
               </div>
             </div>
             <button type="submit" class="btn btn-info col-lg">Add Product</button>
-          </form>
+          <!-- </form> -->
+          <?= form_close(); ?>
         </div>
       </div>
     </div>

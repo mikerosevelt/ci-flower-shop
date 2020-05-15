@@ -6,19 +6,23 @@ class Admin extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		
 		// Check user role
 		if ($this->session->userdata['role_id'] != 1) {
 			redirect('home');
 		}
+
 		// Check user session
 		if ($this->session->userdata['status'] != 'login') {
 			redirect('auth');
 		}
+
 		// MODEL
 		$this->load->model('User_model');
 		$this->load->model('Product_model');
 		$this->load->model('Order_model');
 		$this->load->model('Invoices_model');
+
 		// LIBRARY
 		// $this->load->library('pdf');
 	}
@@ -292,12 +296,13 @@ class Admin extends CI_Controller
 	{
 		$this->form_validation->set_rules('name', 'Name', 'trim|required');
 		$this->form_validation->set_rules('price', 'Price', 'trim|required');
-		$this->form_validation->set_rules('image', 'Image', 'trim|required');
+		// $this->form_validation->set_rules('image', 'Image', 'trim|required');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required');
 
 		if ($this->form_validation->run() == FALSE) {
 			$data['title'] = 'Add New Product';
 			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+			$data['product'] = $this->db->get('product')->result_array();
 			$this->load->view('templates/admin/header', $data);
 			$this->load->view('templates/admin/sidebar');
 			$this->load->view('templates/admin/topbar',$data);

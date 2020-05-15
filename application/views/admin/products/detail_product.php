@@ -46,7 +46,8 @@
           </div>
         </div>
         <div class="card-body">
-          <form method="post" action="<?= base_url('admin/editProduct'); ?>">
+          <?= form_open_multipart('admin/editProduct'); ?>
+          <!-- <form method="post" action="<?= base_url('admin/editProduct'); ?>"> -->
             <input type="hidden" name="id" value="<?= $detail['id']; ?>">
             <div class="pl-lg">
               <div class="row">
@@ -67,7 +68,7 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label>Upload an image</label>
-                    <input type="file" class="form-control-file" id="image" name="image" required value="<?= $detail['image']; ?>">
+                    <input type="file" class="form-control-file" id="image" name="image" required>
                   </div>
                 </div>
               </div>
@@ -83,7 +84,8 @@
               </div>
             </div>
             <button type="submit" class="btn btn-info col-lg">Save Changes</button>
-          </form>
+          <!-- </form> -->
+          <?= form_close(); ?>
         </div>
       </div>
     </div>
