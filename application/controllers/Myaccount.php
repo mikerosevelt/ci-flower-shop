@@ -53,6 +53,17 @@ class Myaccount extends CI_Controller
 		$this->load->view('templates/main/footer');
 	}
 
+	public function mywishlist()
+	{
+		$data['title'] = 'My Wishlist';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['wishlist'] = $this->User_model->getWishlistData($data['user']['id']);
+
+		$this->load->view('templates/main/header', $data);
+		$this->load->view('myaccount/mywishlist', $data);
+		$this->load->view('templates/main/footer');
+	}
+
 	public function setting()
 	{
 		$data['title'] = 'Account Setting';

@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Invoices_model extends CI_Model {
+class Invoices_model extends CI_Model
+{
 
 	public function getAllInvoiceList()
 	{
@@ -27,9 +28,8 @@ class Invoices_model extends CI_Model {
 	public function getInvoiceDetailItems($id)
 	{
 		$this->db->join('order_detail', 'order_detail.order_id = order.id');
-		$this->db->get_where('order',['order_number' => $id]);
+		$this->db->get_where('order', ['order_number' => $id]);
 	}
-
 }
 
 /* End of file Invoices_model.php */

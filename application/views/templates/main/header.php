@@ -54,6 +54,7 @@
               <?php else : ?>
                 <?= '<a class="dropdown-item" href=' . base_url('myaccount') . '>My Profile</a>'; ?>
                 <?= '<a class="dropdown-item" href=' . base_url('myaccount/myorder') . '>My Order</a>'; ?>
+                <?= '<a class="dropdown-item" href=' . base_url('myaccount/mywishlist') . '>My Wishlist</a>'; ?>
                 <?= '<a class="dropdown-item" href=' . base_url('auth/logout') . '>Logout</a>'; ?>
               <?php endif; ?>
             </div>

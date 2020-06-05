@@ -6,7 +6,7 @@ class Admin extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		
+
 		// Check user role
 		if ($this->session->userdata['role_id'] != 1) {
 			redirect('home');
@@ -30,7 +30,7 @@ class Admin extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Dashboard';
-		
+
 		$data['list'] = $this->User_model->getUserActivityList()->result_array();
 		$data['total'] = $this->db->get('user')->num_rows();
 		$data['totalproduct'] = $this->db->get('product')->num_rows();
@@ -38,7 +38,7 @@ class Admin extends CI_Controller
 
 		$this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/sidebar');
-		$this->load->view('templates/admin/topbar',$data);
+		$this->load->view('templates/admin/topbar', $data);
 		$this->load->view('admin/index', $data);
 		$this->load->view('templates/admin/footer');
 	}
@@ -51,7 +51,7 @@ class Admin extends CI_Controller
 
 		$this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/sidebar');
-		$this->load->view('templates/admin/topbar',$data);
+		$this->load->view('templates/admin/topbar', $data);
 		$this->load->view('admin/users/users', $data);
 		$this->load->view('templates/admin/footer');
 	}
@@ -60,24 +60,24 @@ class Admin extends CI_Controller
 	{
 		$data['title'] = 'Orders';
 		$data['total'] = $this->db->get('order')->num_rows();
-        
-        // Pagination Config
-        // $config['base_url'] = 'http://localhost/flower/admin/orders';
-        // $config['total_rows'] = $data['total'];
-        // $config['per_page'] = 1;
-        // $config['num_links'] = 1;
 
-  //       $this->pagination->initialize($config);
-  //       $data['links'] = $this->pagination->create_links();
+		// Pagination Config
+		// $config['base_url'] = 'http://localhost/flower/admin/orders';
+		// $config['total_rows'] = $data['total'];
+		// $config['per_page'] = 1;
+		// $config['num_links'] = 1;
 
-  //       $start = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		//       $this->pagination->initialize($config);
+		//       $data['links'] = $this->pagination->create_links();
+
+		//       $start = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 		// $data['list'] = $this->Order_model->getOrders($config['per_page'], $start);
 		$data['list'] = $this->Order_model->getAllOrder()->result_array();
 
 		$this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/sidebar');
-		$this->load->view('templates/admin/topbar',$data);
-		$this->load->view('admin/orders/orders',$data);
+		$this->load->view('templates/admin/topbar', $data);
+		$this->load->view('admin/orders/orders', $data);
 		$this->load->view('templates/admin/footer');
 	}
 
@@ -89,7 +89,7 @@ class Admin extends CI_Controller
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/sidebar');
-		$this->load->view('templates/admin/topbar',$data);
+		$this->load->view('templates/admin/topbar', $data);
 		$this->load->view('admin/products/products', $data);
 		$this->load->view('templates/admin/footer');
 	}
@@ -103,8 +103,8 @@ class Admin extends CI_Controller
 
 		$this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/sidebar');
-		$this->load->view('templates/admin/topbar',$data);
-		$this->load->view('admin/invoices/invoices',$data);
+		$this->load->view('templates/admin/topbar', $data);
+		$this->load->view('admin/invoices/invoices', $data);
 		$this->load->view('templates/admin/footer');
 	}
 
@@ -114,7 +114,7 @@ class Admin extends CI_Controller
 
 		$this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/sidebar');
-		$this->load->view('templates/admin/topbar',$data);
+		$this->load->view('templates/admin/topbar', $data);
 		$this->load->view('admin/reports/reports');
 		$this->load->view('templates/admin/footer');
 	}
@@ -125,7 +125,7 @@ class Admin extends CI_Controller
 
 		$this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/sidebar');
-		$this->load->view('templates/admin/topbar',$data);
+		$this->load->view('templates/admin/topbar', $data);
 		$this->load->view('admin/help/help');
 		$this->load->view('templates/admin/footer');
 	}
@@ -136,7 +136,7 @@ class Admin extends CI_Controller
 
 		$this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/sidebar');
-		$this->load->view('templates/admin/topbar',$data);
+		$this->load->view('templates/admin/topbar', $data);
 		$this->load->view('admin/setting/setting');
 		$this->load->view('templates/admin/footer');
 	}
@@ -149,14 +149,14 @@ class Admin extends CI_Controller
 		$data['detail'] = $this->User_model->getUserDetail($id)->row_array();
 		$this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/sidebar');
-		$this->load->view('templates/admin/topbar',$data);
+		$this->load->view('templates/admin/topbar', $data);
 		$this->load->view('admin/profile/index', $data);
 		$this->load->view('templates/admin/footer');
 	}
 
 	/**
-	* USER PART
-	*/
+	 * USER PART
+	 */
 	public function user_detail()
 	{
 		$data['title'] = 'User Detail';
@@ -166,7 +166,7 @@ class Admin extends CI_Controller
 			$data['detail'] = $this->User_model->getUserDetail($id)->row_array();
 			$this->load->view('templates/admin/header', $data);
 			$this->load->view('templates/admin/sidebar');
-			$this->load->view('templates/admin/topbar',$data);
+			$this->load->view('templates/admin/topbar', $data);
 			$this->load->view('admin/users/user_detail', $data);
 			$this->load->view('templates/admin/footer');
 		} else {
@@ -196,7 +196,6 @@ class Admin extends CI_Controller
 													</div>');
 			redirect('admin/users');
 		}
-		
 	}
 
 	public function resendActivationEmail()
@@ -204,53 +203,53 @@ class Admin extends CI_Controller
 		$id = $this->input->post('id', true);
 		$email = $this->input->post('email', true);
 		$token = base64_encode(random_bytes(32));
-            $user_token = [
-                'email' => $email,
-                'token' => $token,
-                'date_created' => time()
-            ];
-        $this->db->insert('user_token', $user_token);
-        $this->_sendEmail($token);
-        $this->session->set_flashdata('swal', 'Activation email has been sent.');
-        redirect('admin/user_detail/'.$id);
+		$user_token = [
+			'email' => $email,
+			'token' => $token,
+			'date_created' => time()
+		];
+		$this->db->insert('user_token', $user_token);
+		$this->_sendEmail($token);
+		$this->session->set_flashdata('swal', 'Activation email has been sent.');
+		redirect('admin/user_detail/' . $id);
 	}
 
 	private function _sendEmail($token)
-    {
-        // $this->load->library('email', $config);
-        // You will NOT need to use the $this->email->initialize() method if you save your preferences in a config file (email.php).
-        // $this->email->initialize($config);
-        $this->email->from('noreply@flowershop.com', 'Flower Shop'); // from email and from name.
-        $this->email->to($this->input->post('email'));
-        $this->email->subject('User Activation');
-        $this->email->message('Click to activate your account : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">
+	{
+		// $this->load->library('email', $config);
+		// You will NOT need to use the $this->email->initialize() method if you save your preferences in a config file (email.php).
+		// $this->email->initialize($config);
+		$this->email->from('noreply@flowershop.com', 'Flower Shop'); // from email and from name.
+		$this->email->to($this->input->post('email'));
+		$this->email->subject('User Activation');
+		$this->email->message('Click to activate your account : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">
         Activate</a>');
 
-        if ($this->email->send()) {
-            return true;
-        } else {
-            echo $this->email->print_debugger();
-            die;
-        }
-    }
+		if ($this->email->send()) {
+			return true;
+		} else {
+			echo $this->email->print_debugger();
+			die;
+		}
+	}
 
 	/**
-	* ORDER PART
-	*/
+	 * ORDER PART
+	 */
 	public function orderDetail()
 	{
 		$data['title'] = 'Order Detail';
 
 		$id = $this->uri->segment(3);
 		$data['detail'] = $this->Order_model->getOrderDetail($id)->row_array();
-		
+
 		if ($id) {
 			$data['items'] = $this->Order_model->getOrderItems($id)->result_array();
 			$data['orderstat'] = ['Pending', 'On Process', 'Shipped', 'Delivered', 'Cancelled'];
 			$data['paystatus'] = ['Unpaid', 'Paid'];
 			$this->load->view('templates/admin/header', $data);
 			$this->load->view('templates/admin/sidebar');
-			$this->load->view('templates/admin/topbar',$data);
+			$this->load->view('templates/admin/topbar', $data);
 			$this->load->view('admin/orders/order_detail', $data);
 			$this->load->view('templates/admin/footer');
 		} else {
@@ -290,8 +289,8 @@ class Admin extends CI_Controller
 	}
 
 	/**
-	* PRODUCT PART
-	*/
+	 * PRODUCT PART
+	 */
 	public function addProduct()
 	{
 		$this->form_validation->set_rules('name', 'Name', 'trim|required');
@@ -305,7 +304,7 @@ class Admin extends CI_Controller
 			$data['product'] = $this->db->get('product')->result_array();
 			$this->load->view('templates/admin/header', $data);
 			$this->load->view('templates/admin/sidebar');
-			$this->load->view('templates/admin/topbar',$data);
+			$this->load->view('templates/admin/topbar', $data);
 			$this->load->view('admin/products/add_product');
 			$this->load->view('templates/admin/footer');
 		} else {
@@ -324,7 +323,7 @@ class Admin extends CI_Controller
 		if ($id) {
 			$this->load->view('templates/admin/header', $data);
 			$this->load->view('templates/admin/sidebar');
-			$this->load->view('templates/admin/topbar',$data);
+			$this->load->view('templates/admin/topbar', $data);
 			$this->load->view('admin/products/detail_product', $data);
 			$this->load->view('templates/admin/footer');
 		} else {
@@ -353,8 +352,8 @@ class Admin extends CI_Controller
 	}
 
 	/**
-	* INVOICES PART
-	*/
+	 * INVOICES PART
+	 */
 	public function detail_invoice()
 	{
 		$data['title'] = 'Detail Invoice';
@@ -367,7 +366,7 @@ class Admin extends CI_Controller
 			$data['paystatus'] = ['Unpaid', 'Paid'];
 			$this->load->view('templates/admin/header', $data);
 			$this->load->view('templates/admin/sidebar');
-			$this->load->view('templates/admin/topbar',$data);
+			$this->load->view('templates/admin/topbar', $data);
 			$this->load->view('admin/invoices/detail_invoice', $data);
 			$this->load->view('templates/admin/footer');
 		} else {
@@ -389,7 +388,7 @@ class Admin extends CI_Controller
 			$oid = $data['detail']['order_id'];
 			$data['items'] = $this->Order_model->getOrderItems($oid)->result_array();
 			$this->pdf->setPaper('A4', 'potrait');
-			$this->pdf->filename = "Flower Shop - invoice #". $id .".pdf";
+			$this->pdf->filename = "Flower Shop - invoice #" . $id . ".pdf";
 			$this->pdf->load_view('admin/invoices/temp_invoice', $data);
 		} else {
 			$this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -421,14 +420,14 @@ class Admin extends CI_Controller
 	}
 
 	/**
-	* REPORTS PART
-	*/
+	 * REPORTS PART
+	 */
 
 	/**
-	* HELP PART
-	*/
+	 * HELP PART
+	 */
 
 	/**
-	* SETTINGS PART
-	*/
+	 * SETTINGS PART
+	 */
 }

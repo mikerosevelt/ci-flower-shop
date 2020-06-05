@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Order_model extends CI_Model {
+class Order_model extends CI_Model
+{
 
 	public function getAllOrder()
 	{
@@ -13,18 +14,18 @@ class Order_model extends CI_Model {
 
 	public function getOrders($limit, $start)
 	{
-        $this->db->limit($limit, $start);
-        $this->db->select('*');
-        $this->db->from('order');
-        $this->db->join('user', 'user.id = order.user_id');
-        $query = $this->db->get();
-        if ($query->num_rows() > 0) {
-            foreach ($query->result_array() as $row) {
-                $data[] = $row;
-            }
-            return $data;
-        }
-        return false;
+		$this->db->limit($limit, $start);
+		$this->db->select('*');
+		$this->db->from('order');
+		$this->db->join('user', 'user.id = order.user_id');
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			foreach ($query->result_array() as $row) {
+				$data[] = $row;
+			}
+			return $data;
+		}
+		return false;
 	}
 
 	public function deleteOrder($id)
@@ -48,7 +49,6 @@ class Order_model extends CI_Model {
 		$this->db->join('payment_statuses', 'payment_statuses.id = order.payment_status');
 		$this->db->where('order.user_id', $id);
 		return $this->db->get();
-
 	}
 
 	public function getOrderDetail($id)
@@ -63,9 +63,7 @@ class Order_model extends CI_Model {
 		$this->db->join('order_detail', 'order.id = order_detail.order_id');
 		$this->db->where('order_detail.order_id', $id);
 		return $this->db->get();
-
 	}
-
 }
 
 /* End of file Order_model.php */

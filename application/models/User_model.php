@@ -1,9 +1,11 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class User_model extends CI_Model {
-	
-	public function getAllUser() {
+class User_model extends CI_Model
+{
+
+	public function getAllUser()
+	{
 		return $this->db->get('user');
 	}
 
@@ -17,7 +19,8 @@ class User_model extends CI_Model {
 		return $this->db->query($query);
 	}
 
-	public function getUserById($id) {
+	public function getUserById($id)
+	{
 		$query = $this->db->get_where('user', ['id' => $id]);
 		return $query;
 	}
@@ -29,10 +32,11 @@ class User_model extends CI_Model {
                   JOIN `user_detail` ON `user`.`id` = `user_detail`.`user_id`
                   JOIN `user_log` ON `user`.`id` = `user_log`.`user_id`
                   WHERE `user`.`id` = $id";
-        return $this->db->query($query);
+		return $this->db->query($query);
 	}
 
-	public function deleteUser($id) {
+	public function deleteUser($id)
+	{
 		$this->db->where('id', $id);
 		$this->db->delete('user');
 		$this->db->where('user_id', $id);
@@ -70,10 +74,10 @@ class User_model extends CI_Model {
 				'country' => $country,
 				'phone' => $phone
 			];
-			
+
 			$this->db->insert('user_detail', $data);
-			 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You detail has been updated.</div>');
-            redirect('myaccount');
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You detail has been updated.</div>');
+			redirect('myaccount');
 		} else {
 			$this->db->set('address', $address);
 			$this->db->set('address_2', $address2);
@@ -85,7 +89,7 @@ class User_model extends CI_Model {
 			$this->db->where('user_id', $id);
 			$this->db->update('user_detail');
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You detail has been updated.</div>');
-            redirect('myaccount');
+			redirect('myaccount');
 		}
 	}
 
@@ -96,6 +100,16 @@ class User_model extends CI_Model {
           JOIN `user_detail` ON `user`.`id` = `user_detail`.`user_id`
           WHERE `user`.`id` = $id";
 		return  $this->db->query($query);
+	}
+
+	// Get user wishlist product data (name, price, etc)
+	public function getWishlistData($id)
+	{
+		$this->db->select('product.*, wishlist.*');
+		$this->db->from('wishlist');
+		$this->db->join('product', 'product.id = wishlist.product_id');
+		$this->db->where('wishlist.user_id', $id);
+		return $this->db->get()->result_array();
 	}
 }
 
