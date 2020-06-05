@@ -1,13 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
 class Product extends CI_Controller
 {
-
 	public function __construct()
 	{
 		parent::__construct();
-
 		$this->load->model('Product_model');
 	}
 
@@ -39,9 +36,14 @@ class Product extends CI_Controller
 			'image'    => $this->input->post('image'),
 			'qty' => $this->input->post('quantity')
 		);
-
 		$this->cart->insert($data);
-		redirect('product/index');
+		// return redirect('product/index');
+		echo $this->index();
+	}
+
+	public function loadTotalPrice()
+	{
+		echo number_format($this->cart->total());
 	}
 
 	public function deleteCart($rowid)
@@ -77,5 +79,12 @@ class Product extends CI_Controller
 			$this->cart->update($data);
 		}
 		redirect('cart');
+	}
+
+	// Add product to wishlist
+	public function addWishlist()
+	{
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$this->Product_model->addProductToWishlist($data['user']['id']);
 	}
 }

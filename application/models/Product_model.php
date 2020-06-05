@@ -3,18 +3,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Product_model extends CI_Model
 {
-
+	// Get all products
 	public function getAllProduct()
 	{
 		return $this->db->get('product');
 	}
 
+	// Get single product by id
 	public function getProductById($id)
 	{
 		$query = $this->db->get_where('product', ['id' => $id]);
 		return $query;
 	}
 
+	// Add product to database
 	public function addNewProduct()
 	{
 		$config['upload_path']          = './assets/img/';
@@ -37,6 +39,7 @@ class Product_model extends CI_Model
         }
 	}
 
+	// Edit product
 	public function editDataProduct()
 	{	
 		$id = $this->input->post('id');
@@ -66,10 +69,22 @@ class Product_model extends CI_Model
        
 	}
 
+	// Delete product from database
 	public function deleteProduct($id)
 	{
 		$this->db->where('id', $id);
 		$this->db->delete('product');
+	}
+
+	// Add product to user wishlist
+	public function addProductToWishlist($userid)
+	{
+		$data = [
+			'user_id' => $userid,
+			'product_id' => $this->input->post('id')
+		];
+
+		$this->db->insert('wishlist', $data);
 	}
 }
 

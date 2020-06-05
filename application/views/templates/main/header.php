@@ -58,7 +58,7 @@
               <?php endif; ?>
             </div>
           </li>
-          <li class="nav-item cta cta-colored"><a href="<?= base_url('cart'); ?>" class="nav-link"><span class="icon-shopping_cart"></span>[Rp.<?= number_format($this->cart->total(), 0, ",", "."); ?>]</a></li>
+          <li class="nav-item cta cta-colored"><a href="<?= base_url('cart'); ?>" id="total" class="nav-link"><span class="icon-shopping_cart"></span>[Rp.<?= number_format($this->cart->total(), 0, ",", "."); ?>]</a></li>
         </ul>
       </div>
     </div>
