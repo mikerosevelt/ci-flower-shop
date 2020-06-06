@@ -37,15 +37,8 @@
                   <p class="price"><span class="price-sale">Rp.<?= number_format($li['price'], 0, ",", "."); ?></span></p>
                 </div>
               </div>
-              <!-- <form method="post" action="<?= base_url('product/addToCart'); ?>" accept-charset="utf-8"> -->
-              <!-- <input type="hidden" id="id" class="id" name="id" value="<?= $li['id']; ?>" />
-                <input type="hidden" id="name" class="name" name="name" value="<?= $li['name']; ?>" />
-                <input type="hidden" id="price" name="price" value="<?= $li['price']; ?>" />
-                <input type="hidden" id="image" name="image" value="<?= $li['image']; ?>" />
-                <input type="hidden" id="quantity" name="quantity" value="1" /> -->
               <div class="bottom-area d-flex px-3">
                 <div class="m-auto d-flex">
-                  <!-- <input type="submit" name="add" class="btn btn-primary mr-2" value="Add to cart"> -->
                   <a href="javascript:void(0)" title="Add to cart" class="buy-now d-flex justify-content-center align-items-center mx-1 btn-add-cart" data-id="<?= $li['id']; ?>" data-name="<?= $li['name']; ?>" data-price="<?= $li['price']; ?>" data-image="<?= $li['image']; ?>" data-quantity=1>
                     <span><i class="ion-ios-cart"></i></span>
                   </a>
@@ -55,7 +48,6 @@
                     </a>
                   <?php endif; ?>
                 </div>
-                <!-- </form> -->
               </div>
             </div>
           </div>
