@@ -46,7 +46,7 @@ class Admin extends CI_Controller
 	public function users()
 	{
 		$data['title'] = 'Users';
-		$data['list'] = $this->User_model->getAllUser()->result_array();
+		$data['list'] = $this->User_model->getAllUser();
 		$data['total'] = $this->User_model->getAllUser()->num_rows();
 
 		$this->load->view('templates/admin/header', $data);
@@ -72,7 +72,7 @@ class Admin extends CI_Controller
 
 		//       $start = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 		// $data['list'] = $this->Order_model->getOrders($config['per_page'], $start);
-		$data['list'] = $this->Order_model->getAllOrder()->result_array();
+		$data['list'] = $this->Order_model->getAllOrder();
 
 		$this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/sidebar');
@@ -84,7 +84,7 @@ class Admin extends CI_Controller
 	public function products()
 	{
 		$data['title'] = 'Products';
-		$data['list'] = $this->Product_model->getAllProduct()->result_array();
+		$data['list'] = $this->Product_model->getAllProduct();
 		$data['total'] = $this->Product_model->getAllProduct()->num_rows();
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$this->load->view('templates/admin/header', $data);
@@ -98,7 +98,7 @@ class Admin extends CI_Controller
 	{
 		$data['title'] = 'Invoices';
 		// $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$data['list'] = $this->Invoices_model->getAllInvoiceList()->result_array();
+		$data['list'] = $this->Invoices_model->getAllInvoiceList();
 		$data['total'] = $this->db->get('invoice')->num_rows();
 
 		$this->load->view('templates/admin/header', $data);
@@ -146,7 +146,7 @@ class Admin extends CI_Controller
 		$data['title'] = 'My Profile';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$id = $data['user']['id'];
-		$data['detail'] = $this->User_model->getUserDetail($id)->row_array();
+		$data['detail'] = $this->User_model->getUserDetail($id);
 		$this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/sidebar');
 		$this->load->view('templates/admin/topbar', $data);
@@ -241,10 +241,10 @@ class Admin extends CI_Controller
 		$data['title'] = 'Order Detail';
 
 		$id = $this->uri->segment(3);
-		$data['detail'] = $this->Order_model->getOrderDetail($id)->row_array();
+		$data['detail'] = $this->Order_model->getOrderDetail($id);
 
 		if ($id) {
-			$data['items'] = $this->Order_model->getOrderItems($id)->result_array();
+			$data['items'] = $this->Order_model->getOrderItems($id);
 			$data['orderstat'] = ['Pending', 'On Process', 'Shipped', 'Delivered', 'Cancelled'];
 			$data['paystatus'] = ['Unpaid', 'Paid'];
 			$this->load->view('templates/admin/header', $data);

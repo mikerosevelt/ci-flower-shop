@@ -47,7 +47,7 @@ class Myaccount extends CI_Controller
 		$data['title'] = 'My Order';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$id = $data['user']['id'];
-		$data['myorder'] = $this->Order_model->getUserOrderList($id)->result_array();
+		$data['myorder'] = $this->Order_model->getUserOrderList($id);
 		$this->load->view('templates/main/header', $data);
 		$this->load->view('myaccount/myorder', $data);
 		$this->load->view('templates/main/footer');

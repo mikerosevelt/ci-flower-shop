@@ -6,7 +6,7 @@ class User_model extends CI_Model
 	// Get all users 
 	public function getAllUser()
 	{
-		return $this->db->get('user');
+		return $this->db->get('user')->result_array();
 	}
 
 	// Get all users activity

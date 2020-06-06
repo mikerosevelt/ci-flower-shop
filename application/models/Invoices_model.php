@@ -11,7 +11,7 @@ class Invoices_model extends CI_Model
 				  JOIN `user` ON `invoice`.`user_id` = `user`.`id`
 				  JOIN `order` ON `invoice`.`order_id` = `order`.`id`";
 
-		return $this->db->query($query);
+		return $this->db->query($query)->result_array();
 	}
 
 	public function getInvoiceDetail($id)

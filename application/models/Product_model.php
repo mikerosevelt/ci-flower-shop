@@ -6,14 +6,13 @@ class Product_model extends CI_Model
 	// Get all products
 	public function getAllProduct()
 	{
-		return $this->db->get('product');
+		return $this->db->get('product')->result_array();
 	}
 
 	// Get single product by id
 	public function getProductById($id)
 	{
-		$query = $this->db->get_where('product', ['id' => $id]);
-		return $query;
+		return  $this->db->get_where('product', ['id' => $id])->row_array();
 	}
 
 	// Add product to database
