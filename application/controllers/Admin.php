@@ -85,7 +85,7 @@ class Admin extends CI_Controller
 	{
 		$data['title'] = 'Products';
 		$data['list'] = $this->Product_model->getAllProduct();
-		$data['total'] = $this->Product_model->getAllProduct()->num_rows();
+		$data['total'] = $this->db->get('product')->num_rows();
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		$this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/sidebar');
@@ -359,9 +359,9 @@ class Admin extends CI_Controller
 		$data['title'] = 'Detail Invoice';
 		$id = $this->uri->segment(3);
 		if ($id) {
-			$data['detail'] = $this->Invoices_model->getInvoiceDetail($id)->row_array();
+			$data['detail'] = $this->Invoices_model->getInvoiceDetail($id);
 			$oid = $data['detail']['order_id'];
-			$data['items'] = $this->Order_model->getOrderItems($oid)->result_array();
+			$data['items'] = $this->Order_model->getOrderItems($oid);
 			$data['orderstat'] = ['Pending', 'On Process', 'Shipped', 'Delivered', 'Cancelled'];
 			$data['paystatus'] = ['Unpaid', 'Paid'];
 			$this->load->view('templates/admin/header', $data);
@@ -384,9 +384,9 @@ class Admin extends CI_Controller
 	{
 		$id = $this->uri->segment(3);
 		if ($id) {
-			$data['detail'] = $this->Invoices_model->getInvoiceDetail($id)->row_array();
+			$data['detail'] = $this->Invoices_model->getInvoiceDetail($id);
 			$oid = $data['detail']['order_id'];
-			$data['items'] = $this->Order_model->getOrderItems($oid)->result_array();
+			$data['items'] = $this->Order_model->getOrderItems($oid);
 			$this->pdf->setPaper('A4', 'potrait');
 			$this->pdf->filename = "Flower Shop - invoice #" . $id . ".pdf";
 			$this->pdf->load_view('admin/invoices/temp_invoice', $data);

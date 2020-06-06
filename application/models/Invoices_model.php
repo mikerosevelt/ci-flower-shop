@@ -3,26 +3,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Invoices_model extends CI_Model
 {
-
+	// Get all invoices
 	public function getAllInvoiceList()
 	{
-		$query = "SELECT `user`.`name`, `order`.`total`, `order`.`payment_status`, `invoice`.* 
-				  FROM `invoice`
-				  JOIN `user` ON `invoice`.`user_id` = `user`.`id`
-				  JOIN `order` ON `invoice`.`order_id` = `order`.`id`";
+		$this->db->select('user.name, order.total, order.payment_status, invoice.*');
+		$this->db->from('invoice');
+		$this->db->join('user', 'user.id = invoice.user_id');
+		$this->db->join('order', 'order.id = invoice.order_id');
 
-		return $this->db->query($query)->result_array();
+		return $this->db->get()->result_array();
 	}
 
+	// Get single invoice detail by id
 	public function getInvoiceDetail($id)
 	{
-		$query = "SELECT `user`.`name`, `user`.`email`, `order`.*, `invoice`.* 
-				  FROM `invoice`
-				  JOIN `user` ON `invoice`.`user_id` = `user`.`id`
-				  JOIN `order` ON `invoice`.`order_id` = `order`.`id`
-				  WHERE `invoice`.`id` = $id";
+		$this->db->select('user.name, user.email, order.*, invoice.*');
+		$this->db->from('invoice');
+		$this->db->join('user', 'user.id = invoice.user_id');
+		$this->db->join('order', 'order.id = invoice.order_id');
+		$this->db->where('invoice.id', $id);
 
-		return $this->db->query($query);
+		return $this->db->get()->row_array();
 	}
 
 	public function getInvoiceDetailItems($id)
