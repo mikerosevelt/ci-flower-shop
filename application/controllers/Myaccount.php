@@ -32,7 +32,7 @@ class Myaccount extends CI_Controller
 			$data['title'] = 'MyAccount';
 			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 			$id = $data['user']['id'];
-			$data['data'] = $this->User_model->getUserData($id)->row_array();
+			$data['data'] = $this->User_model->getUserData($id);
 
 			$this->load->view('templates/main/header', $data);
 			$this->load->view('myaccount/index', $data);

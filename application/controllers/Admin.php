@@ -31,7 +31,7 @@ class Admin extends CI_Controller
 	{
 		$data['title'] = 'Dashboard';
 
-		$data['list'] = $this->User_model->getUserActivityList()->result_array();
+		$data['list'] = $this->User_model->getUserActivityList();
 		$data['total'] = $this->db->get('user')->num_rows();
 		$data['totalproduct'] = $this->db->get('product')->num_rows();
 		$data['totalorder'] = $this->db->get('order')->num_rows();
@@ -163,7 +163,7 @@ class Admin extends CI_Controller
 
 		$id = $this->uri->segment(3);
 		if ($id) {
-			$data['detail'] = $this->User_model->getUserDetail($id)->row_array();
+			$data['detail'] = $this->User_model->getUserDetail($id);
 			$this->load->view('templates/admin/header', $data);
 			$this->load->view('templates/admin/sidebar');
 			$this->load->view('templates/admin/topbar', $data);

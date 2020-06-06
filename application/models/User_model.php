@@ -3,38 +3,43 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class User_model extends CI_Model
 {
-
+	// Get all users 
 	public function getAllUser()
 	{
 		return $this->db->get('user');
 	}
 
+	// Get all users activity
 	public function getUserActivityList()
 	{
-		$query = "SELECT `user`.`name`,`user`.`email`,`user_role`.`role`,`user_log`.`last_login`
-				  FROM `user`
-				  JOIN `user_log` ON `user_log`.`user_id` = `user`.`id`
-				  JOIN `user_role` ON `user_role`.`id` = `user`.`role_id`";
+		$this->db->select('user_role.role, user_log.last_login, user.name, user.email');
+		$this->db->from('user');
+		$this->db->join('user_log', 'user_log.user_id = user.id');
+		$this->db->join('user_role', 'user_role.id = user.role_id');
+		$this->db->order_by('user_log.last_login', 'desc');
 
-		return $this->db->query($query);
+		return $this->db->get()->result_array();
 	}
 
+	// Get single user by id
 	public function getUserById($id)
 	{
 		$query = $this->db->get_where('user', ['id' => $id]);
 		return $query;
 	}
 
+	// Get a user detail by id
 	public function getUserDetail($id)
 	{
-		$query = "SELECT `user`.*, `user_detail`.`address`,`user_detail`.`address_2`,`user_detail`.`city`,`user_detail`.`zipcode`,`user_detail`.`state`,`user_detail`.`country`,`user_detail`.`phone`, `user_log`.`ip_address`,`user_log`.`host`,`user_log`.`user_agent`,`user_log`.`last_login`
-                  FROM `user` 
-                  JOIN `user_detail` ON `user`.`id` = `user_detail`.`user_id`
-                  JOIN `user_log` ON `user`.`id` = `user_log`.`user_id`
-                  WHERE `user`.`id` = $id";
-		return $this->db->query($query);
+		$this->db->select('user_detail.*, user_log.*, user.name, user.email, user.is_active, user.date_created');
+		$this->db->from('user');
+		$this->db->join('user_detail', 'user_detail.user_id = user.id');
+		$this->db->join('user_log', 'user_log.user_id = user.id');
+		$this->db->where('user.id', $id);
+		return $this->db->get()->row_array();
 	}
 
+	// Delete a user, user detail and user log
 	public function deleteUser($id)
 	{
 		$this->db->where('id', $id);
@@ -45,6 +50,7 @@ class User_model extends CI_Model
 		$this->db->delete('user_log');
 	}
 
+	// Update user detail
 	public function updateDetail()
 	{
 		$userId = $this->db->get('user_detail')->row_array();
@@ -76,7 +82,7 @@ class User_model extends CI_Model
 			];
 
 			$this->db->insert('user_detail', $data);
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You detail has been updated.</div>');
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your detail has been updated.</div>');
 			redirect('myaccount');
 		} else {
 			$this->db->set('address', $address);
@@ -88,21 +94,22 @@ class User_model extends CI_Model
 			$this->db->set('phone', $phone);
 			$this->db->where('user_id', $id);
 			$this->db->update('user_detail');
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You detail has been updated.</div>');
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your detail has been updated.</div>');
 			redirect('myaccount');
 		}
 	}
 
+	// Get user data by id
 	public function getUserData($id)
 	{
-		$query = "SELECT `user`.*, `user_detail`.*
-          FROM `user` 
-          JOIN `user_detail` ON `user`.`id` = `user_detail`.`user_id`
-          WHERE `user`.`id` = $id";
-		return  $this->db->query($query);
+		$this->db->select('user_detail.*, user.name, user.email, user.is_active, user.date_created');
+		$this->db->from('user');
+		$this->db->join('user_detail', 'user_detail.user_id = user.id');
+		$this->db->where('user.id', $id);
+		return $this->db->get()->row_array();
 	}
 
-	// Get user wishlist product data (name, price, etc)
+	// Get user wishlist product data (name, price, etc) by id
 	public function getWishlistData($id)
 	{
 		$this->db->select('product.*, wishlist.*');
@@ -111,6 +118,7 @@ class User_model extends CI_Model
 		$this->db->where('wishlist.user_id', $id);
 		return $this->db->get()->result_array();
 	}
+	
 }
 
 /* End of file User_model.php */
