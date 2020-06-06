@@ -91,37 +91,42 @@
 	<div class="container">
 		<div class="row">
 			<?php foreach ($list as $li) : ?>
-				<div class="col-md-6 col-lg-3 ftco-animate">
-					<div class="product">
-						<input type="hidden" name="id" id="id" value="<?= $li['id']; ?>">
-						<a href="<?= base_url('product/detail/') . $li['id']; ?>" class="img-prod"><img class="img-fluid" src="<?= base_url('assets/img/') . $li['image']; ?>" alt="...">
-							<div class="overlay"></div>
-						</a>
-						<div class="text py-3 pb-4 px-3 text-center">
-							<h3><a href="#"><?= $li['name']; ?></a></h3>
-							<div class="d-flex">
-								<div class="pricing">
-									<p class="price"><span class="price-sale">Rp.<?= number_format($li['price'], 0, ",", "."); ?></span></p>
-								</div>
-							</div>
-							<form action="<?= base_url('product/addToCart'); ?>" method="POST" accept-charset="utf-8">
-								<input type="hidden" name="id" value="<?= $li['id']; ?>" />
-								<input type="hidden" name="name" value="<?= $li['name']; ?>" />
-								<input type="hidden" name="price" value="<?= $li['price']; ?>" />
-								<input type="hidden" name="image" value="<?= $li['image']; ?>" />
-								<input type="hidden" name="quantity" value="1" />
-								<div class="bottom-area d-flex px-3">
-									<div class="m-auto d-flex">
-										<input type="submit" name="add" class="btn btn-black" value="Add to cart">
-
-										</button>
-									</div>
-							</form>
-						</div>
-					</div>
-				</div>
-		</div>
-	<?php endforeach; ?>
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="product">
+            <a href="<?= base_url('product/detail/') . $li['id']; ?>" class="img-prod"><img class="img-fluid" src="<?= base_url('assets/img/') . $li['image']; ?>" alt="Colorlib Template">
+              <div class="overlay"></div>
+            </a>
+            <div class="text py-3 pb-4 px-3 text-center">
+              <h3><a href="<?= base_url('product/detail/') . $li['id']; ?>"><?= $li['name']; ?></a></h3>
+              <div class="d-flex">
+                <div class="pricing">
+                  <p class="price"><span class="price-sale">Rp.<?= number_format($li['price'], 0, ",", "."); ?></span></p>
+                </div>
+              </div>
+              <!-- <form method="post" action="<?= base_url('product/addToCart'); ?>" accept-charset="utf-8"> -->
+              <!-- <input type="hidden" id="id" class="id" name="id" value="<?= $li['id']; ?>" />
+                <input type="hidden" id="name" class="name" name="name" value="<?= $li['name']; ?>" />
+                <input type="hidden" id="price" name="price" value="<?= $li['price']; ?>" />
+                <input type="hidden" id="image" name="image" value="<?= $li['image']; ?>" />
+                <input type="hidden" id="quantity" name="quantity" value="1" /> -->
+              <div class="bottom-area d-flex px-3">
+                <div class="m-auto d-flex">
+                  <!-- <input type="submit" name="add" class="btn btn-primary mr-2" value="Add to cart"> -->
+                  <a href="javascript:void(0)" title="Add to cart" class="buy-now d-flex justify-content-center align-items-center mx-1 btn-add-cart" data-id="<?= $li['id']; ?>" data-name="<?= $li['name']; ?>" data-price="<?= $li['price']; ?>" data-image="<?= $li['image']; ?>" data-quantity=1>
+                    <span><i class="ion-ios-cart"></i></span>
+                  </a>
+                  <?php if ($this->session->userdata('status') == 'login') : ?>
+                    <a href="javascript:void(0)" title="Add to wishlist" class="heart d-flex justify-content-center align-items-center btn-add-wishlist" data-id="<?= $li['id']; ?>">
+                      <span><i class="ion-ios-heart"></i></span>
+                    </a>
+                  <?php endif; ?>
+                </div>
+                <!-- </form> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      <?php endforeach; ?>
 	</div>
 
 	</div>
