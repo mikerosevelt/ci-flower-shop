@@ -92,25 +92,28 @@ if ($cart = $this->cart->contents()) {
 						<form action="#" class="info">
 							<div class="form-group">
 								<label for="">Province</label>
-								<select name="province" class="custom-select">
-									<?php foreach ($province['rajaongkir']['results'] as $p) : ?>
-										<option value="<?= $p['province_id'] ?>"><?= $p['province'] ?></option>
-									<?php endforeach; ?>
+								<select name="province" class="custom-select" id="province">
+									<?php if ($province['rajaongkir']['results']) : ?>
+										<?php foreach ($province['rajaongkir']['results'] as $p) : ?>
+											<option value="<?= $p['province_id'] ?>"><?= $p['province'] ?></option>
+										<?php endforeach; ?>
+									<?php endif; ?>
+									<option value=""><?= $error ?></option>
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="country">City</label>
-								<select name="" class="custom-select">
+								<label for="country">City/Suburb</label>
+								<select name="" class="custom-select" id="city" disabled>
 									<option value=""></option>
 								</select>
 							</div>
 							<div class="form-group">
 								<label for="country">Zip/Postal Code</label>
-								<input type="text" class="form-control text-left px-3" placeholder="" value="">
+								<input type="text" class="form-control text-left px-3" placeholder="" value="" id="postcode" disabled>
 							</div>
 						</form>
 					</div>
-					<p><a href="" class="btn btn-primary py-3 px-4">Estimate</a></p>
+					<p><a href="javascript:void(0)" id="estimate" class="btn btn-primary py-3 px-4">Estimate</a></p>
 				</div>
 				<div class="col-lg-4 mt-5 cart-wrap ftco-animate">
 					<div class="cart-total mb-3">
@@ -121,7 +124,10 @@ if ($cart = $this->cart->contents()) {
 						</p>
 						<p class="d-flex">
 							<span>Delivery</span>
-							<span>Free</span>
+							<span class="">
+								<ul id="list-service">
+								</ul>
+							</span>
 						</p>
 						<p class="d-flex">
 							<span>Discount</span>
@@ -132,11 +138,11 @@ if ($cart = $this->cart->contents()) {
 							<span>Total</span>
 							<span>Rp.<?= number_format($this->cart->total(), 0, ",", "."); ?></span>
 						</p>
+						</>
+						<p><a href="<?= base_url('cart/checkout'); ?>" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
 					</div>
-					<p><a href="<?= base_url('cart/checkout'); ?>" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
 				</div>
 			</div>
-		</div>
 	</section>
 <?php
 } else {

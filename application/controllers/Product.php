@@ -11,7 +11,7 @@ class Product extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Product Page';
-		$data['list'] = $this->Product_model->getAllProduct()->result_array();
+		$data['list'] = $this->Product_model->getAllProduct();
 		$this->load->view('templates/main/header', $data);
 		$this->load->view('product/index', $data);
 		$this->load->view('templates/main/footer');
@@ -21,7 +21,7 @@ class Product extends CI_Controller
 	{
 		$data['title'] = 'Detail Page';
 		$id = $this->uri->segment(3);
-		$data['item'] = $this->Product_model->getProductById($id)->row_array();
+		$data['item'] = $this->Product_model->getProductById($id);
 		$this->load->view('templates/main/header', $data);
 		$this->load->view('product/detail', $data);
 		$this->load->view('templates/main/footer');

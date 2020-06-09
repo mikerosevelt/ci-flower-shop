@@ -2,6 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 class Cart extends CI_Controller
 {
@@ -9,25 +10,75 @@ class Cart extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Cart_model');
+		$this->client = new Client();
 	}
 
 	public function index()
 	{
 		$item['list'] = $this->cart->contents();
 		if ($item['list']) {
-			$client = new Client();
-			$response = $client->get('http://api.rajaongkir.com/starter/province?key=dea39333c45f5615bf12902d52566452');
-			$data['province'] = json_decode($response->getBody()->getContents(), true);
+			try {
+				$response = $this->client->get('http://api.rajaongkir.com/starter/province?key=' . getenv('RAJAONGKIR_API_KEY') . '');
+				$data['province'] = json_decode($response->getBody()->getContents(), true);
+			} catch (RequestException $e) {
+				$data['error'] = 'Cannot get province, please check your internet connection';
+			}
 		}
 		$data['title'] = 'Cart Page';
-		// echo $data['province'];
-		// var_dump($data['province']['results']);
-		// die();
 		$this->load->view('templates/main/header', $data);
 		$this->load->view('cart/index', $data, $item);
 		$this->load->view('templates/main/footer');
 	}
 
+	// Get shipping city/suburb from the API
+	public function getCity()
+	{
+		// Province id
+		$id = $this->input->post('id');
+		$response = $this->client->get('http://api.rajaongkir.com/starter/city?&province=' . $id . '?&key=' . getenv('RAJAONGKIR_API_KEY') . '');
+		$result = json_decode($response->getBody()->getContents(), true);
+
+		$output = "";
+		foreach ($result['rajaongkir']['results'] as $r) {
+			$output .= '
+			<option value=' . $r['city_id'] . ' data-postcode=' . $r['postal_code'] . '>' . $r['city_name'] . '</option>
+			';
+		}
+		echo $output;
+	}
+
+	// Get Shipping Cost
+	public function getCost()
+	{
+		$response = $this->client->request('POST', 'http://api.rajaongkir.com/starter/cost', [
+			'form_params' => [
+				'origin' => '152',
+				'destination' => $this->input->post('cityid'),
+				'weight' => '1000',
+				'courier' => 'jne',
+				'content-type' => 'application/x-www-form-urlencoded',
+				'key' => getenv('RAJAONGKIR_API_KEY')
+			]
+		]);
+
+		$result = json_decode($response->getBody()->getContents(), true);
+		$res = $result['rajaongkir']['results'];
+
+		$output = "";
+		foreach ($res[0]['costs'] as $r) {
+			$output .= '
+			<li>
+			<input class="form-check-input" type="radio" name="service" id="service" value="">
+			<label class="form-check-label" for="service">
+				 JNE ' . $r['service'] . $r['cost'] . '
+			</label>
+			</li>
+		';
+		}
+		echo $output;
+	}
+
+	// Checkout page
 	public function checkout()
 	{
 		if ($this->cart->total() == 0) {
