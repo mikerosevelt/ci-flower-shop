@@ -120,6 +120,7 @@
 <script src="<?= base_url('assets/'); ?>js/google-map.js"></script>
 <script src="<?= base_url('assets/'); ?>js/main.js"></script>
 <script src="<?= base_url('assets/'); ?>js/script.js"></script>
+<script src="<?= base_url('assets/'); ?>js/shipping.js"></script>
 <script src="<?= base_url('assets/'); ?>js/tables.js"></script>
 
 </body>

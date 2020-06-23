@@ -78,6 +78,24 @@ class Cart extends CI_Controller
 		echo $output;
 	}
 
+	public function test()
+	{
+		$response = $this->client->request('POST', 'http://api.rajaongkir.com/starter/cost', [
+			'form_params' => [
+				'origin' => '152',
+				'destination' => $this->input->post('cityid'),
+				// 'destination' => $cityid,
+				'weight' => '1000',
+				'courier' => 'jne',
+				'content-type' => 'application/x-www-form-urlencoded',
+				'key' => getenv('RAJAONGKIR_API_KEY')
+			]
+		]);
+
+		$result = json_decode($response->getBody()->getContents(), true);
+		echo json_encode($result['rajaongkir']['results']);
+	}
+
 	// Checkout page
 	public function checkout()
 	{

@@ -91,35 +91,39 @@
 	<div class="container">
 		<div class="row">
 			<?php foreach ($list as $li) : ?>
-        <div class="col-md-6 col-lg-3 ftco-animate">
-          <div class="product">
-            <a href="<?= base_url('product/detail/') . $li['id']; ?>" class="img-prod"><img class="img-fluid" src="<?= base_url('assets/img/') . $li['image']; ?>" alt="Colorlib Template">
-              <div class="overlay"></div>
-            </a>
-            <div class="text py-3 pb-4 px-3 text-center">
-              <h3><a href="<?= base_url('product/detail/') . $li['id']; ?>"><?= $li['name']; ?></a></h3>
-              <div class="d-flex">
-                <div class="pricing">
-                  <p class="price"><span class="price-sale">Rp.<?= number_format($li['price'], 0, ",", "."); ?></span></p>
-                </div>
-              </div>
-              <div class="bottom-area d-flex px-3">
-                <div class="m-auto d-flex">
-                  <a href="javascript:void(0)" title="Add to cart" class="buy-now d-flex justify-content-center align-items-center mx-1 btn-add-cart" data-id="<?= $li['id']; ?>" data-name="<?= $li['name']; ?>" data-price="<?= $li['price']; ?>" data-image="<?= $li['image']; ?>" data-quantity=1>
-                    <span><i class="ion-ios-cart"></i></span>
-                  </a>
-                  <?php if ($this->session->userdata('status') == 'login') : ?>
-                    <a href="javascript:void(0)" title="Add to wishlist" class="heart d-flex justify-content-center align-items-center btn-add-wishlist" data-id="<?= $li['id']; ?>">
-                      <span><i class="ion-ios-heart"></i></span>
-                    </a>
-                  <?php endif; ?>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      <?php endforeach; ?>
-	</div>
+				<div class="col-md-6 col-lg-3 ftco-animate">
+					<div class="product">
+						<a href="<?= base_url('product/detail/') . $li['id']; ?>" class="img-prod"><img class="img-fluid" src="<?= base_url('assets/img/') . $li['image']; ?>" alt="Colorlib Template">
+							<div class="overlay"></div>
+						</a>
+						<div class="text py-3 pb-4 px-3 text-center">
+							<h3><a href="<?= base_url('product/detail/') . $li['id']; ?>"><?= $li['name']; ?></a></h3>
+							<div class="d-flex">
+								<div class="pricing">
+									<p class="price"><span class="price-sale">Rp.<?= number_format($li['price'], 0, ",", "."); ?></span></p>
+								</div>
+							</div>
+							<div class="bottom-area d-flex px-3">
+								<div class="m-auto d-flex">
+									<a href="javascript:void(0)" title="Add to cart" class="buy-now d-flex justify-content-center align-items-center mx-1 btn-add-cart" data-id="<?= $li['id']; ?>" data-name="<?= $li['name']; ?>" data-price="<?= $li['price']; ?>" data-image="<?= $li['image']; ?>" data-quantity=1>
+										<span><i class="ion-ios-cart"></i></span>
+									</a>
+									<?php if ($this->session->userdata('status') == 'login') : ?>
+										<a href="javascript:void(0)" title="Add to wishlist" class="heart d-flex justify-content-center align-items-center btn-add-wishlist" data-id="<?= $li['id']; ?>">
+											<span><i class="ion-ios-heart"></i></span>
+										</a>
+									<?php else : ?>
+										<a href="<?= base_url('auth'); ?>" title="Add to wishlist" class="heart d-flex justify-content-center align-items-center">
+											<span><i class="ion-ios-heart"></i></span>
+										</a>
+									<?php endif; ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<?php endforeach; ?>
+		</div>
 
 	</div>
 </section>

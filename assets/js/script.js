@@ -30,30 +30,5 @@ $(function () {
 		});
 	});
 
-	// Province select to get City/Suburb
-	$("#province").on("change", function () {
-		const id = $(this).val();
-		$.post(`${url}cart/getCity`, { id: id }, function (data) {
-			$("#city").html(data);
-			$("#city").removeAttr("disabled");
-		});
-	});
-
-	// Set postcode
-	$("#city").on("change", function () {
-		const selected = $(this).find("option:selected");
-		const postcode = selected.data("postcode");
-		$("#postcode").val(postcode);
-		$("#postcode").removeAttr("disabled");
-	});
-
-	// Get shipping cost
-	$("#estimate").on("click", function () {
-		const cityid = $("#city").val();
-		$.post(`${url}cart/getCost`, { cityid: cityid }, function (data) {
-			$("#list-courier").html(data);
-			// console.log(data);
-		});
-	});
 	/** End of document.ready func() */
 });
