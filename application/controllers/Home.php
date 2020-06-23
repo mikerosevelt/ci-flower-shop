@@ -42,7 +42,7 @@ class Home extends CI_Controller
 			'is_unique' => 'Email is already joined!'
 		]);
 		if ($this->form_validation->run() == FALSE) {
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is already joined!.</div>');
+			$this->session->set_flashdata('newsletter', '<div class="alert alert-danger" role="alert">Email is already joined!.</div>');
 			redirect();
 		} else {
 			$data = [
@@ -51,7 +51,7 @@ class Home extends CI_Controller
 			];
 			$this->db->insert('newsletter', $data);
 			// $this->_sendEmail();
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Thank you for join our newsletter.</div>');
+			$this->session->set_flashdata('newsletter', '<div class="alert alert-success" role="alert">Thank you for join our newsletter.</div>');
 			redirect();
 		}
 	}

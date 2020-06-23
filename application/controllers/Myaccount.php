@@ -64,6 +64,33 @@ class Myaccount extends CI_Controller
 		$this->load->view('templates/main/footer');
 	}
 
+	// Remove wishlist item
+	public function remove()
+	{
+		$id = $this->uri->segment(3);
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$this->db->select('*');
+		$this->db->from('wishlist');
+		$this->db->where('user_id', $data['user']['id']);
+		$this->db->where('id', $id);
+		$item = $this->db->get()->row_array();
+		// Check if id is exist
+		if (!$id) {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Something went wrong</div>');
+			redirect('myaccount/mywishlist');
+		}
+		// Check if item belong to user
+		if (!$item) {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Something went wrong</div>');
+			redirect('myaccount/mywishlist');
+		}
+
+		$this->db->where('id', $id);
+		$this->db->delete('wishlist');
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Item removed</div>');
+		redirect('myaccount/mywishlist');
+	}
+
 	public function setting()
 	{
 		$data['title'] = 'Account Setting';

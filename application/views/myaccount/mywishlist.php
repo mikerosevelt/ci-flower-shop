@@ -13,6 +13,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 ftco-animate">
+        <?= $this->session->flashdata('message'); ?>
         <div class="cart-list">
           <table class="table">
             <thead class="thead-primary">
@@ -29,17 +30,15 @@
               <?php foreach ($wishlist as $list) : ?>
                 <tr class="text-center">
                   <td class="product-remove">
-                    <a href="#"><span class="ion-ios-close"></span></a>
+                    <a href="<?= base_url('/myaccount/remove/') . $list['id']; ?>"><span class="ion-ios-close"></span></a>
                   </td>
                   <td class="image-prod">
                     <div class="img" style="background-image:url(<?= base_url('assets/img/') . $list['image'] ?>);"></div>
                   </td>
-
                   <td class="product-name">
                     <h3><?= $list['name'] ?></h3>
                     <p><?= $list['description'] ?></p>
                   </td>
-
                   <td class="price">Rp.<?= number_format($list['price'], 0, ",", "."); ?></td>
                   <td>&nbsp;</td>
                   <td>&nbsp;</td>
