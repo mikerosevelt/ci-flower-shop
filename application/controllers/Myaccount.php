@@ -131,6 +131,7 @@ class Myaccount extends CI_Controller
 		}
 	}
 
+	// Send email function
 	private function _sendEmail()
 	{
 		require_once('__config.php');
