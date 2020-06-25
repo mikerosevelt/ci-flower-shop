@@ -134,14 +134,6 @@ class Myaccount extends CI_Controller
 	// Send email function
 	private function _sendEmail()
 	{
-		require_once('__config.php');
-
-		$smtp_config = $config;
-
-		$this->load->library('email', $smtp_config);
-
-		$this->email->initialize($smtp_config);
-
 		$this->email->from('cs@flowershop.com', 'Flower Shop'); // from email and from name.
 		$this->email->to($this->input->post('email'));
 		$this->email->subject('Your password has been changed');
