@@ -97,8 +97,8 @@ if ($cart = $this->cart->contents()) {
 										<?php foreach ($province['rajaongkir']['results'] as $p) : ?>
 											<option value="<?= $p['province_id'] ?>"><?= $p['province'] ?></option>
 										<?php endforeach; ?>
-									<?php endif; ?>
-									<option value=""><?= $error ?></option>
+									<?php endif ?>
+									<!-- <option value=""><?= $error ?></option> -->
 								</select>
 							</div>
 							<div class="form-group">
@@ -125,8 +125,7 @@ if ($cart = $this->cart->contents()) {
 						<p class="d-flex">
 							<span>Delivery</span>
 							<span class="">
-								<ul id="list-service">
-								</ul>
+								<ul id="list-service"></ul>
 							</span>
 						</p>
 						<p class="d-flex">
