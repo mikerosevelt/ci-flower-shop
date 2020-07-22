@@ -122,6 +122,12 @@
 <script src="<?= base_url('assets/'); ?>js/script.js"></script>
 <script src="<?= base_url('assets/'); ?>js/shipping.js"></script>
 <script src="<?= base_url('assets/'); ?>js/tables.js"></script>
+<script>
+  $(document).ready(function() {
+    var permalink_nodomain = window.location.href;
+    $('.navbar-nav a[href="' + permalink_nodomain + '"]').parents('li').addClass('active');
+  });
+</script>
 
 </body>
 
