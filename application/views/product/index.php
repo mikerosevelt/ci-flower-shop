@@ -54,6 +54,9 @@
         </div>
       <?php endforeach; ?>
     </div>
+    <div class="col text-center">
+      <?= $links; ?>
+    </div>
 
   </div>
 </section>

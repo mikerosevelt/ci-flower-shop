@@ -11,7 +11,19 @@ class Product extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Product Page';
-		$data['list'] = $this->Product_model->getAllProduct();
+		$data['total'] = $this->db->get('product')->num_rows();
+
+		// Pagination Config
+		$config['base_url'] = 'http://localhost/flower/product';
+		$config['total_rows'] = $data['total'];
+		$config['per_page'] = 6;
+		$config['num_links'] = 1;
+		$this->pagination->initialize($config);
+		$data['links'] = $this->pagination->create_links();
+
+		$start = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
+		$data['list'] = $this->Product_model->getProducts($config['per_page'], $start);
+
 		$this->load->view('templates/main/header', $data);
 		$this->load->view('product/index', $data);
 		$this->load->view('templates/main/footer');

@@ -9,6 +9,12 @@ class Product_model extends CI_Model
 		return $this->db->get('product')->result_array();
 	}
 
+	// Get paginate products
+	public function getProducts($limit, $offset)
+	{
+		return $this->db->get('product', $limit, $offset)->result_array();
+	}
+
 	// Get single product by id
 	public function getProductById($id)
 	{
