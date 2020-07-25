@@ -70,6 +70,10 @@ class Product_model extends CI_Model
 	// Delete product from database
 	public function deleteProduct($id)
 	{
+		$data = $this->getProductById($id);
+		if ($data['image'] != 'default.png') {
+			unlink(FCPATH . 'assets/img/' . $data['image']);
+		}
 		$this->db->where('id', $id);
 		$this->db->delete('product');
 	}

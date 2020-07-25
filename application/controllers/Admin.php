@@ -47,7 +47,7 @@ class Admin extends CI_Controller
 	{
 		$data['title'] = 'Users';
 		$data['list'] = $this->User_model->getAllUser();
-		$data['total'] = $this->User_model->getAllUser()->num_rows();
+		$data['total'] = $this->db->get('user')->num_rows();
 
 		$this->load->view('templates/admin/header', $data);
 		$this->load->view('templates/admin/sidebar');
