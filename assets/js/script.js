@@ -25,8 +25,8 @@ $(function () {
 	// Btn add to wishlist
 	$(".btn-add-wishlist").on("click", function () {
 		const id = $(this).data("id");
-		$.post(`${url}product/addWishlist`, { id: id }, function () {
-			alert("added to wishlist");
+		$.post(`${url}product/addWishlist`, { id: id }, function (data) {
+			alert(data);
 		});
 	});
 

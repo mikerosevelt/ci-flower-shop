@@ -97,6 +97,12 @@ class Product extends CI_Controller
 	public function addWishlist()
 	{
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-		$this->Product_model->addProductToWishlist($data['user']['id']);
+		$product = $this->Product_model->checkWishlistItem($data['user']['id'], $this->input->post('id'));
+		if (!$product) {
+			$this->Product_model->addProductToWishlist($data['user']['id']);
+			echo "Added to wishlist";
+		} else {
+			echo "This product is already in your wishlist";
+		}
 	}
 }

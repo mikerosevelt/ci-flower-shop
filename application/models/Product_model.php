@@ -94,6 +94,15 @@ class Product_model extends CI_Model
 
 		$this->db->insert('wishlist', $data);
 	}
+
+	public function checkWishlistItem($userId, $productId)
+	{
+		$this->db->select('*');
+		$this->db->from('wishlist');
+		$this->db->where('user_id', $userId);
+		$this->db->where('product_id', $productId);
+		return $this->db->get()->row_array();
+	}
 }
 
 /* End of file Product_model.php */
