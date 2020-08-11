@@ -31,17 +31,18 @@ class Product_model extends CI_Model
 		// $this->load->library('upload', $config);
 		$this->upload->initialize($config);
 		if ($this->upload->do_upload('image')) {
-			$data = [
-				'name' => $this->input->post('name', true),
-				'price' => $this->input->post('price', true),
-				'image' => $this->upload->data('file_name'),
-				'description' => $this->input->post('description', true),
-				'date_added' => time()
-			];
-			$this->db->insert('product', $data);
+			// 
 		} else {
-			echo $this->uploaad->display_errors();
+			echo $this->upload->display_errors();
 		}
+		$data = [
+			'name' => $this->input->post('name', true),
+			'price' => $this->input->post('price', true),
+			'image' => $this->upload->data('file_name') ? $this->upload->data('file_name') : 'default.png',
+			'description' => $this->input->post('description', true),
+			'date_added' => time()
+		];
+		$this->db->insert('product', $data);
 	}
 
 	// Edit product

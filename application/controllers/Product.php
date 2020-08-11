@@ -18,11 +18,12 @@ class Product extends CI_Controller
 		$config['total_rows'] = $data['total'];
 		$config['per_page'] = 8;
 		$config['num_links'] = 1;
+		$config['use_page_numbers'] = TRUE;
 		$this->pagination->initialize($config);
-		$data['links'] = $this->pagination->create_links();
-
-		$start = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
+		$page = $this->uri->segment(2) ? $this->uri->segment(2) : 1;
+		$start = ($page - 1)  * $config['per_page'];
 		$data['list'] = $this->Product_model->getProducts($config['per_page'], $start);
+		$data['links'] = $this->pagination->create_links();
 
 		$this->load->view('templates/main/header', $data);
 		$this->load->view('product/index', $data);
