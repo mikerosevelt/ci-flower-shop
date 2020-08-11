@@ -131,8 +131,8 @@
                   <th scope="col">#</th>
                   <th scope="col">Full Name</th>
                   <th scope="col">Email</th>
-                  <th scope="col">status</th>
-                  <th scope="col">Date Registration</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Registered On</th>
                   <th scope="col"></th>
                 </tr>
               </thead>

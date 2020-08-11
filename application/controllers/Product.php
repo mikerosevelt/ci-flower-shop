@@ -16,7 +16,7 @@ class Product extends CI_Controller
 		// Pagination Config
 		$config['base_url'] = 'http://localhost/flower/product';
 		$config['total_rows'] = $data['total'];
-		$config['per_page'] = 6;
+		$config['per_page'] = 8;
 		$config['num_links'] = 1;
 		$this->pagination->initialize($config);
 		$data['links'] = $this->pagination->create_links();

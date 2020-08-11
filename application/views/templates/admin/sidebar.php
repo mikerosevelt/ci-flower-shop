@@ -59,11 +59,11 @@
               </a>
             </li> -->
           <li class="nav-item">
-            <a class="nav-link" href="#navbar-maps" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-maps">
+            <a class="nav-link" href="#navbar-reports" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-reports">
               <i class="ni ni-chart-pie-35 text-red"></i>
               <span class="nav-link-text text-light">Reports</span>
             </a>
-            <div class="collapse" id="navbar-maps">
+            <div class="collapse" id="navbar-reports">
               <ul class="nav nav-sm flex-column">
                 <li class="nav-item">
                   <a href="<?= base_url('admin/reports'); ?>" class="nav-link">

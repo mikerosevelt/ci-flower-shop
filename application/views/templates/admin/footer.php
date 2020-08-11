@@ -3,7 +3,7 @@
   <div class="row align-items-center justify-content-lg-between">
     <div class="col-lg-6">
       <div class="copyright text-center  text-lg-left  text-muted">
-        &copy; 2020 <a href="<?= base_url(); ?>" class="font-weight-bold ml-1" target="_blank">Flower Shop</a>
+        &copy; 2020 <a href="<?= base_url(); ?>" class="font-weight-bold ml-1" target="_blank">Flower Shop </a>Template Argon Dashboard By <a href="https://www.creative-tim.com">Creative Tim</a>
       </div>
     </div>
     <div class="col-lg-6">
@@ -56,6 +56,12 @@
 <script src="<?= base_url('assets/'); ?>js/custom.js"></script>
 <script src="<?= base_url('assets/'); ?>js/sweet.js"></script>
 <!-- <script src="<?= base_url('assets/'); ?>js/demo.min.js"></script> -->
+<script>
+  $(document).ready(function() {
+    var permalink_nodomain = window.location.href;
+    $('.navbar-nav a[href="' + permalink_nodomain + '"]').addClass('active');
+  });
+</script>
 </body>
 
 </html>
