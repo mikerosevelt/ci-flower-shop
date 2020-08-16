@@ -118,7 +118,16 @@ class User_model extends CI_Model
 		$this->db->where('wishlist.user_id', $id);
 		return $this->db->get()->result_array();
 	}
-	
+
+	public function getLoggedInAdmin()
+	{
+		$this->db->select('user_detail.*, user_log.*, user.name, user.email, user.is_active, user.date_created');
+		$this->db->from('user');
+		$this->db->join('user_detail', 'user_detail.user_id = user.id');
+		$this->db->join('user_log', 'user_log.user_id = user.id');
+		$this->db->where('user.email', $this->session->userdata('email'));
+		return $this->db->get()->row_array();
+	}
 }
 
 /* End of file User_model.php */

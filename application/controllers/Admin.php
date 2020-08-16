@@ -43,6 +43,19 @@ class Admin extends CI_Controller
 		$this->load->view('templates/admin/footer');
 	}
 
+	// Admin Profile page
+	public function profile()
+	{
+		$data['title'] = 'Admin Profile';
+		// $data['admin'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		$data['admin'] = $this->User_model->getLoggedInAdmin();
+		$this->load->view('templates/admin/header', $data);
+		$this->load->view('templates/admin/sidebar');
+		$this->load->view('templates/admin/topbar', $data);
+		$this->load->view('admin/profile', $data);
+		$this->load->view('templates/admin/footer');
+	}
+
 	public function users()
 	{
 		$data['title'] = 'Users';
