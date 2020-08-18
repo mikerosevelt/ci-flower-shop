@@ -31,7 +31,7 @@ class Product_model extends CI_Model
 		// $this->load->library('upload', $config);
 		$this->upload->initialize($config);
 		if ($this->upload->do_upload('image')) {
-			// 
+			// success
 		} else {
 			echo $this->upload->display_errors();
 		}

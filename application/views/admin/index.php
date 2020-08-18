@@ -380,61 +380,7 @@
               </div>
             </div>
           </div>
-          <div class="card-deck">
-            <div class="card bg-gradient-default col-md-6">
-              <div class="card-body">
-                <div class="mb-2">
-                  <sup class="text-white">$</sup> <span class="h2 text-white">3,300</span>
-                  <div class="text-light mt-2 text-sm">Your current balance</div>
-                  <div>
-                    <span class="text-success font-weight-600">+ 15%</span> <span class="text-light">($250)</span>
-                  </div>
-                </div>
-                <button class="btn btn-sm btn-block btn-neutral">Add credit</button>
-              </div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col">
-                    <small class="text-light">Orders: 60%</small>
-                    <div class="progress progress-xs my-2">
-                      <div class="progress-bar bg-success" style="width: 60%"></div>
-                    </div>
-                  </div>
-                  <div class="col"><small class="text-light">Sales: 40%</small>
-                    <div class="progress progress-xs my-2">
-                      <div class="progress-bar bg-warning" style="width: 40%"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div class="card bg-default">
-              <div class="card-body">
-                <div class="row justify-content-between align-items-center">
-                  <div class="col">
-                    <img src="<?= base_url('assets/'); ?>img/icons/cards/bitcoin.png" alt="" />
-                  </div>
-                  <div class="col-auto">
-                    <span class="badge badge-lg badge-success">Active</span>
-                  </div>
-                </div>
-                <div class="my-4">
-                  <span class="h6 surtitle text-light">
-                    Username
-                  </span>
-                  <div class="h1 text-white">@johnsnow</div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <span class="h6 surtitle text-light">Name</span>
-                    <span class="d-block h3 text-white">John Snow</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
         </div>
       </div>
       <!--       <div class="row">
