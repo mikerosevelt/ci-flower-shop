@@ -27,6 +27,11 @@
               </tr>
             </thead>
             <tbody>
+              <?php if (!$wishlist) : ?>
+                <tr class="text-center">
+                  <td colspan="6" class="h4 text-secondary">Your wishlist is empty!</td>
+                </tr>
+              <?php endif; ?>
               <?php foreach ($wishlist as $list) : ?>
                 <tr class="text-center">
                   <td class="product-remove">

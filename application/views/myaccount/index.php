@@ -98,9 +98,9 @@
 				</form><!-- END -->
 			</div>
 			<div class="col-xl-5">
-				<div class="row mt-5 pt-3">
+				<div class="row">
 					<div class="col-md-12">
-						<div class="cart-detail p-2 p-md-4 card shadow">
+						<div class="cart-detail p-1 p-md-4 card shadow">
 							<h4 class="billing-heading mb-2">Menu</h4>
 							<ul style="list-style: none">
 								<li>
