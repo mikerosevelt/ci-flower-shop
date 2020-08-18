@@ -332,7 +332,7 @@ class Admin extends CI_Controller
 		$data['title'] = 'Detail Product';
 
 		$id = $this->uri->segment(3);
-		$data['detail'] = $this->Product_model->getProductById($id)->row_array();
+		$data['detail'] = $this->Product_model->getProductById($id);
 		if ($id) {
 			$this->load->view('templates/admin/header', $data);
 			$this->load->view('templates/admin/sidebar');

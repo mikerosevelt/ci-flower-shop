@@ -67,18 +67,18 @@ class Product_model extends CI_Model
 			if ($data['product']['image'] != 'default.png') {
 				unlink(FCPATH . 'assets/img/' . $data['product']['image']);
 			}
-			$data = [
-				'name' => $this->input->post('name', true),
-				'price' => $this->input->post('price', true),
-				'image' => $this->upload->data('file_name'),
-				'description' => $this->input->post('description', true),
-				'date_added' => time()
-			];
-			$this->db->where('id', $id);
-			$this->db->update('product', $data);
 		} else {
 			echo $this->upload->display_errors();
 		}
+		$data = [
+			'name' => $this->input->post('name', true),
+			'price' => $this->input->post('price', true),
+			'image' => $this->upload->data('file_name') ? $this->upload->data('file_name') : $data['product']['image'],
+			'description' => $this->input->post('description', true),
+			'date_added' => time()
+		];
+		$this->db->where('id', $id);
+		$this->db->update('product', $data);
 	}
 
 	// Delete product from database
