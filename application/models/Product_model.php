@@ -9,6 +9,13 @@ class Product_model extends CI_Model
 		return $this->db->get('product')->result_array();
 	}
 
+	// Get all products for home page
+	public function getAllProductsHome()
+	{
+		$this->db->order_by('date_added', 'desc');
+		return $this->db->get('product', 8, 0)->result_array();
+	}
+
 	// Get paginate products
 	public function getProducts($limit, $offset)
 	{
