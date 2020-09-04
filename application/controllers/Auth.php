@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
 {
-
     public function index()
     {
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
@@ -74,8 +73,6 @@ class Auth extends CI_Controller
             redirect('auth');
         }
     }
-
-
 
     public function register()
     {
